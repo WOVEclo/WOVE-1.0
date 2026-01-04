@@ -13,14 +13,16 @@ const products = {
       name: 'Second Skin Top',
       price: '£75',
       image: '/static/products/second-skin-top.jpg',
-      category: 'Performance'
+      category: 'Performance',
+      description: 'Technical long sleeve in taupe'
     },
     {
       id: 'worn-run-tee',
       name: 'Worn Run Tee',
       price: '£55',
       image: '/static/products/worn-run-tee.jpg',
-      category: 'Performance'
+      category: 'Performance',
+      description: 'Distressed organic cotton'
     }
   ],
   outerwear: [
@@ -29,21 +31,24 @@ const products = {
       name: 'Air Shell Jacket',
       price: '£125',
       image: '/static/products/air-shell-jacket.jpg',
-      category: 'Outerwear'
+      category: 'Outerwear',
+      description: 'Ultralight shell with reflective branding'
     },
     {
       id: 'cropped-anorak',
       name: 'Cropped Anorak',
       price: '£165',
       image: '/static/products/cropped-anorak.jpg',
-      category: 'Outerwear'
+      category: 'Outerwear',
+      description: 'Technical chest yoke and drawstrings'
     },
     {
       id: 'city-parka',
       name: 'City Parka',
       price: '£285',
       image: '/static/products/city-parka.jpg',
-      category: 'Outerwear'
+      category: 'Outerwear',
+      description: 'Refined parka with dual zipper system'
     }
   ],
   essentials: [
@@ -53,7 +58,7 @@ const products = {
       price: '£95',
       image: '/static/products/essentials-set.jpg',
       category: 'Essentials',
-      note: 'Part of set, sold separately'
+      description: 'Charcoal grey marl, sold separately'
     },
     {
       id: 'essentials-jogger',
@@ -61,28 +66,31 @@ const products = {
       price: '£85',
       image: '/static/products/essentials-set.jpg',
       category: 'Essentials',
-      note: 'Part of set, sold separately'
+      description: 'Charcoal grey marl, sold separately'
     },
     {
       id: 'cloud-quarter-zip',
       name: 'Cloud Quarter Zip',
       price: '£125',
       image: '/static/products/cloud-quarter-zip.jpg',
-      category: 'Essentials'
+      category: 'Essentials',
+      description: 'Black fleece with side pockets'
     },
     {
       id: 'cloud-hoodie',
       name: 'Cloud Hoodie',
       price: '£135',
       image: '/static/products/cloud-hoodie.jpg',
-      category: 'Essentials'
+      category: 'Essentials',
+      description: 'Full zip with drawcord details'
     },
     {
       id: 'track-zip',
       name: 'Track Zip',
       price: '£145',
       image: '/static/products/track-zip.jpg',
-      category: 'Essentials'
+      category: 'Essentials',
+      description: 'Retro styling with contrast piping'
     }
   ],
   bottoms: [
@@ -91,14 +99,16 @@ const products = {
       name: 'Motion Pants',
       price: '£85',
       image: '/static/products/motion-pants.jpg',
-      category: 'Bottoms'
+      category: 'Bottoms',
+      description: 'Off-white performance joggers'
     },
     {
       id: 'motion-shorts',
       name: 'Motion Shorts',
       price: '£65',
       image: '/static/products/motion-shorts.jpg',
-      category: 'Bottoms'
+      category: 'Bottoms',
+      description: 'Light grey technical shorts'
     }
   ],
   accessories: [
@@ -107,35 +117,36 @@ const products = {
       name: 'Off Duty Cap',
       price: '£45',
       image: '/static/products/off-duty-cap.jpg',
-      category: 'Accessories'
+      category: 'Accessories',
+      description: 'White cap with olive embroidery'
     }
   ]
 }
 
 app.get('/', (c) => {
-  const allProducts = [
-    ...products.performance,
-    ...products.outerwear,
-    ...products.essentials,
-    ...products.bottoms,
-    ...products.accessories
-  ]
-
   return c.render(
-    <div>
+    <>
       {/* Navigation */}
-      <nav class="nav">
+      <nav class="nav" style="background: transparent; position: fixed; width: 100%; z-index: 1000;">
         <div class="nav-container">
-          <a href="/" class="logo-link">
-            <img src="/static/2.png" alt="WOVE" class="logo" />
-          </a>
-          <div class="nav-menu">
-            <a href="#performance" class="nav-link">Performance</a>
-            <a href="#outerwear" class="nav-link">Outerwear</a>
-            <a href="#essentials" class="nav-link">Essentials</a>
-            <a href="#about" class="nav-link">About</a>
+          <div class="nav-logo">
+            <img src="/static/2.png" alt="WOVE" class="logo-img" />
           </div>
-          <button class="menu-toggle" aria-label="Menu">
+          
+          <ul class="nav-menu">
+            <li><a href="#collection">Collection</a></li>
+            <li><a href="#outerwear">Outerwear</a></li>
+            <li><a href="#essentials">Essentials</a></li>
+            <li><a href="#about">About</a></li>
+          </ul>
+
+          <div class="nav-actions">
+            <a href="#search" class="nav-icon">Search</a>
+            <a href="#account" class="nav-icon">Account</a>
+            <a href="#cart" class="nav-icon">Cart</a>
+          </div>
+
+          <button class="mobile-menu-toggle" aria-label="Toggle menu">
             <span></span>
             <span></span>
             <span></span>
@@ -143,224 +154,259 @@ app.get('/', (c) => {
         </div>
       </nav>
 
-      {/* Hero Section */}
-      <section class="hero">
-        <div class="hero-content">
-          <h1 class="hero-title">
-            <span class="hero-line">SPRING</span>
-            <span class="hero-line">SUMMER</span>
-            <span class="hero-line">2026</span>
-          </h1>
-          <p class="hero-subtitle">Technical Performance Meets Premium Design</p>
-          <a href="#performance" class="cta-button">
-            <span>Explore Collection</span>
-            <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-              <path d="M4 10H16M16 10L10 4M16 10L10 16" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-          </a>
+      {/* Hero Section - Full Screen */}
+      <section class="hero-full" style="min-height: 100vh; position: relative; display: flex; align-items: center; justify-content: center;">
+        <div class="hero-image-container">
+          <img src="/static/products/city-parka.jpg" alt="WOVE SS26" class="hero-image" />
+          <div class="hero-overlay"></div>
         </div>
-        <div class="hero-scroll">
-          <span>Scroll</span>
-          <div class="scroll-line"></div>
+        
+        <div class="hero-content-center" style="position: relative; z-index: 10; text-align: center; color: white;">
+          <h1 class="hero-title-large">Spring / Summer 2026</h1>
+          <p class="hero-subtitle">Where craft meets contemporary design</p>
+          <a href="#collection" class="hero-cta-minimal">Explore Collection</a>
         </div>
       </section>
 
-      {/* Performance Section */}
-      <section class="collection-section" id="performance">
-        <div class="container">
-          <div class="section-header">
-            <span class="section-label">Technical Sportswear</span>
-            <h2 class="section-title">Performance</h2>
+      {/* Editorial Section 1 */}
+      <section class="editorial-section">
+        <div class="editorial-grid">
+          <div class="editorial-image">
+            <img src="/static/products/air-shell-jacket.jpg" alt="Air Shell Jacket" />
           </div>
-          <div class="products-grid">
-            {products.performance.map((product) => (
-              <div class="product-card">
-                <div class="product-image-wrapper">
-                  <img src={product.image} alt={product.name} class="product-image" />
-                  <div class="product-overlay">
-                    <button class="quick-view-btn">View Details</button>
-                  </div>
-                </div>
-                <div class="product-info">
-                  <h3 class="product-name">{product.name}</h3>
-                  <p class="product-price">{product.price}</p>
-                </div>
-              </div>
-            ))}
+          <div class="editorial-content">
+            <span class="editorial-label">Technical Outerwear</span>
+            <h2 class="editorial-title">Air Shell Jacket</h2>
+            <p class="editorial-text">Ultralight shell construction meets reflective WOVE branding. Designed for movement, crafted for the elements.</p>
+            <a href="#outerwear" class="editorial-link">Discover More</a>
           </div>
         </div>
       </section>
 
-      {/* Outerwear Section */}
+      {/* Collection Grid - Outerwear */}
       <section class="collection-section" id="outerwear">
-        <div class="container">
-          <div class="section-header">
-            <span class="section-label">Weather Protection</span>
-            <h2 class="section-title">Outerwear</h2>
-          </div>
-          <div class="products-grid">
-            {products.outerwear.map((product) => (
-              <div class="product-card">
+        <div class="section-header">
+          <h2 class="section-title">Outerwear</h2>
+          <p class="section-subtitle">Technical precision meets refined design</p>
+        </div>
+
+        <div class="product-grid-loewe">
+          {products.outerwear.map(product => (
+            <div class="product-card-loewe">
+              <a href={`#${product.id}`} class="product-link">
                 <div class="product-image-wrapper">
                   <img src={product.image} alt={product.name} class="product-image" />
                   <div class="product-overlay">
-                    <button class="quick-view-btn">View Details</button>
+                    <span class="product-overlay-text">View Details</span>
                   </div>
                 </div>
                 <div class="product-info">
                   <h3 class="product-name">{product.name}</h3>
-                  <p class="product-price">{product.price}</p>
+                  <p class="product-description">{product.description}</p>
+                  <span class="product-price">{product.price}</span>
                 </div>
-              </div>
-            ))}
+              </a>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* Editorial Section 2 */}
+      <section class="editorial-section editorial-reverse">
+        <div class="editorial-grid">
+          <div class="editorial-content">
+            <span class="editorial-label">Performance</span>
+            <h2 class="editorial-title">Second Skin Technology</h2>
+            <p class="editorial-text">Our performance pieces combine technical innovation with understated luxury. Designed for those who demand both style and function.</p>
+            <a href="#performance" class="editorial-link">Shop Performance</a>
+          </div>
+          <div class="editorial-image">
+            <img src="/static/products/second-skin-top.jpg" alt="Second Skin Top" />
           </div>
         </div>
       </section>
 
-      {/* Essentials Section */}
+      {/* Collection Grid - Essentials */}
       <section class="collection-section" id="essentials">
-        <div class="container">
-          <div class="section-header">
-            <span class="section-label">Everyday Comfort</span>
-            <h2 class="section-title">Essentials</h2>
-          </div>
-          <div class="products-grid">
-            {products.essentials.map((product) => (
-              <div class="product-card">
+        <div class="section-header">
+          <h2 class="section-title">Essentials</h2>
+          <p class="section-subtitle">Elevated basics for the modern wardrobe</p>
+        </div>
+
+        <div class="product-grid-loewe">
+          {products.essentials.map(product => (
+            <div class="product-card-loewe">
+              <a href={`#${product.id}`} class="product-link">
                 <div class="product-image-wrapper">
                   <img src={product.image} alt={product.name} class="product-image" />
                   <div class="product-overlay">
-                    <button class="quick-view-btn">View Details</button>
+                    <span class="product-overlay-text">View Details</span>
                   </div>
-                  {product.note && <span class="product-note">{product.note}</span>}
                 </div>
                 <div class="product-info">
                   <h3 class="product-name">{product.name}</h3>
-                  <p class="product-price">{product.price}</p>
+                  <p class="product-description">{product.description}</p>
+                  <span class="product-price">{product.price}</span>
                 </div>
-              </div>
-            ))}
-          </div>
+              </a>
+            </div>
+          ))}
         </div>
       </section>
 
-      {/* Bottoms & Accessories Section */}
-      <section class="collection-section" id="bottoms">
-        <div class="container">
-          <div class="section-header">
-            <span class="section-label">Complete The Look</span>
-            <h2 class="section-title">Bottoms & Accessories</h2>
-          </div>
-          <div class="products-grid">
-            {[...products.bottoms, ...products.accessories].map((product) => (
-              <div class="product-card">
+      {/* Full Width Feature */}
+      <section class="feature-full">
+        <img src="/static/products/track-zip.jpg" alt="Track Collection" class="feature-image" />
+        <div class="feature-content-overlay">
+          <h2 class="feature-title">Track Collection</h2>
+          <p class="feature-text">Athletic heritage reimagined</p>
+        </div>
+      </section>
+
+      {/* Collection Grid - Performance & Bottoms */}
+      <section class="collection-section" id="collection">
+        <div class="section-header">
+          <h2 class="section-title">Performance & Activewear</h2>
+          <p class="section-subtitle">Movement without compromise</p>
+        </div>
+
+        <div class="product-grid-loewe">
+          {[...products.performance, ...products.bottoms].map(product => (
+            <div class="product-card-loewe">
+              <a href={`#${product.id}`} class="product-link">
                 <div class="product-image-wrapper">
                   <img src={product.image} alt={product.name} class="product-image" />
                   <div class="product-overlay">
-                    <button class="quick-view-btn">View Details</button>
+                    <span class="product-overlay-text">View Details</span>
                   </div>
                 </div>
                 <div class="product-info">
                   <h3 class="product-name">{product.name}</h3>
-                  <p class="product-price">{product.price}</p>
+                  <p class="product-description">{product.description}</p>
+                  <span class="product-price">{product.price}</span>
                 </div>
-              </div>
-            ))}
-          </div>
+              </a>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* Accessories Highlight */}
+      <section class="collection-section">
+        <div class="section-header">
+          <h2 class="section-title">Accessories</h2>
+          <p class="section-subtitle">Complete your look</p>
+        </div>
+
+        <div class="product-grid-loewe">
+          {products.accessories.map(product => (
+            <div class="product-card-loewe">
+              <a href={`#${product.id}`} class="product-link">
+                <div class="product-image-wrapper">
+                  <img src={product.image} alt={product.name} class="product-image" />
+                  <div class="product-overlay">
+                    <span class="product-overlay-text">View Details</span>
+                  </div>
+                </div>
+                <div class="product-info">
+                  <h3 class="product-name">{product.name}</h3>
+                  <p class="product-description">{product.description}</p>
+                  <span class="product-price">{product.price}</span>
+                </div>
+              </a>
+            </div>
+          ))}
         </div>
       </section>
 
       {/* About Section */}
-      <section class="about" id="about">
-        <div class="container">
-          <div class="about-grid">
-            <div class="about-content">
-              <span class="section-label">SS26</span>
-              <h2 class="section-title">Engineered For Performance</h2>
-              <p class="about-text">
-                WOVE represents a new generation of menswear that refuses to compromise. Our Spring/Summer 2026 collection combines technical performance fabrics with refined aesthetic sensibilities.
-              </p>
-              <p class="about-text">
-                From seamless performance wear to weather-resistant outerwear, each piece is meticulously engineered for the modern athlete and urban explorer.
-              </p>
+      <section class="about-loewe" id="about">
+        <div class="about-content-center">
+          <h2 class="about-title">Where Craft Meets Contemporary</h2>
+          <p class="about-text">
+            WOVE represents a new generation of menswear. We believe in the power of 
+            exceptional materials, precise construction, and timeless design. Each piece 
+            in our collection is created to last, designed to move with you, and crafted 
+            to elevate your everyday.
+          </p>
+          <div class="about-stats">
+            <div class="stat-item">
+              <span class="stat-number">100%</span>
+              <span class="stat-label">Premium Materials</span>
             </div>
-            <div class="about-stats">
-              <div class="stat-item">
-                <div class="stat-number">13</div>
-                <div class="stat-label">SS26 Products</div>
-              </div>
-              <div class="stat-item">
-                <div class="stat-number">4</div>
-                <div class="stat-label">Collections</div>
-              </div>
-              <div class="stat-item">
-                <div class="stat-number">100%</div>
-                <div class="stat-label">Premium Quality</div>
-              </div>
+            <div class="stat-item">
+              <span class="stat-number">48h</span>
+              <span class="stat-label">Global Delivery</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-number">5★</span>
+              <span class="stat-label">Customer Rating</span>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Newsletter Section */}
-      <section class="newsletter">
-        <div class="container">
-          <div class="newsletter-content">
-            <h2 class="newsletter-title">Join The WOVE Community</h2>
-            <p class="newsletter-text">Be first to access new releases and exclusive offers.</p>
-            <form class="newsletter-form">
-              <input type="email" placeholder="Enter your email" class="newsletter-input" required />
-              <button type="submit" class="newsletter-button">Subscribe</button>
-            </form>
-          </div>
+      {/* Newsletter */}
+      <section class="newsletter-loewe">
+        <div class="newsletter-content">
+          <h3 class="newsletter-title">Stay Connected</h3>
+          <p class="newsletter-text">Be the first to know about new collections and exclusive offers</p>
+          <form class="newsletter-form" id="newsletter-form">
+            <input 
+              type="email" 
+              placeholder="Enter your email" 
+              class="newsletter-input"
+              required
+            />
+            <button type="submit" class="newsletter-button">Subscribe</button>
+          </form>
         </div>
       </section>
 
       {/* Footer */}
-      <footer class="footer" id="contact">
-        <div class="container">
-          <div class="footer-grid">
-            <div class="footer-col">
-              <img src="/static/2.png" alt="WOVE" class="footer-logo" />
-              <p class="footer-text">Performance meets premium design.</p>
-            </div>
-            <div class="footer-col">
-              <h4 class="footer-title">Shop</h4>
-              <ul class="footer-links">
-                <li><a href="#performance">Performance</a></li>
-                <li><a href="#outerwear">Outerwear</a></li>
-                <li><a href="#essentials">Essentials</a></li>
-                <li><a href="#bottoms">Bottoms</a></li>
-              </ul>
-            </div>
-            <div class="footer-col">
-              <h4 class="footer-title">Company</h4>
-              <ul class="footer-links">
-                <li><a href="#about">About</a></li>
-                <li><a href="#contact">Contact</a></li>
-                <li><a href="#">Size Guide</a></li>
-                <li><a href="#">Stores</a></li>
-              </ul>
-            </div>
-            <div class="footer-col">
-              <h4 class="footer-title">Follow</h4>
-              <ul class="footer-links">
-                <li><a href="#">Instagram</a></li>
-                <li><a href="#">Facebook</a></li>
-                <li><a href="#">Twitter</a></li>
-              </ul>
-            </div>
+      <footer class="footer-loewe">
+        <div class="footer-container">
+          <div class="footer-section">
+            <img src="/static/2.png" alt="WOVE" class="footer-logo" />
+            <p class="footer-tagline">Premium menswear for the modern gentleman</p>
           </div>
-          <div class="footer-bottom">
-            <p>&copy; 2026 WOVE. All rights reserved.</p>
-            <div class="footer-legal">
-              <a href="#">Privacy</a>
-              <a href="#">Terms</a>
-            </div>
+
+          <div class="footer-section">
+            <h4 class="footer-title">Shop</h4>
+            <ul class="footer-links">
+              <li><a href="#outerwear">Outerwear</a></li>
+              <li><a href="#essentials">Essentials</a></li>
+              <li><a href="#collection">Performance</a></li>
+              <li><a href="#accessories">Accessories</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-section">
+            <h4 class="footer-title">Company</h4>
+            <ul class="footer-links">
+              <li><a href="#about">About</a></li>
+              <li><a href="#contact">Contact</a></li>
+              <li><a href="#stores">Stores</a></li>
+              <li><a href="#careers">Careers</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-section">
+            <h4 class="footer-title">Follow</h4>
+            <ul class="footer-links">
+              <li><a href="#">Instagram</a></li>
+              <li><a href="#">Twitter</a></li>
+              <li><a href="#">Facebook</a></li>
+              <li><a href="#">Pinterest</a></li>
+            </ul>
           </div>
         </div>
+
+        <div class="footer-bottom">
+          <p>&copy; 2026 WOVE. All rights reserved.</p>
+        </div>
       </footer>
-    </div>
+    </>
   )
 })
 
