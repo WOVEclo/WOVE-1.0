@@ -1,379 +1,457 @@
-# WOVE - Interactive E-Commerce Website
+# WOVE - Luxury Minimal E-Commerce
 
-## 🌐 Live URLs
-
-- **Landing Page**: https://3000-il5fubnexdtiryy1p9nm1-c07dda5e.sandbox.novita.ai
-- **Collection Page**: https://3000-il5fubnexdtiryy1p9nm1-c07dda5e.sandbox.novita.ai/collection
+**Live URL**: https://3000-il5fubnexdtiryy1p9nm1-c07dda5e.sandbox.novita.ai
 
 ---
 
-## 🎯 Overview
+## 🎨 Design Philosophy
 
-WOVE is a premium menswear e-commerce website featuring:
-- **Modern landing page** with hero section and features
-- **Separate collection page** with interactive product cards
-- **Category filtering** for easy browsing
-- **Product cards** with ratings, prices, and add-to-cart
-- **Fully responsive** design for all devices
-
----
-
-## 📄 Pages
-
-### 1. **Landing Page** (`/`)
-The home page features:
-- **Hero Section**: Large banner with "Innovating the Way You Care for Clothes"
-- **Features Grid**: 4 feature cards (Premium Quality, Fast Shipping, Sustainable, 5-Star Rated)
-- **CTA Section**: Call-to-action to explore the collection
-- **Navigation**: Links to Home, Collection, About, Contact
-
-### 2. **Collection Page** (`/collection`)
-The shopping page features:
-- **Collection Header**: Spring/Summer 2026 banner
-- **Category Sidebar**: Filter by All, Outerwear, Essentials, Performance, Bottoms, Accessories
-- **Product Grid**: 3-column layout with 13 product cards
-- **Interactive Filtering**: Click categories to filter products
+Inspired by **Loewe.com** - this is a luxury fashion website with:
+- **Editorial aesthetic** (magazine-quality, not catalog)
+- **Minimal everything** (text, buttons, colors, navigation)
+- **Generous white space** (products breathe)
+- **Elegant typography** (consistent serif font throughout)
+- **Sophisticated interactions** (subtle, refined)
 
 ---
 
-## 🛍️ Product Cards
+## 📄 Site Structure
 
-Each product card includes:
+### **1. Splash Page** (`/`)
+- **Just "WOVE"** centered on white background
+- **Cormorant Garamond** font (72px, 300 weight, 8px letter-spacing)
+- **Fade-in animation** (1.5s)
+- **Click anywhere** to enter → redirects to `/home`
+- **Auto-enters** after 3 seconds
 
-### **Visual Elements**
-- ✅ **Product Image** - High-quality photos with hover zoom
-- ✅ **Category Badge** - Top-right corner label
-- ✅ **5-Star Rating** - Visual stars with numeric rating
-- ✅ **Product Name** - Bold, clear title
-- ✅ **Description** - Brief product details
-- ✅ **Price** - Large, prominent display (£)
-- ✅ **Stock Status** - "In Stock" badge
+### **2. Main Homepage** (`/home`)
+- **Minimal Navigation**
+  - Logo left (28px height)
+  - Menu center: Collection, Stories, Gifts
+  - Right: Search, Cart
+  - 80px height, subtle border
 
-### **Interactive Features**
-- ✅ **Add to Cart Button** - Full-width with cart icon
-  - Changes to green "Added to Cart" on click
-  - Returns to normal after 2 seconds
-- ✅ **Wishlist Button** - Heart icon
-  - Fills with color on click
-  - Toggles on/off
-- ✅ **Quick View Button** - Eye icon for preview
-- ✅ **Hover Effects** - Card lifts up, image zooms in
+- **Large Hero Image**
+  - City Parka full-width
+  - 85vh height
+  - "Spring / Summer 2026" text overlay
+  - Subtle dark overlay for text readability
+
+- **Editorial Intro**
+  - Centered paragraph (max 1000px)
+  - 20px font size, 1.8 line height
+  - Lots of padding (120px top/bottom)
+
+- **Featured Products**
+  - 3-column grid
+  - First 3 products from collection
+  - Image hover zoom (1.05x)
+  - Product name + price below image
+  - Links to product detail pages
+
+### **3. Collection Page** (`/collection`)
+- **Same minimal navigation**
+
+- **Collection Header**
+  - "Spring / Summer 2026" title
+  - Centered, 48px font
+  - 80px top padding
+
+- **Product Grid**
+  - 3 columns (desktop)
+  - 2 columns (tablet)
+  - 1 column (mobile)
+  - 12 products total
+  - 60px row gap, 40px column gap
+
+- **Product Items**
+  - 3:4 aspect ratio images
+  - Product name + price always visible (centered)
+  - **Hover shows "Add to Cart" button**
+  - Button appears at bottom of image
+  - Image zooms 1.05x on hover
+  - Smooth 0.6s transitions
+
+### **4. Product Detail Pages** (`/product/:id`)
+- **Minimal navigation** (same as above)
+
+- **Two-column layout**
+  - Left: Large product image (1.5fr)
+  - Right: Product info (1fr)
+  - 80px gap between columns
+
+- **Product Info**
+  - Product name (42px)
+  - Price (24px, gray)
+  - Full-width "Add to Cart" button
+  - Product description below
+  - Clean, minimal styling
 
 ---
 
-## 🎨 Design Features
-
-### **Color Scheme**
-```
-Primary: Purple Gradient (#667eea → #764ba2)
-Background: White (#FFFFFF)
-Text: Gray (#1F2937, #4B5563)
-Accent: Green (#10B981) for success states
-Shadows: Multi-level depth (sm, md, lg, xl)
-```
+## 🎨 Design Specifications
 
 ### **Typography**
 ```
-Font Family: System fonts (-apple-system, Segoe UI, etc.)
-Headings: 700 weight (bold)
-Body: 400-600 weight (regular to semibold)
-Sizes: 
-  - Hero H1: 48px
-  - Section H2: 40px
-  - Product Title: 20px
-  - Body Text: 14-18px
+Font: Cormorant Garamond (serif) - used throughout
+Weights: 300 (light) only
+Letter spacing: 0.5px - 8px depending on element
+
+Sizes:
+- Splash logo: 72px
+- Hero title: 64px
+- Collection title: 48px
+- Product detail h1: 42px
+- Intro text: 20px
+- Product names: 18px
+- Prices: 16px
+- Nav links: 13px
+- Footer: 12px
 ```
 
-### **Layout**
+### **Colors**
 ```
-Max Width: 1200px
-Padding: 24px
-Grid:
-  - Hero: 2 columns (text + image)
-  - Features: 4 columns
-  - Products: 3 columns
-  - Footer: 4 columns
-Gaps: 32px (features), 40px (sidebar)
+Pure White: #FFFFFF (background)
+Pure Black: #000000 (text, buttons)
+Gray: #999999 (secondary text, prices)
+Border: #EFEFEF (subtle dividers)
+
+No other colors - pure minimalism
+```
+
+### **Spacing**
+```
+Navigation: 80px height, 60px horizontal padding
+Hero: 85vh height
+Sections: 120px vertical padding
+Product grid gaps: 60px rows, 40px columns
+Max content width: 1600px
 ```
 
 ### **Interactions**
-- ✅ **Smooth transitions** - 0.2-0.4s ease
-- ✅ **Hover transforms** - translateY(-8px) on cards
-- ✅ **Scale effects** - 1.1x on images
-- ✅ **Fade-in animations** - Intersection Observer
-- ✅ **Category filtering** - Smooth show/hide
+```
+Hover transitions: 0.6s ease
+Fade animations: 0.8s ease
+Image scale: 1.05x on hover
+Button hover: background #333 (slightly lighter black)
+Nav links hover: opacity 0.5
+```
 
 ---
 
-## 📦 Complete Product Collection (13 Items)
+## 🛍️ Product Collection (12 Items)
 
-### **Outerwear** (3 products)
-1. **Air Shell Jacket** - £125 (4.5★, 28 reviews)
-2. **Cropped Anorak** - £165 (4.8★, 15 reviews)
-3. **City Parka** - £285 (5.0★, 42 reviews)
+All products from your uploaded images:
 
-### **Performance** (2 products)
-4. **Second Skin Top** - £75 (4.7★, 34 reviews)
-5. **Worn Run Tee** - £55 (4.3★, 22 reviews)
-
-### **Essentials** (5 products)
-6. **Essentials Hoodie** - £95 (4.6★, 67 reviews)
-7. **Essentials Jogger** - £85 (4.6★, 67 reviews)
-8. **Cloud Quarter Zip** - £125 (4.9★, 31 reviews)
-9. **Cloud Hoodie** - £135 (4.8★, 29 reviews)
-10. **Track Zip** - £145 (4.7★, 18 reviews)
-
-### **Bottoms** (2 products)
-11. **Motion Pants** - £85 (4.5★, 24 reviews)
-12. **Motion Shorts** - £65 (4.4★, 19 reviews)
-
-### **Accessories** (1 product)
-13. **Off Duty Cap** - £45 (4.8★, 56 reviews)
+1. **Air Shell Jacket** - £125
+2. **Cropped Anorak** - £165
+3. **City Parka** - £285
+4. **Second Skin Top** - £75
+5. **Worn Run Tee** - £55
+6. **Essentials Hoodie** - £95
+7. **Cloud Quarter Zip** - £125
+8. **Cloud Hoodie** - £135
+9. **Track Zip** - £145
+10. **Motion Pants** - £85
+11. **Motion Shorts** - £65
+12. **Off Duty Cap** - £45
 
 ---
 
-## 🎯 Key Features
+## 💡 Key Features
 
-### **Navigation**
-- ✅ Fixed header with logo
-- ✅ Menu links: Home, Collection, About, Contact
-- ✅ "Get Pro" button (CTA)
-- ✅ Smooth scroll to sections
-- ✅ Active page indicator
+### **✅ What's Included**
 
-### **Category Filtering**
-- ✅ Sidebar with 6 categories
-- ✅ "All Products" default view
-- ✅ Smooth fade in/out animations
-- ✅ Active category highlighting
-- ✅ Instant filtering (no page reload)
+**Splash Page**:
+- ✅ Centered "WOVE" text in logo font
+- ✅ Fade-in animation (1.5s)
+- ✅ Click anywhere to enter
+- ✅ Auto-redirect after 3 seconds
 
-### **Product Interactions**
-- ✅ **Add to Cart**: Button changes to green with checkmark
-- ✅ **Wishlist**: Heart icon fills/empties on toggle
-- ✅ **Quick View**: Eye icon for product preview
-- ✅ **Hover Effects**: Card elevation + image zoom
-- ✅ **Scroll Animations**: Cards fade in on scroll
+**Main Homepage**:
+- ✅ Minimal navigation (logo, 3 menu items, search/cart)
+- ✅ Large hero image (85vh)
+- ✅ "Spring / Summer 2026" overlay text
+- ✅ Editorial intro paragraph
+- ✅ 3 featured products with hover zoom
+- ✅ Links to product detail pages
 
-### **Responsive Design**
-- ✅ **Desktop (1024px+)**: 3-column product grid
-- ✅ **Tablet (768-1023px)**: 2-column product grid
-- ✅ **Mobile (< 768px)**: 1-column product grid
-- ✅ **Adaptive Navigation**: Hides menu on mobile
-- ✅ **Flexible Hero**: Stacks on small screens
+**Collection Page**:
+- ✅ Same minimal navigation
+- ✅ "Spring / Summer 2026" header
+- ✅ 3-column editorial grid
+- ✅ 12 products with images
+- ✅ Product name + price always visible
+- ✅ **Hover reveals "Add to Cart" button**
+- ✅ Image zoom on hover
+- ✅ Fade-in on scroll animations
+- ✅ Links to individual product pages
+
+**Product Detail Pages**:
+- ✅ Large product image
+- ✅ Product name, price, description
+- ✅ Full-width "Add to Cart" button
+- ✅ Minimal, clean layout
+
+**Interactions**:
+- ✅ Smooth page transitions
+- ✅ Hover image zoom (1.05x)
+- ✅ Quick "Add to Cart" appears on hover
+- ✅ Button feedback (changes to "Added")
+- ✅ Scroll fade-in animations
+- ✅ Responsive design (3 → 2 → 1 columns)
 
 ---
 
-## 🛠️ Technical Stack
+## 🎯 Loewe-Inspired Elements
 
-| Technology | Purpose |
-|------------|---------|
-| **Hono** | Web framework for Cloudflare Workers |
-| **TypeScript** | Type-safe development |
-| **Vite** | Build tooling |
-| **Cloudflare Pages** | Edge deployment |
-| **Custom CSS** | Modern styling with gradients & shadows |
-| **Vanilla JS** | Interactive features (no framework bloat) |
-| **PM2** | Process management |
+| Loewe Feature | WOVE Implementation |
+|---------------|---------------------|
+| Minimal splash/entrance | ✅ "WOVE" centered splash page |
+| Editorial photography | ✅ Large hero images, 3:4 ratios |
+| Lots of white space | ✅ 120px padding, generous gaps |
+| Subtle navigation | ✅ Minimal nav, centered menu |
+| Product grid | ✅ 3-column editorial grid |
+| Hover interactions | ✅ Image zoom + "Add to Cart" appears |
+| Elegant typography | ✅ Cormorant Garamond serif throughout |
+| Clean product pages | ✅ Minimal detail pages |
+| No "e-commerce" feel | ✅ Magazine aesthetic, not catalog |
+| Links to detail pages | ✅ Click product → detail page |
 
 ---
 
-## 📁 Project Structure
+## 📁 Technical Details
 
+### **Routes**
+```
+/          → Splash page (WOVE centered)
+/home      → Main homepage (hero + featured)
+/collection → Product grid (12 items)
+/product/:id → Individual product pages
+/stories   → Placeholder (redirects to home)
+/gifts     → Placeholder (redirects to home)
+/search    → Placeholder (redirects to home)
+/cart      → Placeholder (redirects to home)
+```
+
+### **File Structure**
 ```
 webapp/
-├── src/
-│   ├── index.tsx          # Main app with 2 routes (/, /collection)
-│   └── renderer.tsx       # HTML structure
+├── src/index.tsx         # Routes + pages
 ├── public/static/
-│   ├── products/          # 12 product images
-│   ├── 1.png, 2.png, 3.png  # Logo files
-│   ├── style.css          # 11KB modern CSS
-│   └── app.js             # 4KB interactive JS
-├── dist/                  # Production build
-├── ecosystem.config.cjs   # PM2 configuration
-├── wrangler.jsonc         # Cloudflare config
+│   ├── style.css         # 9KB luxury minimal CSS
+│   ├── app.js            # 2.8KB interactions
+│   ├── 2.png             # WOVE logo (28px in nav)
+│   └── products/         # 12 product images
 └── README.md
 ```
 
----
-
-## 🚀 Development
-
-### **Local Development**
-```bash
-cd /home/user/webapp
-npm run build              # Build first
-pm2 start ecosystem.config.cjs  # Start with PM2
+### **Bundle Size**
 ```
-
-### **View Pages**
-```bash
-# Landing page
-curl http://localhost:3000
-
-# Collection page
-curl http://localhost:3000/collection
-```
-
-### **Check Status**
-```bash
-pm2 list                   # List services
-pm2 logs wove-webapp --nostream  # View logs
-pm2 restart wove-webapp    # Restart
+Total: 49.20 kB
+CSS: 9.7 KB
+JS: 2.9 KB
+Build time: ~5 seconds
 ```
 
 ---
 
 ## 🎨 CSS Features
 
-### **Modern Design Patterns**
-- ✅ CSS Variables for theming
-- ✅ Grid layouts (no floats)
-- ✅ Flexbox for alignment
-- ✅ Custom shadows (5 levels)
-- ✅ Border radius system (sm, md, lg)
-- ✅ Gradient backgrounds
-- ✅ Smooth transitions
-- ✅ Transform animations
+### **Design Patterns**
+- Pure CSS (no frameworks)
+- CSS variables for colors/fonts
+- Grid layouts (no floats)
+- Flexbox for alignment
+- Minimal borders (only #EFEFEF subtle dividers)
+- No shadows or gradients
+- No rounded corners (sharp edges)
+- Pure monochrome palette
 
-### **Animation Effects**
+### **Animations**
 ```css
-/* Hover Card Lift */
-transform: translateY(-8px);
-box-shadow: var(--shadow-xl);
+/* Splash fade-in */
+animation: fadeIn 1s ease-in-out;
 
-/* Image Zoom */
-transform: scale(1.1);
+/* Text fade-up */
+animation: fadeInUp 1.5s ease-out;
 
-/* Fade In on Scroll */
+/* Image zoom on hover */
+transform: scale(1.05);
+transition: transform 0.6s ease;
+
+/* Scroll fade-in */
 opacity: 0 → 1;
 transform: translateY(30px) → translateY(0);
+transition: 0.8s ease;
 ```
 
 ---
 
-## 💡 Interactive Features
+## 💻 Interactive Features
 
-### **1. Category Filtering**
-Click any category in the sidebar to filter products:
-- **All Products** - Shows all 13 items
-- **Outerwear** - Shows 3 items
-- **Essentials** - Shows 5 items
-- **Performance** - Shows 2 items
-- **Bottoms** - Shows 2 items
-- **Accessories** - Shows 1 item
+### **1. Splash Page**
+- Fades in on load (1s)
+- "WOVE" text fades up (1.5s)
+- Click anywhere → fade out → redirect to /home
+- Auto-enters after 3 seconds
 
-### **2. Add to Cart**
-Click "Add to Cart" button:
-1. Button turns green
-2. Text changes to "Added to Cart" with checkmark
-3. Returns to normal after 2 seconds
+### **2. Quick Add to Cart**
+- Hidden by default
+- Appears on product hover (collection page)
+- Positioned at bottom of image
+- Click → changes to "Added" for 1.5s
+- Prevents navigation to detail page when clicked
 
-### **3. Wishlist Toggle**
-Click heart icon:
-1. First click: Heart fills with color
-2. Second click: Heart empties
-3. Background changes to light red when active
+### **3. Product Detail Add to Cart**
+- Full-width button
+- Click → "Added to Cart" for 2s
+- Background lightens (#333)
+- Returns to normal state
 
 ### **4. Scroll Animations**
-All cards fade in when scrolling:
-- Cards start invisible (opacity: 0)
-- Fade in when entering viewport
+- Products fade in when entering viewport
 - Uses Intersection Observer API
+- 0.8s smooth transition
+- Starts at opacity: 0, translateY(30px)
+
+### **5. Navigation Hover**
+- Links fade to 50% opacity
+- Active page has 50% opacity
+- Smooth 0.3s transitions
 
 ---
 
-## 📱 Responsive Breakpoints
+## 📱 Responsive Design
 
-| Screen Size | Layout Changes |
-|-------------|----------------|
-| **1024px+** | 3-column products, 4-column features, full nav |
-| **768-1023px** | 2-column products, 2-column features |
-| **< 768px** | 1-column products, 1-column features, hide sidebar |
+### **Desktop (1024px+)**
+- 3-column product grids
+- Full navigation visible
+- Hero 85vh height
+- 60px horizontal padding
 
----
+### **Tablet (768-1023px)**
+- 2-column product grids
+- Navigation compressed slightly
+- Hero 85vh height
+- 40px horizontal padding
 
-## 🎯 Next Steps
-
-### **E-Commerce Features**
-- [ ] Shopping cart functionality
-- [ ] Checkout process
-- [ ] User accounts and login
-- [ ] Order history
-- [ ] Payment integration (Stripe)
-
-### **Product Pages**
-- [ ] Individual product detail pages
-- [ ] Image galleries (multiple views)
-- [ ] Size/color selectors
-- [ ] Related products
-- [ ] Customer reviews
-
-### **Enhanced Features**
-- [ ] Search functionality
-- [ ] Price range filter
-- [ ] Sort by (price, popularity, new)
-- [ ] Product comparison
-- [ ] Wishlist page
-
-### **Content**
-- [ ] About page
-- [ ] Contact form
-- [ ] Size guide
-- [ ] Shipping information
-- [ ] Return policy
+### **Mobile (< 768px)**
+- 1-column product grids
+- Compact navigation (11px font)
+- Hero 60vh height
+- 24px horizontal padding
+- Stacked product detail layout
 
 ---
 
-## 🏆 What's Included
+## 🚀 Development
 
-✅ **2 Complete Pages** - Landing + Collection  
-✅ **13 Product Cards** - With images, ratings, prices  
-✅ **Interactive Filtering** - Category sidebar  
-✅ **Add to Cart Animation** - Button state changes  
-✅ **Wishlist Toggle** - Heart icon interaction  
-✅ **Scroll Animations** - Fade-in effects  
-✅ **Hover Effects** - Card lift + image zoom  
-✅ **Responsive Design** - Mobile, tablet, desktop  
-✅ **Modern UI** - Gradients, shadows, rounded corners  
-✅ **Clean Navigation** - Fixed header with links  
-✅ **Footer** - 4-column layout with links  
+### **Start/Restart**
+```bash
+cd /home/user/webapp
+npm run build              # Build project
+pm2 restart wove-webapp    # Restart service
+```
+
+### **View Pages**
+```bash
+# Splash page
+curl http://localhost:3000
+
+# Homepage
+curl http://localhost:3000/home
+
+# Collection
+curl http://localhost:3000/collection
+```
+
+### **Check Status**
+```bash
+pm2 list
+pm2 logs wove-webapp --nostream
+```
 
 ---
 
-## 🎭 Design Inspiration
+## 🎯 What Makes This Different
 
-This website is inspired by modern e-commerce platforms like:
-- Clean product cards with ratings and stock status
-- Category filtering for easy browsing
-- Interactive hover states and animations
-- Gradient hero sections
-- Shadow-based depth hierarchy
+### **vs. Previous Versions**
+
+| Feature | Old (E-commerce) | New (Luxury) |
+|---------|------------------|--------------|
+| **Entry** | Direct to homepage | Splash page |
+| **Navigation** | Bold, prominent | Subtle, minimal |
+| **Product display** | Catalog grid + buttons | Editorial grid, hover button |
+| **Typography** | Mixed fonts | One serif font only |
+| **Colors** | Purple gradients | Pure black & white |
+| **Buttons** | Always visible | Hidden until hover |
+| **Spacing** | Moderate | Generous (120px sections) |
+| **Images** | Catalog-style | Editorial-style |
+| **Feel** | E-commerce shop | Luxury magazine |
 
 ---
 
-## 📊 Performance
+## ✨ Design Highlights
 
-- **Build Time**: ~6 seconds
-- **Bundle Size**: 53.77 kB
-- **CSS Size**: 11 KB
-- **JS Size**: 4 KB
-- **Total Pages**: 2 (Landing + Collection)
-- **Total Products**: 13 items
+1. **Splash Page** - Just "WOVE" centered, pure minimalism
+2. **One Font** - Cormorant Garamond everywhere (logo aesthetic)
+3. **Pure Monochrome** - Only black, white, gray
+4. **Large Images** - Editorial 3:4 ratio, not square
+5. **Hidden Buttons** - "Add to Cart" only on hover
+6. **Generous Space** - 120px section padding
+7. **Smooth Animations** - 0.6-0.8s transitions
+8. **No Clutter** - Removed all unnecessary elements
+9. **Detail Pages** - Click products for full info
+10. **Magazine Feel** - Editorial layouts, not catalog
+
+---
+
+## 🎭 Comparison to Loewe
+
+**What's Similar**:
+- ✅ Minimal splash/entrance concept
+- ✅ Large editorial hero images
+- ✅ Lots of white space
+- ✅ Subtle navigation (centered menu)
+- ✅ Product grid with hover interactions
+- ✅ Clean typography (one font family)
+- ✅ Monochrome color palette
+- ✅ No "Buy Now" buttons everywhere
+- ✅ Products link to detail pages
+- ✅ Magazine aesthetic
+
+**What's Different**:
+- Loewe has more content sections
+- Loewe has video/animation elements
+- Loewe has more elaborate product detail pages
+- Loewe has category pages (we have one collection)
 
 ---
 
 ## 🔗 Quick Links
 
-- **Homepage**: [/](https://3000-il5fubnexdtiryy1p9nm1-c07dda5e.sandbox.novita.ai)
-- **Collection**: [/collection](https://3000-il5fubnexdtiryy1p9nm1-c07dda5e.sandbox.novita.ai/collection)
+- **Splash**: https://3000-il5fubnexdtiryy1p9nm1-c07dda5e.sandbox.novita.ai
+- **Homepage**: https://3000-il5fubnexdtiryy1p9nm1-c07dda5e.sandbox.novita.ai/home
+- **Collection**: https://3000-il5fubnexdtiryy1p9nm1-c07dda5e.sandbox.novita.ai/collection
+- **Example Product**: https://3000-il5fubnexdtiryy1p9nm1-c07dda5e.sandbox.novita.ai/product/city-parka
+
+---
+
+## 📊 Performance
+
+- **Build Time**: 5 seconds
+- **Bundle Size**: 49.20 KB
+- **CSS**: 9.7 KB (minimal, no framework)
+- **JS**: 2.9 KB (vanilla, no libraries)
+- **Pages**: 4 (splash, home, collection, product detail)
+- **Products**: 12 items
 
 ---
 
 **Last Updated**: January 2026  
-**Version**: 3.0.0 (Interactive Multi-Page Website)
+**Version**: 4.0.0 (Luxury Minimal)
 
 ---
 
-*WOVE - Premium Menswear for the Modern Gentleman*
+*WOVE - Where craft meets contemporary design*
