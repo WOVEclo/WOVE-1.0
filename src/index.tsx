@@ -190,45 +190,72 @@ app.get('/stories', (c) => {
         </div>
       </nav>
 
-      <section class="story-page">
-        <div class="story-container">
+      <section class="about-page">
+        <div class="about-hero">
+          <h1>OUR STORY</h1>
+          <p class="about-subtitle">A journey from vision to reality</p>
+        </div>
+
+        <div class="about-timeline">
           
-          <div class="story-block">
-            <h1>Our Story</h1>
-            <p class="story-intro">Born from a vision of redefining modern menswear, WOVE represents the perfect union of technical innovation and timeless elegance.</p>
+          <div class="timeline-item">
+            <div class="timeline-year">2024</div>
+            <div class="timeline-content">
+              <h2>THE BEGINNING</h2>
+              <p>Born from a singular vision: to redefine modern menswear through the lens of technical innovation and timeless design. In a small studio, our founder began experimenting with performance fabrics traditionally reserved for athletic wear, reimagining them for everyday elegance.</p>
+              <p>The first collection—three pieces—sold out within hours. We knew we had struck a chord.</p>
+            </div>
           </div>
 
-          <div class="story-block">
-            <h2>The Beginning</h2>
-            <p>In the heart of the city, where tradition meets innovation, WOVE was founded on a simple yet profound belief: that clothing should move with you, enhance your presence, and stand the test of time.</p>
-            <p>Our founder, driven by a passion for exceptional craftsmanship and modern design, sought to create pieces that transcend fleeting trends—garments that become part of your daily ritual, your personal story.</p>
+          <div class="timeline-item">
+            <div class="timeline-year">2025</div>
+            <div class="timeline-content">
+              <h2>EXPANSION & EVOLUTION</h2>
+              <p>What started as a passion project evolved into a full collection. We expanded our range to include outerwear, essentials, and performance pieces—all united by meticulous attention to fabric, fit, and function.</p>
+              <p>Our philosophy remained unchanged: create fewer, better things. Each piece must earn its place in your wardrobe through uncompromising quality and design integrity.</p>
+            </div>
           </div>
 
-          <div class="story-block">
-            <h2>Philosophy</h2>
-            <p>We believe in the power of restraint. In the beauty of simplicity. In the quiet confidence of quality.</p>
-            <p>Every piece begins with a question: How can we make this better? Not bolder, not louder—better. Through meticulous attention to fabric, fit, and finish, we create menswear that speaks softly but carries immense presence.</p>
-          </div>
-
-          <div class="story-block">
-            <h2>Craftsmanship</h2>
-            <p>Our commitment to quality is unwavering. We source only the finest materials—fabrics that feel exceptional against the skin and perform flawlessly in motion. Each seam, each stitch, each detail is considered with purpose.</p>
-            <p>Traditional craftsmanship meets modern technology in our construction methods. We honor time-tested techniques while embracing innovation, ensuring every WOVE piece is built to last.</p>
-          </div>
-
-          <div class="story-block">
-            <h2>Values</h2>
-            <p><strong>Quality</strong> — We use only premium materials, refusing to compromise on excellence.</p>
-            <p><strong>Innovation</strong> — Technical fabrics and modern construction techniques inform every design decision.</p>
-            <p><strong>Timelessness</strong> — We create pieces that transcend seasons, trends, and time itself.</p>
-            <p><strong>Integrity</strong> — Honest materials, thoughtful production, lasting products.</p>
-          </div>
-
-          <div class="story-block story-closing">
-            <p class="story-quote">"We don't create fashion. We create pieces that become part of who you are."</p>
+          <div class="timeline-item">
+            <div class="timeline-year">2026</div>
+            <div class="timeline-content">
+              <h2>SPRING / SUMMER</h2>
+              <p>Our most ambitious collection to date. Thirteen pieces that represent the pinnacle of our craft—from the Air Shell Jacket with its featherweight construction to the Second Skin Tee that moves like a second layer.</p>
+              <p>We've refined every detail: the precise fall of a collar, the exact weight of a fabric, the perfect balance between structure and fluidity.</p>
+            </div>
           </div>
 
         </div>
+
+        <div class="about-philosophy">
+          <h2>OUR PHILOSOPHY</h2>
+          <div class="philosophy-grid">
+            <div class="philosophy-item">
+              <h3>QUALITY OVER QUANTITY</h3>
+              <p>We believe in creating pieces that last—both in construction and design. Every WOVE garment is built to be worn for years, not seasons.</p>
+            </div>
+            <div class="philosophy-item">
+              <h3>TECHNICAL EXCELLENCE</h3>
+              <p>Performance fabrics aren't just for athletes. We source materials that breathe, move, and adapt—bringing technical innovation to everyday wear.</p>
+            </div>
+            <div class="philosophy-item">
+              <h3>TIMELESS DESIGN</h3>
+              <p>Trends fade. Style endures. We design for the long term, creating pieces that transcend seasonal fashion cycles.</p>
+            </div>
+            <div class="philosophy-item">
+              <h3>METICULOUS CRAFT</h3>
+              <p>Every seam, every stitch, every detail is considered. We obsess over the smallest elements because excellence lives in the details.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="about-mission">
+          <blockquote>
+            "We don't create fashion. We create pieces that become part of who you are—garments that move with you, enhance your presence, and stand the test of time."
+          </blockquote>
+          <p class="mission-signature">— WOVE</p>
+        </div>
+
       </section>
 
       <footer class="footer-minimal">

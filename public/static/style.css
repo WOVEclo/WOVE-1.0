@@ -563,81 +563,138 @@ img {
 
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&display=swap');
 
-.story-page {
+/* About Page - Represent CLO Timeline Style */
+.about-page {
   margin-top: 180px;
-  min-height: 80vh;
   background: var(--color-white);
 }
 
-.story-container {
-  max-width: 800px;
+/* Hero Section */
+.about-hero {
+  text-align: center;
+  padding: 100px 40px;
+  border-bottom: 1px solid #E0E0E0;
+}
+
+.about-hero h1 {
+  font-size: 64px;
+  font-weight: 700;
+  letter-spacing: 8px;
+  margin-bottom: 20px;
+  color: #000;
+}
+
+.about-subtitle {
+  font-size: 18px;
+  font-weight: 300;
+  letter-spacing: 2px;
+  color: #666;
+  text-transform: uppercase;
+}
+
+/* Timeline Section */
+.about-timeline {
+  max-width: 1200px;
   margin: 0 auto;
-  padding: 80px 60px 120px;
+  padding: 80px 40px;
 }
 
-.story-block {
-  margin-bottom: 80px;
+.timeline-item {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  gap: 60px;
+  margin-bottom: 100px;
+  position: relative;
 }
 
-.story-block h1 {
-  font-family: 'Playfair Display', serif;
-  font-size: 72px;
-  font-weight: 400;
-  letter-spacing: -1px;
-  color: var(--color-black);
-  margin-bottom: 40px;
-  line-height: 1.1;
-}
-
-.story-intro {
-  font-family: 'Playfair Display', serif;
-  font-size: 24px;
-  font-weight: 400;
-  line-height: 1.6;
-  color: var(--color-black);
-  font-style: italic;
+.timeline-item:last-child {
   margin-bottom: 0;
 }
 
-.story-block h2 {
-  font-family: 'Playfair Display', serif;
-  font-size: 36px;
-  font-weight: 500;
-  letter-spacing: -0.5px;
-  color: var(--color-black);
-  margin-bottom: 24px;
-  line-height: 1.2;
+.timeline-year {
+  font-size: 120px;
+  font-weight: 700;
+  color: #000;
+  line-height: 1;
+  position: sticky;
+  top: 200px;
+  align-self: start;
 }
 
-.story-block p {
-  font-family: var(--font-main);
+.timeline-content h2 {
+  font-size: 32px;
+  font-weight: 700;
+  letter-spacing: 4px;
+  margin-bottom: 30px;
+  color: #000;
+}
+
+.timeline-content p {
   font-size: 17px;
-  font-weight: 300;
   line-height: 1.8;
-  color: #333333;
+  color: #333;
   margin-bottom: 20px;
 }
 
-.story-block p strong {
-  font-weight: 500;
-  color: var(--color-black);
+/* Philosophy Grid */
+.about-philosophy {
+  background: #F8F8F8;
+  padding: 120px 40px;
 }
 
-.story-closing {
-  margin-top: 100px;
-  padding-top: 60px;
-  border-top: 1px solid #E0E0E0;
+.about-philosophy h2 {
+  font-size: 48px;
+  font-weight: 700;
+  letter-spacing: 6px;
+  text-align: center;
+  margin-bottom: 80px;
+  color: #000;
+}
+
+.philosophy-grid {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 60px;
+}
+
+.philosophy-item h3 {
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: 3px;
+  margin-bottom: 20px;
+  color: #000;
+}
+
+.philosophy-item p {
+  font-size: 16px;
+  line-height: 1.8;
+  color: #333;
+}
+
+/* Mission Section */
+.about-mission {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 120px 40px;
   text-align: center;
 }
 
-.story-quote {
-  font-family: 'Playfair Display', serif;
-  font-size: 32px;
-  font-weight: 400;
-  line-height: 1.5;
-  color: var(--color-black);
+.about-mission blockquote {
+  font-size: 28px;
+  line-height: 1.6;
+  color: #000;
+  font-weight: 300;
+  margin-bottom: 40px;
   font-style: italic;
-  margin-bottom: 0;
+}
+
+.mission-signature {
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: 3px;
+  color: #666;
 }
 
 /* ===================================
@@ -686,25 +743,51 @@ img {
     gap: 60px;
   }
   
-  /* Stories Typography responsive */
-  .story-container {
-    padding: 60px 40px 100px;
+  /* About Page responsive */
+  .about-hero h1 {
+    font-size: 48px;
+    letter-spacing: 6px;
   }
   
-  .story-block h1 {
-    font-size: 56px;
+  .about-subtitle {
+    font-size: 16px;
   }
   
-  .story-intro {
-    font-size: 20px;
+  .timeline-item {
+    grid-template-columns: 120px 1fr;
+    gap: 40px;
+    margin-bottom: 80px;
   }
   
-  .story-block h2 {
-    font-size: 32px;
+  .timeline-year {
+    font-size: 80px;
   }
   
-  .story-quote {
+  .timeline-content h2 {
     font-size: 28px;
+    letter-spacing: 3px;
+  }
+  
+  .about-philosophy {
+    padding: 80px 40px;
+  }
+  
+  .about-philosophy h2 {
+    font-size: 40px;
+    letter-spacing: 5px;
+    margin-bottom: 60px;
+  }
+  
+  .philosophy-grid {
+    gap: 50px;
+  }
+  
+  .about-mission {
+    padding: 100px 40px;
+  }
+  
+  .about-mission blockquote {
+    font-size: 24px;
   }
 }
 
@@ -824,37 +907,68 @@ img {
     letter-spacing: 2px;
   }
   
-  /* Stories Typography mobile */
-  .story-container {
-    padding: 60px 24px 80px;
+  /* About Page mobile */
+  .about-hero {
+    padding: 60px 24px;
   }
   
-  .story-block {
+  .about-hero h1 {
+    font-size: 32px;
+    letter-spacing: 4px;
+  }
+  
+  .about-subtitle {
+    font-size: 14px;
+  }
+  
+  .about-timeline {
+    padding: 60px 24px;
+  }
+  
+  .timeline-item {
+    grid-template-columns: 1fr;
+    gap: 30px;
     margin-bottom: 60px;
   }
   
-  .story-block h1 {
-    font-size: 40px;
+  .timeline-year {
+    font-size: 60px;
+    position: static;
   }
   
-  .story-intro {
-    font-size: 18px;
+  .timeline-content h2 {
+    font-size: 24px;
+    letter-spacing: 2px;
   }
   
-  .story-block h2 {
-    font-size: 28px;
-  }
-  
-  .story-block p {
+  .timeline-content p {
     font-size: 16px;
   }
   
-  .story-closing {
-    margin-top: 60px;
-    padding-top: 40px;
+  .about-philosophy {
+    padding: 80px 24px;
   }
   
-  .story-quote {
-    font-size: 24px;
+  .about-philosophy h2 {
+    font-size: 28px;
+    letter-spacing: 3px;
+    margin-bottom: 40px;
+  }
+  
+  .philosophy-grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+  
+  .about-mission {
+    padding: 80px 24px;
+  }
+  
+  .about-mission blockquote {
+    font-size: 20px;
+  }
+  
+  .mission-signature {
+    font-size: 14px;
   }
 }
