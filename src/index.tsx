@@ -295,20 +295,45 @@ app.get('/collection', (c) => {
         <div class="category-header">
           <h2>Performance</h2>
         </div>
-        <div class="product-grid-luxury">
+        <div class="product-grid-modern">
           {products.performance.map(product => (
-            <div class="product-item-luxury">
-              <a href={`/product/${product.id}`} class="product-link-luxury">
-                <div class="product-image-luxury">
-                  <img src={product.image} alt={product.name} />
-                  <div class="quick-add">
-                    <button class="btn-quick-add">Add to Cart</button>
-                  </div>
+            <div class="product-card">
+              <div class="product-card-image">
+                <span class="product-badge">{product.category}</span>
+                <img src={product.image} alt={product.name} />
+              </div>
+              <div class="product-card-content">
+                <h3 class="product-card-title">{product.name}</h3>
+                <div class="product-card-rating">
+                  <span class="stars">★★★★☆</span>
+                  <span class="rating-count">(4.5)</span>
                 </div>
-              </a>
-              <div class="product-details-luxury">
-                <h3>{product.name}</h3>
-                <span class="price-luxury">£{product.price}</span>
+                <p class="product-card-description">Premium performance piece crafted with technical fabrics and timeless design.</p>
+                <div class="product-card-footer">
+                  <span class="product-card-price">£{product.price}</span>
+                  <span class="product-card-stock">In Stock</span>
+                </div>
+                <button class="product-card-btn">
+                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                    <path d="M2 2h1.5l2.5 8h7l2-6H4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    <circle cx="7" cy="13" r="1" fill="currentColor"/>
+                    <circle cx="12" cy="13" r="1" fill="currentColor"/>
+                  </svg>
+                  Add to Cart
+                </button>
+                <div class="product-card-actions">
+                  <button class="icon-btn" title="Add to Wishlist">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+                    </svg>
+                  </button>
+                  <button class="icon-btn" title="Quick View">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+                      <circle cx="12" cy="12" r="3"/>
+                    </svg>
+                  </button>
+                </div>
               </div>
             </div>
           ))}
@@ -320,20 +345,45 @@ app.get('/collection', (c) => {
         <div class="category-header">
           <h2>Outerwear</h2>
         </div>
-        <div class="product-grid-luxury">
+        <div class="product-grid-modern">
           {products.outerwear.map(product => (
-            <div class="product-item-luxury">
-              <a href={`/product/${product.id}`} class="product-link-luxury">
-                <div class="product-image-luxury">
-                  <img src={product.image} alt={product.name} />
-                  <div class="quick-add">
-                    <button class="btn-quick-add">Add to Cart</button>
-                  </div>
+            <div class="product-card">
+              <div class="product-card-image">
+                <span class="product-badge">{product.category}</span>
+                <img src={product.image} alt={product.name} />
+              </div>
+              <div class="product-card-content">
+                <h3 class="product-card-title">{product.name}</h3>
+                <div class="product-card-rating">
+                  <span class="stars">★★★★☆</span>
+                  <span class="rating-count">(4.5)</span>
                 </div>
-              </a>
-              <div class="product-details-luxury">
-                <h3>{product.name}</h3>
-                <span class="price-luxury">£{product.price}</span>
+                <p class="product-card-description">Premium performance piece crafted with technical fabrics and timeless design.</p>
+                <div class="product-card-footer">
+                  <span class="product-card-price">£{product.price}</span>
+                  <span class="product-card-stock">In Stock</span>
+                </div>
+                <button class="product-card-btn">
+                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                    <path d="M2 2h1.5l2.5 8h7l2-6H4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    <circle cx="7" cy="13" r="1" fill="currentColor"/>
+                    <circle cx="12" cy="13" r="1" fill="currentColor"/>
+                  </svg>
+                  Add to Cart
+                </button>
+                <div class="product-card-actions">
+                  <button class="icon-btn" title="Add to Wishlist">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+                    </svg>
+                  </button>
+                  <button class="icon-btn" title="Quick View">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+                      <circle cx="12" cy="12" r="3"/>
+                    </svg>
+                  </button>
+                </div>
               </div>
             </div>
           ))}
@@ -345,20 +395,45 @@ app.get('/collection', (c) => {
         <div class="category-header">
           <h2>Essentials</h2>
         </div>
-        <div class="product-grid-luxury">
+        <div class="product-grid-modern">
           {products.essentials.map(product => (
-            <div class="product-item-luxury">
-              <a href={`/product/${product.id}`} class="product-link-luxury">
-                <div class="product-image-luxury">
-                  <img src={product.image} alt={product.name} />
-                  <div class="quick-add">
-                    <button class="btn-quick-add">Add to Cart</button>
-                  </div>
+            <div class="product-card">
+              <div class="product-card-image">
+                <span class="product-badge">{product.category}</span>
+                <img src={product.image} alt={product.name} />
+              </div>
+              <div class="product-card-content">
+                <h3 class="product-card-title">{product.name}</h3>
+                <div class="product-card-rating">
+                  <span class="stars">★★★★☆</span>
+                  <span class="rating-count">(4.5)</span>
                 </div>
-              </a>
-              <div class="product-details-luxury">
-                <h3>{product.name}</h3>
-                <span class="price-luxury">£{product.price}</span>
+                <p class="product-card-description">Premium performance piece crafted with technical fabrics and timeless design.</p>
+                <div class="product-card-footer">
+                  <span class="product-card-price">£{product.price}</span>
+                  <span class="product-card-stock">In Stock</span>
+                </div>
+                <button class="product-card-btn">
+                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                    <path d="M2 2h1.5l2.5 8h7l2-6H4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    <circle cx="7" cy="13" r="1" fill="currentColor"/>
+                    <circle cx="12" cy="13" r="1" fill="currentColor"/>
+                  </svg>
+                  Add to Cart
+                </button>
+                <div class="product-card-actions">
+                  <button class="icon-btn" title="Add to Wishlist">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+                    </svg>
+                  </button>
+                  <button class="icon-btn" title="Quick View">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+                      <circle cx="12" cy="12" r="3"/>
+                    </svg>
+                  </button>
+                </div>
               </div>
             </div>
           ))}
@@ -370,20 +445,45 @@ app.get('/collection', (c) => {
         <div class="category-header">
           <h2>Bottoms</h2>
         </div>
-        <div class="product-grid-luxury">
+        <div class="product-grid-modern">
           {products.bottoms.map(product => (
-            <div class="product-item-luxury">
-              <a href={`/product/${product.id}`} class="product-link-luxury">
-                <div class="product-image-luxury">
-                  <img src={product.image} alt={product.name} />
-                  <div class="quick-add">
-                    <button class="btn-quick-add">Add to Cart</button>
-                  </div>
+            <div class="product-card">
+              <div class="product-card-image">
+                <span class="product-badge">{product.category}</span>
+                <img src={product.image} alt={product.name} />
+              </div>
+              <div class="product-card-content">
+                <h3 class="product-card-title">{product.name}</h3>
+                <div class="product-card-rating">
+                  <span class="stars">★★★★☆</span>
+                  <span class="rating-count">(4.5)</span>
                 </div>
-              </a>
-              <div class="product-details-luxury">
-                <h3>{product.name}</h3>
-                <span class="price-luxury">£{product.price}</span>
+                <p class="product-card-description">Premium performance piece crafted with technical fabrics and timeless design.</p>
+                <div class="product-card-footer">
+                  <span class="product-card-price">£{product.price}</span>
+                  <span class="product-card-stock">In Stock</span>
+                </div>
+                <button class="product-card-btn">
+                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                    <path d="M2 2h1.5l2.5 8h7l2-6H4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    <circle cx="7" cy="13" r="1" fill="currentColor"/>
+                    <circle cx="12" cy="13" r="1" fill="currentColor"/>
+                  </svg>
+                  Add to Cart
+                </button>
+                <div class="product-card-actions">
+                  <button class="icon-btn" title="Add to Wishlist">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+                    </svg>
+                  </button>
+                  <button class="icon-btn" title="Quick View">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+                      <circle cx="12" cy="12" r="3"/>
+                    </svg>
+                  </button>
+                </div>
               </div>
             </div>
           ))}
@@ -395,20 +495,45 @@ app.get('/collection', (c) => {
         <div class="category-header">
           <h2>Accessories</h2>
         </div>
-        <div class="product-grid-luxury">
+        <div class="product-grid-modern">
           {products.accessories.map(product => (
-            <div class="product-item-luxury">
-              <a href={`/product/${product.id}`} class="product-link-luxury">
-                <div class="product-image-luxury">
-                  <img src={product.image} alt={product.name} />
-                  <div class="quick-add">
-                    <button class="btn-quick-add">Add to Cart</button>
-                  </div>
+            <div class="product-card">
+              <div class="product-card-image">
+                <span class="product-badge">{product.category}</span>
+                <img src={product.image} alt={product.name} />
+              </div>
+              <div class="product-card-content">
+                <h3 class="product-card-title">{product.name}</h3>
+                <div class="product-card-rating">
+                  <span class="stars">★★★★☆</span>
+                  <span class="rating-count">(4.5)</span>
                 </div>
-              </a>
-              <div class="product-details-luxury">
-                <h3>{product.name}</h3>
-                <span class="price-luxury">£{product.price}</span>
+                <p class="product-card-description">Premium performance piece crafted with technical fabrics and timeless design.</p>
+                <div class="product-card-footer">
+                  <span class="product-card-price">£{product.price}</span>
+                  <span class="product-card-stock">In Stock</span>
+                </div>
+                <button class="product-card-btn">
+                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                    <path d="M2 2h1.5l2.5 8h7l2-6H4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    <circle cx="7" cy="13" r="1" fill="currentColor"/>
+                    <circle cx="12" cy="13" r="1" fill="currentColor"/>
+                  </svg>
+                  Add to Cart
+                </button>
+                <div class="product-card-actions">
+                  <button class="icon-btn" title="Add to Wishlist">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+                    </svg>
+                  </button>
+                  <button class="icon-btn" title="Quick View">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+                      <circle cx="12" cy="12" r="3"/>
+                    </svg>
+                  </button>
+                </div>
               </div>
             </div>
           ))}
