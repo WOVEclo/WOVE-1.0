@@ -115,13 +115,13 @@ img {
 }
 
 .nav-minimal-simple .nav-content {
-  justify-content: flex-end;
+  justify-content: space-between;
 }
 
 .nav-minimal-simple .nav-menu-center {
   position: static;
   transform: none;
-  margin-right: auto;
+  margin-right: 0;
 }
 
 .nav-content {
@@ -239,16 +239,16 @@ img {
   display: flex;
   align-items: flex-end;
   justify-content: center;
-  padding-bottom: 60px;
-  background: linear-gradient(to top, rgba(0, 0, 0, 0.3), transparent);
+  padding-bottom: 80px;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.4), transparent);
 }
 
 .hero-text-overlay h1,
 .hero-text-overlay p {
   font-family: var(--font-main);
-  font-size: 56px;
+  font-size: 72px;
   font-weight: 300;
-  letter-spacing: 6px;
+  letter-spacing: 12px;
   color: var(--color-white);
   text-align: center;
   text-transform: uppercase;
@@ -865,8 +865,8 @@ img {
   
   .hero-text-overlay h1,
   .hero-text-overlay p {
-    font-size: 24px;
-    letter-spacing: 3px;
+    font-size: 32px;
+    letter-spacing: 4px;
   }
   
   .nav-content {
