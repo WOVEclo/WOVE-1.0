@@ -148,9 +148,6 @@ app.get('/home', (c) => {
         </div>
         <div class="hero-image-large">
           <img src="/static/hero-bag.jpg" alt="WOVE Collection" />
-          <div class="hero-text-overlay">
-            <p>Spring / Summer 2026</p>
-          </div>
         </div>
       </section>
 
