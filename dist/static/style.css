@@ -1,7 +1,9 @@
 /* ===================================
    WOVE - Luxury Minimal Design
-   Inspired by Loewe
+   Montserrat Font Throughout
    =================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700&display=swap');
 
 * {
   margin: 0;
@@ -14,9 +16,8 @@
   --color-black: #000000;
   --color-gray: #999999;
   
-  /* Typography - Elegant Serif (matching logo aesthetic) */
-  --font-serif: 'Cormorant Garamond', 'Playfair Display', Georgia, serif;
-  --font-body: 'Cormorant Garamond', Georgia, serif;
+  /* Typography - Montserrat everywhere */
+  --font-main: 'Montserrat', sans-serif;
 }
 
 html {
@@ -25,7 +26,7 @@ html {
 }
 
 body {
-  font-family: var(--font-body);
+  font-family: var(--font-main);
   color: var(--color-black);
   background: var(--color-white);
   line-height: 1.6;
@@ -62,12 +63,13 @@ img {
 }
 
 .splash-logo {
-  font-family: var(--font-serif);
+  font-family: var(--font-main);
   font-size: 72px;
   font-weight: 300;
-  letter-spacing: 8px;
+  letter-spacing: 12px;
   color: var(--color-black);
   animation: fadeInUp 1.5s ease-out;
+  text-transform: uppercase;
 }
 
 @keyframes fadeIn {
@@ -102,7 +104,7 @@ img {
   background: var(--color-white);
   border-bottom: 1px solid #EFEFEF;
   z-index: 1000;
-  height: 80px;
+  height: 70px;
 }
 
 .nav-content {
@@ -130,9 +132,10 @@ img {
 }
 
 .nav-menu-center a {
-  font-size: 13px;
-  font-weight: 300;
-  letter-spacing: 1px;
+  font-family: var(--font-main);
+  font-size: 12px;
+  font-weight: 400;
+  letter-spacing: 1.5px;
   color: var(--color-black);
   transition: opacity 0.3s;
   text-transform: uppercase;
@@ -149,9 +152,10 @@ img {
 }
 
 .nav-right a {
-  font-size: 13px;
-  font-weight: 300;
-  letter-spacing: 1px;
+  font-family: var(--font-main);
+  font-size: 12px;
+  font-weight: 400;
+  letter-spacing: 1.5px;
   color: var(--color-black);
   transition: opacity 0.3s;
   text-transform: uppercase;
@@ -166,7 +170,7 @@ img {
    =================================== */
 
 .hero-editorial {
-  margin-top: 80px;
+  margin-top: 70px;
   width: 100%;
 }
 
@@ -194,12 +198,13 @@ img {
 }
 
 .hero-text-overlay h1 {
-  font-family: var(--font-serif);
-  font-size: 64px;
+  font-family: var(--font-main);
+  font-size: 56px;
   font-weight: 300;
-  letter-spacing: 4px;
+  letter-spacing: 6px;
   color: var(--color-white);
   text-align: center;
+  text-transform: uppercase;
 }
 
 /* ===================================
@@ -207,14 +212,15 @@ img {
    =================================== */
 
 .editorial-intro {
-  padding: 120px 60px;
+  padding: 100px 60px;
   max-width: 1000px;
   margin: 0 auto;
   text-align: center;
 }
 
 .editorial-content p {
-  font-size: 20px;
+  font-family: var(--font-main);
+  font-size: 18px;
   line-height: 1.8;
   font-weight: 300;
   color: var(--color-black);
@@ -226,7 +232,7 @@ img {
    =================================== */
 
 .featured-products {
-  padding: 0 60px 120px;
+  padding: 0 60px 100px;
 }
 
 .product-grid-editorial {
@@ -264,14 +270,17 @@ img {
 }
 
 .product-info-minimal h3 {
-  font-size: 18px;
-  font-weight: 300;
+  font-family: var(--font-main);
+  font-size: 16px;
+  font-weight: 400;
   letter-spacing: 1px;
   margin-bottom: 8px;
+  text-transform: uppercase;
 }
 
 .product-info-minimal .price {
-  font-size: 16px;
+  font-family: var(--font-main);
+  font-size: 14px;
   font-weight: 300;
   color: var(--color-gray);
 }
@@ -281,20 +290,41 @@ img {
    =================================== */
 
 .collection-hero {
-  margin-top: 80px;
-  padding: 80px 60px 60px;
+  margin-top: 70px;
+  padding: 60px 60px 40px;
   text-align: center;
 }
 
 .collection-hero h1 {
-  font-family: var(--font-serif);
-  font-size: 48px;
+  font-family: var(--font-main);
+  font-size: 42px;
   font-weight: 300;
-  letter-spacing: 3px;
+  letter-spacing: 6px;
+  text-transform: uppercase;
 }
 
-.collection-grid-page {
-  padding: 60px 60px 120px;
+/* Category Sections */
+.category-section {
+  padding: 60px 60px;
+  border-top: 1px solid #EFEFEF;
+}
+
+.category-section:first-of-type {
+  border-top: none;
+}
+
+.category-header {
+  margin-bottom: 40px;
+  text-align: center;
+}
+
+.category-header h2 {
+  font-family: var(--font-main);
+  font-size: 28px;
+  font-weight: 400;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--color-black);
 }
 
 .product-grid-luxury {
@@ -302,7 +332,7 @@ img {
   margin: 0 auto;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 60px 40px;
+  gap: 50px 40px;
 }
 
 .product-item-luxury {
@@ -348,10 +378,10 @@ img {
 
 .btn-quick-add {
   padding: 12px 32px;
-  font-family: var(--font-body);
-  font-size: 13px;
-  font-weight: 300;
-  letter-spacing: 1px;
+  font-family: var(--font-main);
+  font-size: 11px;
+  font-weight: 400;
+  letter-spacing: 1.5px;
   text-transform: uppercase;
   color: var(--color-white);
   background: var(--color-black);
@@ -369,14 +399,17 @@ img {
 }
 
 .product-details-luxury h3 {
-  font-size: 18px;
-  font-weight: 300;
+  font-family: var(--font-main);
+  font-size: 16px;
+  font-weight: 400;
   letter-spacing: 1px;
   margin-bottom: 8px;
+  text-transform: uppercase;
 }
 
 .price-luxury {
-  font-size: 16px;
+  font-family: var(--font-main);
+  font-size: 14px;
   font-weight: 300;
   color: var(--color-gray);
 }
@@ -386,8 +419,8 @@ img {
    =================================== */
 
 .product-detail-page {
-  margin-top: 80px;
-  padding: 80px 60px 120px;
+  margin-top: 70px;
+  padding: 80px 60px 100px;
 }
 
 .product-detail-content {
@@ -408,14 +441,17 @@ img {
 }
 
 .product-detail-info h1 {
-  font-size: 42px;
+  font-family: var(--font-main);
+  font-size: 36px;
   font-weight: 300;
-  letter-spacing: 2px;
+  letter-spacing: 3px;
   margin-bottom: 20px;
+  text-transform: uppercase;
 }
 
 .product-price-detail {
-  font-size: 24px;
+  font-family: var(--font-main);
+  font-size: 22px;
   font-weight: 300;
   color: var(--color-gray);
   margin-bottom: 40px;
@@ -424,10 +460,10 @@ img {
 .btn-add-to-cart-detail {
   width: 100%;
   padding: 16px;
-  font-family: var(--font-body);
-  font-size: 14px;
-  font-weight: 300;
-  letter-spacing: 1.5px;
+  font-family: var(--font-main);
+  font-size: 12px;
+  font-weight: 400;
+  letter-spacing: 2px;
   text-transform: uppercase;
   color: var(--color-white);
   background: var(--color-black);
@@ -447,7 +483,8 @@ img {
 }
 
 .product-description p {
-  font-size: 16px;
+  font-family: var(--font-main);
+  font-size: 15px;
   line-height: 1.8;
   font-weight: 300;
   color: var(--color-gray);
@@ -464,10 +501,12 @@ img {
 }
 
 .footer-minimal p {
-  font-size: 12px;
+  font-family: var(--font-main);
+  font-size: 11px;
   font-weight: 300;
-  letter-spacing: 1px;
+  letter-spacing: 1.5px;
   color: var(--color-gray);
+  text-transform: uppercase;
 }
 
 /* ===================================
@@ -477,6 +516,7 @@ img {
 @media (max-width: 1024px) {
   .splash-logo {
     font-size: 56px;
+    letter-spacing: 10px;
   }
   
   .nav-content {
@@ -488,7 +528,8 @@ img {
   }
   
   .hero-text-overlay h1 {
-    font-size: 48px;
+    font-size: 42px;
+    letter-spacing: 4px;
   }
   
   .editorial-intro {
@@ -505,8 +546,8 @@ img {
     gap: 40px;
   }
   
-  .collection-grid-page {
-    padding: 40px 40px 80px;
+  .category-section {
+    padding: 40px 40px;
   }
   
   .product-detail-content {
@@ -517,8 +558,8 @@ img {
 
 @media (max-width: 768px) {
   .splash-logo {
-    font-size: 42px;
-    letter-spacing: 6px;
+    font-size: 40px;
+    letter-spacing: 8px;
   }
   
   .nav-content {
@@ -537,7 +578,8 @@ img {
   
   .nav-menu-center a,
   .nav-right a {
-    font-size: 11px;
+    font-size: 10px;
+    letter-spacing: 1px;
   }
   
   .nav-right {
@@ -549,8 +591,8 @@ img {
   }
   
   .hero-text-overlay h1 {
-    font-size: 36px;
-    letter-spacing: 2px;
+    font-size: 32px;
+    letter-spacing: 3px;
   }
   
   .editorial-intro {
@@ -558,7 +600,7 @@ img {
   }
   
   .editorial-content p {
-    font-size: 16px;
+    font-size: 15px;
   }
   
   .featured-products {
@@ -572,15 +614,21 @@ img {
   }
   
   .collection-hero {
-    padding: 60px 24px 40px;
+    padding: 50px 24px 30px;
   }
   
   .collection-hero h1 {
-    font-size: 32px;
+    font-size: 28px;
+    letter-spacing: 4px;
   }
   
-  .collection-grid-page {
-    padding: 40px 24px 60px;
+  .category-section {
+    padding: 40px 24px;
+  }
+  
+  .category-header h2 {
+    font-size: 22px;
+    letter-spacing: 2px;
   }
   
   .product-detail-page {
@@ -592,6 +640,7 @@ img {
   }
   
   .product-detail-info h1 {
-    font-size: 32px;
+    font-size: 28px;
+    letter-spacing: 2px;
   }
 }

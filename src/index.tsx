@@ -5,93 +5,103 @@ const app = new Hono()
 
 app.use(renderer)
 
-// Product catalog
-const products = [
-  {
-    id: 'air-shell-jacket',
-    name: 'Air Shell Jacket',
-    price: 125,
-    image: '/static/products/air-shell-jacket.jpg',
-    category: 'Outerwear'
-  },
-  {
-    id: 'cropped-anorak',
-    name: 'Cropped Anorak',
-    price: 165,
-    image: '/static/products/cropped-anorak.jpg',
-    category: 'Outerwear'
-  },
-  {
-    id: 'city-parka',
-    name: 'City Parka',
-    price: 285,
-    image: '/static/products/city-parka.jpg',
-    category: 'Outerwear'
-  },
-  {
-    id: 'second-skin-top',
-    name: 'Second Skin Top',
-    price: 75,
-    image: '/static/products/second-skin-top.jpg',
-    category: 'Performance'
-  },
-  {
-    id: 'worn-run-tee',
-    name: 'Worn Run Tee',
-    price: 55,
-    image: '/static/products/worn-run-tee.jpg',
-    category: 'Performance'
-  },
-  {
-    id: 'essentials-hoodie',
-    name: 'Essentials Hoodie',
-    price: 95,
-    image: '/static/products/essentials-set.jpg',
-    category: 'Essentials'
-  },
-  {
-    id: 'cloud-quarter-zip',
-    name: 'Cloud Quarter Zip',
-    price: 125,
-    image: '/static/products/cloud-quarter-zip.jpg',
-    category: 'Essentials'
-  },
-  {
-    id: 'cloud-hoodie',
-    name: 'Cloud Hoodie',
-    price: 135,
-    image: '/static/products/cloud-hoodie.jpg',
-    category: 'Essentials'
-  },
-  {
-    id: 'track-zip',
-    name: 'Track Zip',
-    price: 145,
-    image: '/static/products/track-zip.jpg',
-    category: 'Essentials'
-  },
-  {
-    id: 'motion-pants',
-    name: 'Motion Pants',
-    price: 85,
-    image: '/static/products/motion-pants.jpg',
-    category: 'Bottoms'
-  },
-  {
-    id: 'motion-shorts',
-    name: 'Motion Shorts',
-    price: 65,
-    image: '/static/products/motion-shorts.jpg',
-    category: 'Bottoms'
-  },
-  {
-    id: 'off-duty-cap',
-    name: 'Off Duty Cap',
-    price: 45,
-    image: '/static/products/off-duty-cap.jpg',
-    category: 'Accessories'
-  }
-]
+// Product catalog organized by category
+const products = {
+  outerwear: [
+    {
+      id: 'air-shell-jacket',
+      name: 'Air Shell Jacket',
+      price: 125,
+      image: '/static/products/air-shell-jacket.jpg',
+      category: 'Outerwear'
+    },
+    {
+      id: 'cropped-anorak',
+      name: 'Cropped Anorak',
+      price: 165,
+      image: '/static/products/cropped-anorak.jpg',
+      category: 'Outerwear'
+    },
+    {
+      id: 'city-parka',
+      name: 'City Parka',
+      price: 285,
+      image: '/static/products/city-parka.jpg',
+      category: 'Outerwear'
+    }
+  ],
+  essentials: [
+    {
+      id: 'essentials-hoodie',
+      name: 'Essentials Hoodie',
+      price: 95,
+      image: '/static/products/essentials-set.jpg',
+      category: 'Essentials'
+    },
+    {
+      id: 'cloud-quarter-zip',
+      name: 'Cloud Quarter Zip',
+      price: 125,
+      image: '/static/products/cloud-quarter-zip.jpg',
+      category: 'Essentials'
+    },
+    {
+      id: 'cloud-hoodie',
+      name: 'Cloud Hoodie',
+      price: 135,
+      image: '/static/products/cloud-hoodie.jpg',
+      category: 'Essentials'
+    },
+    {
+      id: 'track-zip',
+      name: 'Track Zip',
+      price: 145,
+      image: '/static/products/track-zip.jpg',
+      category: 'Essentials'
+    }
+  ],
+  performance: [
+    {
+      id: 'second-skin-top',
+      name: 'Second Skin Top',
+      price: 75,
+      image: '/static/products/second-skin-top.jpg',
+      category: 'Performance'
+    },
+    {
+      id: 'worn-run-tee',
+      name: 'Worn Run Tee',
+      price: 55,
+      image: '/static/products/worn-run-tee.jpg',
+      category: 'Performance'
+    }
+  ],
+  bottoms: [
+    {
+      id: 'motion-pants',
+      name: 'Motion Pants',
+      price: 85,
+      image: '/static/products/motion-pants.jpg',
+      category: 'Bottoms'
+    },
+    {
+      id: 'motion-shorts',
+      name: 'Motion Shorts',
+      price: 65,
+      image: '/static/products/motion-shorts.jpg',
+      category: 'Bottoms'
+    }
+  ],
+  accessories: [
+    {
+      id: 'off-duty-cap',
+      name: 'Off Duty Cap',
+      price: 45,
+      image: '/static/products/off-duty-cap.jpg',
+      category: 'Accessories'
+    }
+  ]
+}
 
 // Splash Page
 app.get('/', (c) => {
@@ -106,6 +116,8 @@ app.get('/', (c) => {
 
 // Main Homepage
 app.get('/home', (c) => {
+  const allProducts = [...products.outerwear, ...products.performance, ...products.essentials]
+  
   return c.render(
     <>
       <nav class="nav-minimal">
@@ -144,7 +156,7 @@ app.get('/home', (c) => {
 
       <section class="featured-products">
         <div class="product-grid-editorial">
-          {products.slice(0, 3).map(product => (
+          {allProducts.slice(0, 3).map(product => (
             <a href={`/product/${product.id}`} class="product-editorial">
               <div class="product-image-editorial">
                 <img src={product.image} alt={product.name} />
@@ -165,7 +177,7 @@ app.get('/home', (c) => {
   )
 })
 
-// Collection Page
+// Collection Page - Categorized
 app.get('/collection', (c) => {
   return c.render(
     <>
@@ -192,9 +204,113 @@ app.get('/collection', (c) => {
         <h1>Spring / Summer 2026</h1>
       </section>
 
-      <section class="collection-grid-page">
+      {/* Outerwear Category */}
+      <section class="category-section">
+        <div class="category-header">
+          <h2>Outerwear</h2>
+        </div>
         <div class="product-grid-luxury">
-          {products.map(product => (
+          {products.outerwear.map(product => (
+            <div class="product-item-luxury">
+              <a href={`/product/${product.id}`} class="product-link-luxury">
+                <div class="product-image-luxury">
+                  <img src={product.image} alt={product.name} />
+                  <div class="quick-add">
+                    <button class="btn-quick-add">Add to Cart</button>
+                  </div>
+                </div>
+              </a>
+              <div class="product-details-luxury">
+                <h3>{product.name}</h3>
+                <span class="price-luxury">£{product.price}</span>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* Essentials Category */}
+      <section class="category-section">
+        <div class="category-header">
+          <h2>Essentials</h2>
+        </div>
+        <div class="product-grid-luxury">
+          {products.essentials.map(product => (
+            <div class="product-item-luxury">
+              <a href={`/product/${product.id}`} class="product-link-luxury">
+                <div class="product-image-luxury">
+                  <img src={product.image} alt={product.name} />
+                  <div class="quick-add">
+                    <button class="btn-quick-add">Add to Cart</button>
+                  </div>
+                </div>
+              </a>
+              <div class="product-details-luxury">
+                <h3>{product.name}</h3>
+                <span class="price-luxury">£{product.price}</span>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* Performance Category */}
+      <section class="category-section">
+        <div class="category-header">
+          <h2>Performance</h2>
+        </div>
+        <div class="product-grid-luxury">
+          {products.performance.map(product => (
+            <div class="product-item-luxury">
+              <a href={`/product/${product.id}`} class="product-link-luxury">
+                <div class="product-image-luxury">
+                  <img src={product.image} alt={product.name} />
+                  <div class="quick-add">
+                    <button class="btn-quick-add">Add to Cart</button>
+                  </div>
+                </div>
+              </a>
+              <div class="product-details-luxury">
+                <h3>{product.name}</h3>
+                <span class="price-luxury">£{product.price}</span>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* Bottoms Category */}
+      <section class="category-section">
+        <div class="category-header">
+          <h2>Bottoms</h2>
+        </div>
+        <div class="product-grid-luxury">
+          {products.bottoms.map(product => (
+            <div class="product-item-luxury">
+              <a href={`/product/${product.id}`} class="product-link-luxury">
+                <div class="product-image-luxury">
+                  <img src={product.image} alt={product.name} />
+                  <div class="quick-add">
+                    <button class="btn-quick-add">Add to Cart</button>
+                  </div>
+                </div>
+              </a>
+              <div class="product-details-luxury">
+                <h3>{product.name}</h3>
+                <span class="price-luxury">£{product.price}</span>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* Accessories Category */}
+      <section class="category-section">
+        <div class="category-header">
+          <h2>Accessories</h2>
+        </div>
+        <div class="product-grid-luxury">
+          {products.accessories.map(product => (
             <div class="product-item-luxury">
               <a href={`/product/${product.id}`} class="product-link-luxury">
                 <div class="product-image-luxury">
@@ -220,10 +336,11 @@ app.get('/collection', (c) => {
   )
 })
 
-// Product Detail Page (placeholder)
+// Product Detail Page
 app.get('/product/:id', (c) => {
   const id = c.req.param('id')
-  const product = products.find(p => p.id === id)
+  const allProducts = [...products.outerwear, ...products.performance, ...products.essentials, ...products.bottoms, ...products.accessories]
+  const product = allProducts.find(p => p.id === id)
   
   if (!product) {
     return c.redirect('/collection')
