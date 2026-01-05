@@ -190,92 +190,93 @@ app.get('/stories', (c) => {
         </div>
       </nav>
 
-      <section class="stories-hero">
-        <h1>Our Story</h1>
+      <section class="stories-hero-minimal">
+        <h1>Stories</h1>
       </section>
 
-      {/* Brand Philosophy */}
-      <section class="story-section">
-        <div class="story-content-wide">
-          <div class="story-text-center">
-            <h2>Where Craft Meets Contemporary Design</h2>
-            <p>WOVE was founded on a simple belief: that premium menswear should embody both technical innovation and timeless elegance. We create pieces that move with you, designed to elevate your everyday.</p>
-          </div>
+      {/* Campaign Grid - SS26 */}
+      <section class="campaign-section">
+        <div class="campaign-header">
+          <p class="campaign-label">Campaigns</p>
+          <h2>SS26 Collection</h2>
         </div>
-      </section>
-
-      {/* Founder Story */}
-      <section class="story-section">
-        <div class="story-content-wide">
-          <div class="story-text-center">
-            <h3>The Beginning</h3>
-            <p>WOVE began with a vision to redefine premium menswear. Our founder, inspired by the intersection of craftsmanship and modern design, set out to create clothing that transcends trends.</p>
-            <p>Every stitch, every fabric choice, every detail is considered with purpose. We believe in quality over quantity, in pieces that last, in design that respects both tradition and innovation.</p>
-          </div>
-        </div>
-      </section>
-
-      {/* Brand Ethos */}
-      <section class="story-section">
-        <div class="story-content-wide">
-          <div class="story-text-center">
-            <h3>Our Philosophy</h3>
-            <p>We believe in the power of exceptional materials and precise construction. Each piece in our collection is crafted to move with you, designed to elevate your everyday, and built to last.</p>
-            <p>Premium materials. Technical innovation. Timeless design. These aren't just words—they're our commitment to you.</p>
-          </div>
-        </div>
-      </section>
-
-      {/* Craftsmanship */}
-      <section class="story-section">
-        <div class="story-content-wide">
-          <div class="story-text-center">
-            <h2>Craftsmanship</h2>
-            <p>Every WOVE piece begins with a commitment to quality. We source only the finest materials—premium fabrics that feel exceptional and perform flawlessly. Our construction methods honor traditional craftsmanship while embracing modern technology.</p>
-          </div>
-        </div>
-      </section>
-
-      {/* Inspiration */}
-      <section class="story-section">
-        <div class="story-content-wide">
-          <div class="story-text-center">
-            <h2>Inspiration</h2>
-            <p>Our designs draw from three pillars: Athletic Heritage, Modern Comfort, and Technical Innovation. Each piece reflects our commitment to creating menswear that performs as beautifully as it looks.</p>
-          </div>
-        </div>
-      </section>
-
-      {/* Values */}
-      <section class="story-section story-values">
-        <div class="story-content-wide">
-          <h2 class="story-section-title">Our Values</h2>
-          <div class="values-grid">
-            <div class="value-item">
-              <h4>Quality</h4>
-              <p>100% premium materials in every piece</p>
+        <div class="campaign-grid">
+          <div class="campaign-item campaign-large">
+            <img src="/static/products/city-parka.jpg" alt="SS26 Campaign" />
+            <div class="campaign-overlay">
+              <h3>City Parka</h3>
             </div>
-            <div class="value-item">
-              <h4>Innovation</h4>
-              <p>Technical fabrics meet timeless design</p>
+          </div>
+          <div class="campaign-item">
+            <img src="/static/products/second-skin-tee.jpg" alt="Second Skin Tee" />
+            <div class="campaign-overlay">
+              <h3>Second Skin Tee</h3>
             </div>
-            <div class="value-item">
-              <h4>Sustainability</h4>
-              <p>Thoughtful production, lasting products</p>
-            </div>
-            <div class="value-item">
-              <h4>Excellence</h4>
-              <p>Attention to detail in every stitch</p>
+          </div>
+          <div class="campaign-item">
+            <img src="/static/products/air-shell-jacket.jpg" alt="Air Shell" />
+            <div class="campaign-overlay">
+              <h3>Air Shell</h3>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Closing Statement */}
-      <section class="story-section story-closing">
-        <div class="story-content-narrow">
-          <p class="story-quote">"We don't create fashion. We create pieces that become part of your story."</p>
-          <p class="story-signature">— WOVE</p>
+      {/* Runway Section */}
+      <section class="campaign-section">
+        <div class="campaign-header">
+          <p class="campaign-label">Runway</p>
+          <h2>Spring / Summer 2026</h2>
+        </div>
+        <div class="campaign-grid campaign-grid-4">
+          <div class="campaign-item">
+            <img src="/static/products/worn-run-tee.jpg" alt="Worn Run Tee" />
+          </div>
+          <div class="campaign-item">
+            <img src="/static/products/cloud-hoodie.jpg" alt="Cloud Hoodie" />
+          </div>
+          <div class="campaign-item">
+            <img src="/static/products/track-zip.jpg" alt="Track Zip" />
+          </div>
+          <div class="campaign-item">
+            <img src="/static/products/motion-pants.jpg" alt="Motion Pants" />
+          </div>
+        </div>
+      </section>
+
+      {/* Editorial Text Section */}
+      <section class="story-editorial">
+        <div class="story-editorial-content">
+          <h2>Where Craft Meets Contemporary Design</h2>
+          <p>WOVE was founded on a simple belief: that premium menswear should embody both technical innovation and timeless elegance. We create pieces that move with you, designed to elevate your everyday.</p>
+        </div>
+      </section>
+
+      {/* Product Focus Grid */}
+      <section class="campaign-section">
+        <div class="campaign-header">
+          <p class="campaign-label">Projects</p>
+          <h2>WOVE Performance</h2>
+        </div>
+        <div class="campaign-grid campaign-grid-3">
+          <div class="campaign-item">
+            <img src="/static/products/second-skin-top.jpg" alt="Second Skin Top" />
+            <div class="campaign-caption">
+              <p>Second Skin Top</p>
+            </div>
+          </div>
+          <div class="campaign-item">
+            <img src="/static/products/cropped-anorak.jpg" alt="Cropped Anorak" />
+            <div class="campaign-caption">
+              <p>Cropped Anorak</p>
+            </div>
+          </div>
+          <div class="campaign-item">
+            <img src="/static/products/cloud-quarter-zip.jpg" alt="Cloud Quarter Zip" />
+            <div class="campaign-caption">
+              <p>Cloud Quarter Zip</p>
+            </div>
+          </div>
         </div>
       </section>
 
