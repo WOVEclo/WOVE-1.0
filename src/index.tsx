@@ -153,7 +153,8 @@ app.get('/home', (c) => {
 
       <section class="editorial-intro">
         <div class="editorial-content">
-          <p>Where craft meets contemporary design. Each piece in our collection represents the intersection of technical innovation and timeless elegance.</p>
+          <p>Where craft meets contemporary design.</p>
+          <p>Each piece in our collection represents the intersection of performance and timeless elegance.</p>
         </div>
       </section>
 
