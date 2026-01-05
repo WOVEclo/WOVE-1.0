@@ -69,6 +69,13 @@ const products = {
       category: 'Performance'
     },
     {
+      id: 'second-skin-tee',
+      name: 'Second Skin Tee',
+      price: 65,
+      image: '/static/products/second-skin-tee.jpg',
+      category: 'Performance'
+    },
+    {
       id: 'worn-run-tee',
       name: 'Worn Run Tee',
       price: 55,
