@@ -142,13 +142,13 @@ app.get('/home', (c) => {
       </nav>
 
       <section class="hero-editorial hero-with-logo">
-        <div class="hero-logo-overlay">
-          <img src="/static/wove-logo.png" alt="WOVE" />
+        <div class="hero-logo-text">
+          <h1>WOVE</h1>
         </div>
         <div class="hero-image-large">
           <img src="/static/hero-bag.jpg" alt="WOVE Collection" />
           <div class="hero-text-overlay">
-            <h1>Spring / Summer 2026</h1>
+            <p>Spring / Summer 2026</p>
           </div>
         </div>
       </section>
