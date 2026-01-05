@@ -72,7 +72,42 @@ Inspired by **Loewe.com** - this is a luxury fashion website with:
   - Image zooms 1.05x on hover
   - Smooth 0.6s transitions
 
-### **4. Product Detail Pages** (`/product/:id`)
+### **5. Stories Page** (`/stories`)
+**Represent CLO-inspired timeline layout**
+
+- **Hero Section**
+  - "OUR STORY" title (64px bold, 8px letter spacing)
+  - Subtitle: "A journey from vision to reality"
+  - Bottom border separator
+
+- **Timeline Layout**
+  - Large bold year numbers (120px) on left
+  - Content on right with heading + paragraphs
+  - Grid layout: 200px | 1fr
+  - Sticky year positioning for desktop
+
+- **Brand History**
+  - **2024**: THE BEGINNING - Origin story, first collection
+  - **2025**: EXPANSION & EVOLUTION - Growing the range
+  - **2026**: SPRING / SUMMER - Current collection
+
+- **Philosophy Grid**
+  - Gray background section (#F8F8F8)
+  - 2x2 grid layout:
+    - QUALITY OVER QUANTITY
+    - TECHNICAL EXCELLENCE
+    - TIMELESS DESIGN
+    - METICULOUS CRAFT
+
+- **Mission Statement**
+  - Centered blockquote (28px italic)
+  - Brand signature below
+  - Clean, minimal closing
+
+- **Responsive**
+  - Desktop: Timeline with sticky years
+  - Tablet: Smaller years (80px), tighter spacing
+  - Mobile: Single column, stacked years (60px)
 - **Minimal navigation** (same as above)
 
 - **Two-column layout**
