@@ -212,13 +212,10 @@ app.get('/stories', (c) => {
         </div>
       </section>
 
-      {/* Founder Story - Image Left */}
-      <section class="story-section story-with-image">
-        <div class="story-grid">
-          <div class="story-image">
-            <img src="/static/products/second-skin-top.jpg" alt="WOVE Founder" />
-          </div>
-          <div class="story-text">
+      {/* Founder Story */}
+      <section class="story-section">
+        <div class="story-content-wide">
+          <div class="story-text-center">
             <h3>The Beginning</h3>
             <p>WOVE began with a vision to redefine premium menswear. Our founder, inspired by the intersection of craftsmanship and modern design, set out to create clothing that transcends trends.</p>
             <p>Every stitch, every fabric choice, every detail is considered with purpose. We believe in quality over quantity, in pieces that last, in design that respects both tradition and innovation.</p>
@@ -226,16 +223,13 @@ app.get('/stories', (c) => {
         </div>
       </section>
 
-      {/* Brand Ethos - Image Right */}
-      <section class="story-section story-with-image story-reverse">
-        <div class="story-grid">
-          <div class="story-text">
+      {/* Brand Ethos */}
+      <section class="story-section">
+        <div class="story-content-wide">
+          <div class="story-text-center">
             <h3>Our Philosophy</h3>
             <p>We believe in the power of exceptional materials and precise construction. Each piece in our collection is crafted to move with you, designed to elevate your everyday, and built to last.</p>
             <p>Premium materials. Technical innovation. Timeless design. These aren't just words—they're our commitment to you.</p>
-          </div>
-          <div class="story-image">
-            <img src="/static/products/city-parka.jpg" alt="WOVE Philosophy" />
           </div>
         </div>
       </section>
@@ -250,23 +244,12 @@ app.get('/stories', (c) => {
         </div>
       </section>
 
-      {/* Inspiration - Triple Image Grid */}
+      {/* Inspiration */}
       <section class="story-section">
         <div class="story-content-wide">
-          <h2 class="story-section-title">Inspiration</h2>
-          <div class="inspiration-grid">
-            <div class="inspiration-item">
-              <img src="/static/products/track-zip.jpg" alt="Athletic Heritage" />
-              <p>Athletic Heritage</p>
-            </div>
-            <div class="inspiration-item">
-              <img src="/static/products/cloud-hoodie.jpg" alt="Modern Comfort" />
-              <p>Modern Comfort</p>
-            </div>
-            <div class="inspiration-item">
-              <img src="/static/products/cropped-anorak.jpg" alt="Technical Innovation" />
-              <p>Technical Innovation</p>
-            </div>
+          <div class="story-text-center">
+            <h2>Inspiration</h2>
+            <p>Our designs draw from three pillars: Athletic Heritage, Modern Comfort, and Technical Innovation. Each piece reflects our commitment to creating menswear that performs as beautifully as it looks.</p>
           </div>
         </div>
       </section>
