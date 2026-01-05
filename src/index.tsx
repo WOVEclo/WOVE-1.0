@@ -130,6 +130,7 @@ app.get('/home', (c) => {
       <nav class="nav-minimal nav-minimal-simple">
         <div class="nav-content">
           <ul class="nav-menu-center">
+            <li><a href="/home">Home</a></li>
             <li><a href="/collection">Collection</a></li>
             <li><a href="/stories">Stories</a></li>
           </ul>
@@ -177,6 +178,7 @@ app.get('/stories', (c) => {
           </a>
           
           <ul class="nav-menu-center">
+            <li><a href="/home">Home</a></li>
             <li><a href="/collection">Collection</a></li>
             <li><a href="/stories" class="active">Stories</a></li>
           </ul>
@@ -295,6 +297,7 @@ app.get('/collection', (c) => {
           </a>
           
           <ul class="nav-menu-center">
+            <li><a href="/home">Home</a></li>
             <li><a href="/collection" class="active">Collection</a></li>
             <li><a href="/stories">Stories</a></li>
           </ul>
@@ -461,6 +464,7 @@ app.get('/product/:id', (c) => {
           </a>
           
           <ul class="nav-menu-center">
+            <li><a href="/home">Home</a></li>
             <li><a href="/collection">Collection</a></li>
             <li><a href="/stories">Stories</a></li>
           </ul>
