@@ -147,7 +147,7 @@ app.get('/home', (c) => {
 
       <section class="hero-editorial">
         <div class="hero-image-large">
-          <img src="/static/products/city-parka.jpg" alt="Spring Summer 2026" />
+          <img src="/static/hero-bag.jpg" alt="WOVE Collection" />
           <div class="hero-text-overlay">
             <h1>Spring / Summer 2026</h1>
           </div>
@@ -157,22 +157,6 @@ app.get('/home', (c) => {
       <section class="editorial-intro">
         <div class="editorial-content">
           <p>Where craft meets contemporary design. Each piece in our collection represents the intersection of technical innovation and timeless elegance.</p>
-        </div>
-      </section>
-
-      <section class="featured-products">
-        <div class="product-grid-editorial">
-          {allProducts.slice(0, 3).map(product => (
-            <a href={`/product/${product.id}`} class="product-editorial">
-              <div class="product-image-editorial">
-                <img src={product.image} alt={product.name} />
-              </div>
-              <div class="product-info-minimal">
-                <h3>{product.name}</h3>
-                <span class="price">£{product.price}</span>
-              </div>
-            </a>
-          ))}
         </div>
       </section>
 
@@ -327,6 +311,31 @@ app.get('/collection', (c) => {
         <h1>Spring / Summer 2026</h1>
       </section>
 
+      {/* Performance Category - MOVED TO TOP */}
+      <section class="category-section">
+        <div class="category-header">
+          <h2>Performance</h2>
+        </div>
+        <div class="product-grid-luxury">
+          {products.performance.map(product => (
+            <div class="product-item-luxury">
+              <a href={`/product/${product.id}`} class="product-link-luxury">
+                <div class="product-image-luxury">
+                  <img src={product.image} alt={product.name} />
+                  <div class="quick-add">
+                    <button class="btn-quick-add">Add to Cart</button>
+                  </div>
+                </div>
+              </a>
+              <div class="product-details-luxury">
+                <h3>{product.name}</h3>
+                <span class="price-luxury">£{product.price}</span>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
       {/* Outerwear Category */}
       <section class="category-section">
         <div class="category-header">
@@ -359,31 +368,6 @@ app.get('/collection', (c) => {
         </div>
         <div class="product-grid-luxury">
           {products.essentials.map(product => (
-            <div class="product-item-luxury">
-              <a href={`/product/${product.id}`} class="product-link-luxury">
-                <div class="product-image-luxury">
-                  <img src={product.image} alt={product.name} />
-                  <div class="quick-add">
-                    <button class="btn-quick-add">Add to Cart</button>
-                  </div>
-                </div>
-              </a>
-              <div class="product-details-luxury">
-                <h3>{product.name}</h3>
-                <span class="price-luxury">£{product.price}</span>
-              </div>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* Performance Category */}
-      <section class="category-section">
-        <div class="category-header">
-          <h2>Performance</h2>
-        </div>
-        <div class="product-grid-luxury">
-          {products.performance.map(product => (
             <div class="product-item-luxury">
               <a href={`/product/${product.id}`} class="product-link-luxury">
                 <div class="product-image-luxury">
