@@ -558,153 +558,86 @@ img {
 }
 
 /* ===================================
-   STORIES PAGE - HIGH FASHION
+   STORIES PAGE - ELEGANT TYPOGRAPHY
    =================================== */
 
-.stories-hero-minimal {
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&display=swap');
+
+.story-page {
   margin-top: 180px;
-  padding: 40px 60px;
-  text-align: left;
-  border-bottom: 1px solid #EFEFEF;
+  min-height: 80vh;
+  background: var(--color-white);
 }
 
-.stories-hero-minimal h1 {
-  font-family: var(--font-main);
-  font-size: 32px;
-  font-weight: 400;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-}
-
-/* Campaign Sections */
-.campaign-section {
-  padding: 80px 60px;
-  max-width: 1600px;
+.story-container {
+  max-width: 800px;
   margin: 0 auto;
+  padding: 80px 60px 120px;
 }
 
-.campaign-header {
+.story-block {
+  margin-bottom: 80px;
+}
+
+.story-block h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: 72px;
+  font-weight: 400;
+  letter-spacing: -1px;
+  color: var(--color-black);
   margin-bottom: 40px;
+  line-height: 1.1;
 }
 
-.campaign-label {
-  font-family: var(--font-main);
-  font-size: 11px;
+.story-intro {
+  font-family: 'Playfair Display', serif;
+  font-size: 24px;
   font-weight: 400;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  color: var(--color-gray);
-  margin-bottom: 8px;
+  line-height: 1.6;
+  color: var(--color-black);
+  font-style: italic;
+  margin-bottom: 0;
 }
 
-.campaign-header h2 {
-  font-family: var(--font-main);
+.story-block h2 {
+  font-family: 'Playfair Display', serif;
   font-size: 36px;
+  font-weight: 500;
+  letter-spacing: -0.5px;
+  color: var(--color-black);
+  margin-bottom: 24px;
+  line-height: 1.2;
+}
+
+.story-block p {
+  font-family: var(--font-main);
+  font-size: 17px;
   font-weight: 300;
-  letter-spacing: 2px;
-  text-transform: uppercase;
+  line-height: 1.8;
+  color: #333333;
+  margin-bottom: 20px;
 }
 
-/* Campaign Grids */
-.campaign-grid {
-  display: grid;
-  grid-template-columns: 2fr 1fr 1fr;
-  gap: 20px;
-}
-
-.campaign-grid-3 {
-  grid-template-columns: repeat(3, 1fr);
-}
-
-.campaign-grid-4 {
-  grid-template-columns: repeat(4, 1fr);
-}
-
-.campaign-item {
-  position: relative;
-  overflow: hidden;
-  aspect-ratio: 3/4;
-  cursor: pointer;
-}
-
-.campaign-large {
-  grid-row: span 2;
-  aspect-ratio: 3/5;
-}
-
-.campaign-item img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: transform 0.6s ease;
-}
-
-.campaign-item:hover img {
-  transform: scale(1.05);
-}
-
-.campaign-overlay {
-  position: absolute;
-  bottom: 20px;
-  left: 20px;
-  right: 20px;
-  opacity: 0;
-  transition: opacity 0.3s ease;
-}
-
-.campaign-item:hover .campaign-overlay {
-  opacity: 1;
-}
-
-.campaign-overlay h3 {
-  font-family: var(--font-main);
-  font-size: 16px;
-  font-weight: 400;
-  letter-spacing: 1px;
-  color: var(--color-white);
-  text-transform: uppercase;
-  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
-}
-
-.campaign-caption {
-  margin-top: 12px;
-}
-
-.campaign-caption p {
-  font-family: var(--font-main);
-  font-size: 13px;
-  font-weight: 400;
-  letter-spacing: 0.5px;
+.story-block p strong {
+  font-weight: 500;
   color: var(--color-black);
 }
 
-/* Editorial Text Section */
-.story-editorial {
-  padding: 120px 60px;
-  background: #F8F8F8;
-}
-
-.story-editorial-content {
-  max-width: 800px;
-  margin: 0 auto;
+.story-closing {
+  margin-top: 100px;
+  padding-top: 60px;
+  border-top: 1px solid #E0E0E0;
   text-align: center;
 }
 
-.story-editorial-content h2 {
-  font-family: var(--font-main);
+.story-quote {
+  font-family: 'Playfair Display', serif;
   font-size: 32px;
-  font-weight: 300;
-  letter-spacing: 2px;
-  margin-bottom: 24px;
-  text-transform: uppercase;
-}
-
-.story-editorial-content p {
-  font-family: var(--font-main);
-  font-size: 16px;
-  line-height: 1.8;
-  font-weight: 300;
+  font-weight: 400;
+  line-height: 1.5;
   color: var(--color-black);
+  font-style: italic;
+  margin-bottom: 0;
 }
 
 /* ===================================
@@ -753,29 +686,25 @@ img {
     gap: 60px;
   }
   
-  /* Stories Campaign responsive */
-  .campaign-section {
-    padding: 60px 40px;
+  /* Stories Typography responsive */
+  .story-container {
+    padding: 60px 40px 100px;
   }
   
-  .campaign-grid {
-    grid-template-columns: 1fr 1fr;
+  .story-block h1 {
+    font-size: 56px;
   }
   
-  .campaign-grid-3 {
-    grid-template-columns: repeat(2, 1fr);
+  .story-intro {
+    font-size: 20px;
   }
   
-  .campaign-grid-4 {
-    grid-template-columns: repeat(2, 1fr);
+  .story-block h2 {
+    font-size: 32px;
   }
   
-  .campaign-large {
-    grid-row: span 1;
-  }
-  
-  .story-editorial {
-    padding: 80px 40px;
+  .story-quote {
+    font-size: 28px;
   }
 }
 
@@ -895,46 +824,37 @@ img {
     letter-spacing: 2px;
   }
   
-  /* Stories Campaign mobile */
-  .stories-hero-minimal {
-    padding: 50px 24px 30px;
+  /* Stories Typography mobile */
+  .story-container {
+    padding: 60px 24px 80px;
   }
   
-  .stories-hero-minimal h1 {
+  .story-block {
+    margin-bottom: 60px;
+  }
+  
+  .story-block h1 {
+    font-size: 40px;
+  }
+  
+  .story-intro {
+    font-size: 18px;
+  }
+  
+  .story-block h2 {
+    font-size: 28px;
+  }
+  
+  .story-block p {
+    font-size: 16px;
+  }
+  
+  .story-closing {
+    margin-top: 60px;
+    padding-top: 40px;
+  }
+  
+  .story-quote {
     font-size: 24px;
-    letter-spacing: 2px;
-  }
-  
-  .campaign-section {
-    padding: 60px 24px;
-  }
-  
-  .campaign-header h2 {
-    font-size: 24px;
-    letter-spacing: 1px;
-  }
-  
-  .campaign-grid,
-  .campaign-grid-3,
-  .campaign-grid-4 {
-    grid-template-columns: 1fr;
-    gap: 20px;
-  }
-  
-  .campaign-large {
-    grid-row: span 1;
-    aspect-ratio: 3/4;
-  }
-  
-  .story-editorial {
-    padding: 80px 24px;
-  }
-  
-  .story-editorial-content h2 {
-    font-size: 24px;
-  }
-  
-  .story-editorial-content p {
-    font-size: 14px;
   }
 }
