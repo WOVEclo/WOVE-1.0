@@ -107,6 +107,23 @@ img {
   height: 180px;
 }
 
+/* Simple navigation without logo (for homepage) */
+.nav-minimal-simple {
+  height: 70px;
+  background: transparent;
+  border-bottom: none;
+}
+
+.nav-minimal-simple .nav-content {
+  justify-content: flex-end;
+}
+
+.nav-minimal-simple .nav-menu-center {
+  position: static;
+  transform: none;
+  margin-right: auto;
+}
+
 .nav-content {
   max-width: 1600px;
   margin: 0 auto;
@@ -174,6 +191,29 @@ img {
   width: 100%;
 }
 
+/* Hero with logo overlay (homepage only) */
+.hero-with-logo {
+  margin-top: 0;
+  position: relative;
+}
+
+.hero-logo-overlay {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 100;
+  width: 100%;
+  max-width: 600px;
+  padding: 0 40px;
+}
+
+.hero-logo-overlay img {
+  width: 100%;
+  height: auto;
+  filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.15));
+}
+
 .hero-image-large {
   position: relative;
   width: 100%;
@@ -192,9 +232,10 @@ img {
   position: absolute;
   inset: 0;
   display: flex;
-  align-items: center;
+  align-items: flex-end;
   justify-content: center;
-  background: rgba(0, 0, 0, 0.1);
+  padding-bottom: 60px;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.3), transparent);
 }
 
 .hero-text-overlay h1 {
@@ -799,6 +840,15 @@ img {
   
   .nav-minimal {
     height: 120px;
+  }
+  
+  .nav-minimal-simple {
+    height: 60px;
+  }
+  
+  .hero-logo-overlay {
+    max-width: 300px;
+    padding: 0 24px;
   }
   
   .nav-content {

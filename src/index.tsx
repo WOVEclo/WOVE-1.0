@@ -127,12 +127,8 @@ app.get('/home', (c) => {
   
   return c.render(
     <>
-      <nav class="nav-minimal">
+      <nav class="nav-minimal nav-minimal-simple">
         <div class="nav-content">
-          <a href="/home" class="logo">
-            <img src="/static/2.png" alt="WOVE" />
-          </a>
-          
           <ul class="nav-menu-center">
             <li><a href="/collection">Collection</a></li>
             <li><a href="/stories">Stories</a></li>
@@ -145,7 +141,10 @@ app.get('/home', (c) => {
         </div>
       </nav>
 
-      <section class="hero-editorial">
+      <section class="hero-editorial hero-with-logo">
+        <div class="hero-logo-overlay">
+          <img src="/static/wove-logo.png" alt="WOVE" />
+        </div>
         <div class="hero-image-large">
           <img src="/static/hero-bag.jpg" alt="WOVE Collection" />
           <div class="hero-text-overlay">
