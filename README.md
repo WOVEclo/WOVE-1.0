@@ -27,9 +27,9 @@ Inspired by **Loewe.com** - this is a luxury fashion website with:
 ### **2. Main Homepage** (`/home`)
 - **Minimal Navigation**
   - Logo left (28px height)
-  - Menu center: Collection, Stories, Gifts
+  - Menu center: Collection, Stories (Gifts removed)
   - Right: Search, Cart
-  - 80px height, subtle border
+  - 70px height, subtle border
 
 - **Large Hero Image**
   - City Parka full-width
@@ -226,10 +226,9 @@ All products from your uploaded images:
 ```
 /          → Splash page (WOVE centered)
 /home      → Main homepage (hero + featured)
-/collection → Product grid (12 items)
+/collection → Product grid (12 items, categorized)
 /product/:id → Individual product pages
-/stories   → Placeholder (redirects to home)
-/gifts     → Placeholder (redirects to home)
+/stories   → Founder story, brand philosophy, inspiration, values
 /search    → Placeholder (redirects to home)
 /cart      → Placeholder (redirects to home)
 ```
