@@ -13,21 +13,24 @@ const products = {
       name: 'Air Shell Jacket',
       price: 125,
       image: '/static/products/air-shell-jacket.jpg',
-      category: 'Outerwear'
+      category: 'Outerwear',
+      description: 'Lightweight shell jacket with weather-resistant finish and minimalist design.'
     },
     {
       id: 'cropped-anorak',
       name: 'Cropped Anorak',
       price: 165,
       image: '/static/products/cropped-anorak.jpg',
-      category: 'Outerwear'
+      category: 'Outerwear',
+      description: 'Contemporary cropped silhouette with functional details and technical fabric.'
     },
     {
       id: 'city-parka',
       name: 'City Parka',
       price: 285,
       image: '/static/products/city-parka.jpg',
-      category: 'Outerwear'
+      category: 'Outerwear',
+      description: 'Premium urban parka combining warmth, style and weather protection.'
     }
   ],
   essentials: [
@@ -36,28 +39,32 @@ const products = {
       name: 'Essentials Hoodie',
       price: 95,
       image: '/static/products/essentials-set.jpg',
-      category: 'Essentials'
+      category: 'Essentials',
+      description: 'Classic heavyweight hoodie in premium cotton with refined fit.'
     },
     {
       id: 'cloud-quarter-zip',
       name: 'Cloud Quarter Zip',
       price: 125,
       image: '/static/products/cloud-quarter-zip.jpg',
-      category: 'Essentials'
+      category: 'Essentials',
+      description: 'Soft brushed fleece quarter-zip with relaxed fit and comfort stretch.'
     },
     {
       id: 'cloud-hoodie',
       name: 'Cloud Hoodie',
       price: 135,
       image: '/static/products/cloud-hoodie.jpg',
-      category: 'Essentials'
+      category: 'Essentials',
+      description: 'Ultra-soft cloud fleece hoodie with oversized hood and kangaroo pocket.'
     },
     {
       id: 'track-zip',
       name: 'Track Zip',
       price: 145,
       image: '/static/products/track-zip.jpg',
-      category: 'Essentials'
+      category: 'Essentials',
+      description: 'Athletic-inspired track jacket with modern slim fit and zip pockets.'
     }
   ],
   performance: [
@@ -66,21 +73,24 @@ const products = {
       name: 'Second Skin Top',
       price: 75,
       image: '/static/products/second-skin-top.jpg',
-      category: 'Performance'
+      category: 'Performance',
+      description: 'Seamless performance top with four-way stretch and moisture-wicking technology.'
     },
     {
       id: 'second-skin-tee',
       name: 'Second Skin Tee',
       price: 65,
       image: '/static/products/second-skin-tee.jpg',
-      category: 'Performance'
+      category: 'Performance',
+      description: 'Fitted performance tee with technical fabric and athletic cut.'
     },
     {
       id: 'worn-run-tee',
       name: 'Worn Run Tee',
       price: 55,
       image: '/static/products/worn-run-tee.jpg',
-      category: 'Performance'
+      category: 'Performance',
+      description: 'Lightweight running tee with breathable mesh panels and reflective details.'
     }
   ],
   bottoms: [
@@ -89,14 +99,16 @@ const products = {
       name: 'Motion Pants',
       price: 85,
       image: '/static/products/motion-pants.jpg',
-      category: 'Bottoms'
+      category: 'Bottoms',
+      description: 'Versatile pants with four-way stretch and tapered athletic fit.'
     },
     {
       id: 'motion-shorts',
       name: 'Motion Shorts',
       price: 65,
       image: '/static/products/motion-shorts.jpg',
-      category: 'Bottoms'
+      category: 'Bottoms',
+      description: 'Performance shorts with moisture-wicking fabric and zip pockets.'
     }
   ],
   accessories: [
@@ -105,7 +117,8 @@ const products = {
       name: 'Off Duty Cap',
       price: 45,
       image: '/static/products/off-duty-cap.jpg',
-      category: 'Accessories'
+      category: 'Accessories',
+      description: 'Classic six-panel cap with adjustable back and curved brim.'
     }
   ]
 }
@@ -304,35 +317,17 @@ app.get('/collection', (c) => {
               </div>
               <div class="product-card-content">
                 <h3 class="product-card-title">{product.name}</h3>
-                <div class="product-card-rating">
-                  <span class="stars">★★★★☆</span>
-                  <span class="rating-count">(4.5)</span>
-                </div>
-                <p class="product-card-description">Premium performance piece crafted with technical fabrics and timeless design.</p>
+                <p class="product-card-category">{product.category}</p>
                 <div class="product-card-footer">
                   <span class="product-card-price">£{product.price}</span>
-                  <span class="product-card-stock">In Stock</span>
                 </div>
-                <button class="product-card-btn">
-                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-                    <path d="M2 2h1.5l2.5 8h7l2-6H4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                    <circle cx="7" cy="13" r="1" fill="currentColor"/>
-                    <circle cx="12" cy="13" r="1" fill="currentColor"/>
-                  </svg>
-                  Add to Cart
-                </button>
                 <div class="product-card-actions">
-                  <button class="icon-btn" title="Add to Wishlist">
+                  <button class="icon-btn-solo" title="Add to Wishlist">
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                       <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
                     </svg>
                   </button>
-                  <button class="icon-btn" title="Quick View">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                      <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
-                      <circle cx="12" cy="12" r="3"/>
-                    </svg>
-                  </button>
+                  <button class="btn-add-card">+ Add to Card</button>
                 </div>
               </div>
             </div>
@@ -354,35 +349,17 @@ app.get('/collection', (c) => {
               </div>
               <div class="product-card-content">
                 <h3 class="product-card-title">{product.name}</h3>
-                <div class="product-card-rating">
-                  <span class="stars">★★★★☆</span>
-                  <span class="rating-count">(4.5)</span>
-                </div>
-                <p class="product-card-description">Premium performance piece crafted with technical fabrics and timeless design.</p>
+                <p class="product-card-category">{product.category}</p>
                 <div class="product-card-footer">
                   <span class="product-card-price">£{product.price}</span>
-                  <span class="product-card-stock">In Stock</span>
                 </div>
-                <button class="product-card-btn">
-                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-                    <path d="M2 2h1.5l2.5 8h7l2-6H4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                    <circle cx="7" cy="13" r="1" fill="currentColor"/>
-                    <circle cx="12" cy="13" r="1" fill="currentColor"/>
-                  </svg>
-                  Add to Cart
-                </button>
                 <div class="product-card-actions">
-                  <button class="icon-btn" title="Add to Wishlist">
+                  <button class="icon-btn-solo" title="Add to Wishlist">
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                       <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
                     </svg>
                   </button>
-                  <button class="icon-btn" title="Quick View">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                      <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
-                      <circle cx="12" cy="12" r="3"/>
-                    </svg>
-                  </button>
+                  <button class="btn-add-card">+ Add to Card</button>
                 </div>
               </div>
             </div>
@@ -404,35 +381,17 @@ app.get('/collection', (c) => {
               </div>
               <div class="product-card-content">
                 <h3 class="product-card-title">{product.name}</h3>
-                <div class="product-card-rating">
-                  <span class="stars">★★★★☆</span>
-                  <span class="rating-count">(4.5)</span>
-                </div>
-                <p class="product-card-description">Premium performance piece crafted with technical fabrics and timeless design.</p>
+                <p class="product-card-category">{product.category}</p>
                 <div class="product-card-footer">
                   <span class="product-card-price">£{product.price}</span>
-                  <span class="product-card-stock">In Stock</span>
                 </div>
-                <button class="product-card-btn">
-                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-                    <path d="M2 2h1.5l2.5 8h7l2-6H4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                    <circle cx="7" cy="13" r="1" fill="currentColor"/>
-                    <circle cx="12" cy="13" r="1" fill="currentColor"/>
-                  </svg>
-                  Add to Cart
-                </button>
                 <div class="product-card-actions">
-                  <button class="icon-btn" title="Add to Wishlist">
+                  <button class="icon-btn-solo" title="Add to Wishlist">
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                       <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
                     </svg>
                   </button>
-                  <button class="icon-btn" title="Quick View">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                      <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
-                      <circle cx="12" cy="12" r="3"/>
-                    </svg>
-                  </button>
+                  <button class="btn-add-card">+ Add to Card</button>
                 </div>
               </div>
             </div>
@@ -454,35 +413,17 @@ app.get('/collection', (c) => {
               </div>
               <div class="product-card-content">
                 <h3 class="product-card-title">{product.name}</h3>
-                <div class="product-card-rating">
-                  <span class="stars">★★★★☆</span>
-                  <span class="rating-count">(4.5)</span>
-                </div>
-                <p class="product-card-description">Premium performance piece crafted with technical fabrics and timeless design.</p>
+                <p class="product-card-category">{product.category}</p>
                 <div class="product-card-footer">
                   <span class="product-card-price">£{product.price}</span>
-                  <span class="product-card-stock">In Stock</span>
                 </div>
-                <button class="product-card-btn">
-                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-                    <path d="M2 2h1.5l2.5 8h7l2-6H4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                    <circle cx="7" cy="13" r="1" fill="currentColor"/>
-                    <circle cx="12" cy="13" r="1" fill="currentColor"/>
-                  </svg>
-                  Add to Cart
-                </button>
                 <div class="product-card-actions">
-                  <button class="icon-btn" title="Add to Wishlist">
+                  <button class="icon-btn-solo" title="Add to Wishlist">
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                       <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
                     </svg>
                   </button>
-                  <button class="icon-btn" title="Quick View">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                      <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
-                      <circle cx="12" cy="12" r="3"/>
-                    </svg>
-                  </button>
+                  <button class="btn-add-card">+ Add to Card</button>
                 </div>
               </div>
             </div>
@@ -504,35 +445,17 @@ app.get('/collection', (c) => {
               </div>
               <div class="product-card-content">
                 <h3 class="product-card-title">{product.name}</h3>
-                <div class="product-card-rating">
-                  <span class="stars">★★★★☆</span>
-                  <span class="rating-count">(4.5)</span>
-                </div>
-                <p class="product-card-description">Premium performance piece crafted with technical fabrics and timeless design.</p>
+                <p class="product-card-category">{product.category}</p>
                 <div class="product-card-footer">
                   <span class="product-card-price">£{product.price}</span>
-                  <span class="product-card-stock">In Stock</span>
                 </div>
-                <button class="product-card-btn">
-                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-                    <path d="M2 2h1.5l2.5 8h7l2-6H4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                    <circle cx="7" cy="13" r="1" fill="currentColor"/>
-                    <circle cx="12" cy="13" r="1" fill="currentColor"/>
-                  </svg>
-                  Add to Cart
-                </button>
                 <div class="product-card-actions">
-                  <button class="icon-btn" title="Add to Wishlist">
+                  <button class="icon-btn-solo" title="Add to Wishlist">
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                       <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
                     </svg>
                   </button>
-                  <button class="icon-btn" title="Quick View">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                      <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
-                      <circle cx="12" cy="12" r="3"/>
-                    </svg>
-                  </button>
+                  <button class="btn-add-card">+ Add to Card</button>
                 </div>
               </div>
             </div>
