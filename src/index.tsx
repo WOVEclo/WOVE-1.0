@@ -129,7 +129,6 @@ app.get('/home', (c) => {
           <ul class="nav-menu-center">
             <li><a href="/collection">Collection</a></li>
             <li><a href="/stories">Stories</a></li>
-            <li><a href="/gifts">Gifts</a></li>
           </ul>
           
           <div class="nav-right">
@@ -177,6 +176,141 @@ app.get('/home', (c) => {
   )
 })
 
+// Stories Page
+app.get('/stories', (c) => {
+  return c.render(
+    <>
+      <nav class="nav-minimal">
+        <div class="nav-content">
+          <a href="/home" class="logo">
+            <img src="/static/2.png" alt="WOVE" />
+          </a>
+          
+          <ul class="nav-menu-center">
+            <li><a href="/collection">Collection</a></li>
+            <li><a href="/stories" class="active">Stories</a></li>
+          </ul>
+          
+          <div class="nav-right">
+            <a href="/search">Search</a>
+            <a href="/cart">Cart</a>
+          </div>
+        </div>
+      </nav>
+
+      <section class="stories-hero">
+        <h1>Our Story</h1>
+      </section>
+
+      {/* Brand Philosophy */}
+      <section class="story-section">
+        <div class="story-content-wide">
+          <div class="story-text-center">
+            <h2>Where Craft Meets Contemporary Design</h2>
+            <p>WOVE was founded on a simple belief: that premium menswear should embody both technical innovation and timeless elegance. We create pieces that move with you, designed to elevate your everyday.</p>
+          </div>
+        </div>
+      </section>
+
+      {/* Founder Story - Image Left */}
+      <section class="story-section story-with-image">
+        <div class="story-grid">
+          <div class="story-image">
+            <img src="/static/products/second-skin-top.jpg" alt="WOVE Founder" />
+          </div>
+          <div class="story-text">
+            <h3>The Beginning</h3>
+            <p>WOVE began with a vision to redefine premium menswear. Our founder, inspired by the intersection of craftsmanship and modern design, set out to create clothing that transcends trends.</p>
+            <p>Every stitch, every fabric choice, every detail is considered with purpose. We believe in quality over quantity, in pieces that last, in design that respects both tradition and innovation.</p>
+          </div>
+        </div>
+      </section>
+
+      {/* Brand Ethos - Image Right */}
+      <section class="story-section story-with-image story-reverse">
+        <div class="story-grid">
+          <div class="story-text">
+            <h3>Our Philosophy</h3>
+            <p>We believe in the power of exceptional materials and precise construction. Each piece in our collection is crafted to move with you, designed to elevate your everyday, and built to last.</p>
+            <p>Premium materials. Technical innovation. Timeless design. These aren't just words—they're our commitment to you.</p>
+          </div>
+          <div class="story-image">
+            <img src="/static/products/city-parka.jpg" alt="WOVE Philosophy" />
+          </div>
+        </div>
+      </section>
+
+      {/* Craftsmanship */}
+      <section class="story-section">
+        <div class="story-content-wide">
+          <div class="story-text-center">
+            <h2>Craftsmanship</h2>
+            <p>Every WOVE piece begins with a commitment to quality. We source only the finest materials—premium fabrics that feel exceptional and perform flawlessly. Our construction methods honor traditional craftsmanship while embracing modern technology.</p>
+          </div>
+        </div>
+      </section>
+
+      {/* Inspiration - Triple Image Grid */}
+      <section class="story-section">
+        <div class="story-content-wide">
+          <h2 class="story-section-title">Inspiration</h2>
+          <div class="inspiration-grid">
+            <div class="inspiration-item">
+              <img src="/static/products/track-zip.jpg" alt="Athletic Heritage" />
+              <p>Athletic Heritage</p>
+            </div>
+            <div class="inspiration-item">
+              <img src="/static/products/cloud-hoodie.jpg" alt="Modern Comfort" />
+              <p>Modern Comfort</p>
+            </div>
+            <div class="inspiration-item">
+              <img src="/static/products/cropped-anorak.jpg" alt="Technical Innovation" />
+              <p>Technical Innovation</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Values */}
+      <section class="story-section story-values">
+        <div class="story-content-wide">
+          <h2 class="story-section-title">Our Values</h2>
+          <div class="values-grid">
+            <div class="value-item">
+              <h4>Quality</h4>
+              <p>100% premium materials in every piece</p>
+            </div>
+            <div class="value-item">
+              <h4>Innovation</h4>
+              <p>Technical fabrics meet timeless design</p>
+            </div>
+            <div class="value-item">
+              <h4>Sustainability</h4>
+              <p>Thoughtful production, lasting products</p>
+            </div>
+            <div class="value-item">
+              <h4>Excellence</h4>
+              <p>Attention to detail in every stitch</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Closing Statement */}
+      <section class="story-section story-closing">
+        <div class="story-content-narrow">
+          <p class="story-quote">"We don't create fashion. We create pieces that become part of your story."</p>
+          <p class="story-signature">— WOVE</p>
+        </div>
+      </section>
+
+      <footer class="footer-minimal">
+        <p>© 2026 WOVE. All rights reserved.</p>
+      </footer>
+    </>
+  )
+})
+
 // Collection Page - Categorized
 app.get('/collection', (c) => {
   return c.render(
@@ -190,7 +324,6 @@ app.get('/collection', (c) => {
           <ul class="nav-menu-center">
             <li><a href="/collection" class="active">Collection</a></li>
             <li><a href="/stories">Stories</a></li>
-            <li><a href="/gifts">Gifts</a></li>
           </ul>
           
           <div class="nav-right">
@@ -357,7 +490,6 @@ app.get('/product/:id', (c) => {
           <ul class="nav-menu-center">
             <li><a href="/collection">Collection</a></li>
             <li><a href="/stories">Stories</a></li>
-            <li><a href="/gifts">Gifts</a></li>
           </ul>
           
           <div class="nav-right">
@@ -391,8 +523,6 @@ app.get('/product/:id', (c) => {
 })
 
 // Placeholder pages
-app.get('/stories', (c) => c.redirect('/home'))
-app.get('/gifts', (c) => c.redirect('/home'))
 app.get('/search', (c) => c.redirect('/home'))
 app.get('/cart', (c) => c.redirect('/home'))
 

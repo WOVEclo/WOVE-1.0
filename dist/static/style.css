@@ -510,6 +510,210 @@ img {
 }
 
 /* ===================================
+   STORIES PAGE
+   =================================== */
+
+.stories-hero {
+  margin-top: 70px;
+  padding: 60px 60px 40px;
+  text-align: center;
+}
+
+.stories-hero h1 {
+  font-family: var(--font-main);
+  font-size: 42px;
+  font-weight: 300;
+  letter-spacing: 6px;
+  text-transform: uppercase;
+}
+
+.story-section {
+  padding: 80px 60px;
+}
+
+.story-content-wide {
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.story-content-narrow {
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.story-text-center {
+  max-width: 900px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.story-text-center h2 {
+  font-family: var(--font-main);
+  font-size: 36px;
+  font-weight: 300;
+  letter-spacing: 4px;
+  margin-bottom: 30px;
+  text-transform: uppercase;
+}
+
+.story-text-center p {
+  font-family: var(--font-main);
+  font-size: 18px;
+  line-height: 1.8;
+  font-weight: 300;
+  color: var(--color-black);
+}
+
+.story-section-title {
+  font-family: var(--font-main);
+  font-size: 36px;
+  font-weight: 300;
+  letter-spacing: 4px;
+  text-align: center;
+  margin-bottom: 60px;
+  text-transform: uppercase;
+}
+
+/* Story with Image Grid */
+.story-with-image {
+  padding: 100px 60px;
+}
+
+.story-grid {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+}
+
+.story-reverse .story-grid {
+  direction: rtl;
+}
+
+.story-reverse .story-text {
+  direction: ltr;
+}
+
+.story-image {
+  width: 100%;
+  aspect-ratio: 4/5;
+  overflow: hidden;
+}
+
+.story-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.story-text h3 {
+  font-family: var(--font-main);
+  font-size: 28px;
+  font-weight: 300;
+  letter-spacing: 3px;
+  margin-bottom: 24px;
+  text-transform: uppercase;
+}
+
+.story-text p {
+  font-family: var(--font-main);
+  font-size: 16px;
+  line-height: 1.8;
+  font-weight: 300;
+  color: var(--color-black);
+  margin-bottom: 20px;
+}
+
+/* Inspiration Grid */
+.inspiration-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 40px;
+  margin-top: 40px;
+}
+
+.inspiration-item {
+  text-align: center;
+}
+
+.inspiration-item img {
+  width: 100%;
+  aspect-ratio: 3/4;
+  object-fit: cover;
+  margin-bottom: 20px;
+}
+
+.inspiration-item p {
+  font-family: var(--font-main);
+  font-size: 14px;
+  font-weight: 400;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+/* Values Grid */
+.story-values {
+  background: var(--color-white);
+  border-top: 1px solid #EFEFEF;
+  border-bottom: 1px solid #EFEFEF;
+}
+
+.values-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 60px;
+  margin-top: 60px;
+}
+
+.value-item {
+  text-align: center;
+}
+
+.value-item h4 {
+  font-family: var(--font-main);
+  font-size: 18px;
+  font-weight: 400;
+  letter-spacing: 2px;
+  margin-bottom: 12px;
+  text-transform: uppercase;
+}
+
+.value-item p {
+  font-family: var(--font-main);
+  font-size: 14px;
+  font-weight: 300;
+  line-height: 1.6;
+  color: var(--color-gray);
+}
+
+/* Closing Quote */
+.story-closing {
+  padding: 120px 60px;
+}
+
+.story-quote {
+  font-family: var(--font-main);
+  font-size: 28px;
+  font-weight: 300;
+  line-height: 1.6;
+  font-style: italic;
+  color: var(--color-black);
+  margin-bottom: 30px;
+}
+
+.story-signature {
+  font-family: var(--font-main);
+  font-size: 16px;
+  font-weight: 400;
+  letter-spacing: 2px;
+  color: var(--color-gray);
+  text-transform: uppercase;
+}
+
+/* ===================================
    RESPONSIVE
    =================================== */
 
@@ -553,6 +757,37 @@ img {
   .product-detail-content {
     grid-template-columns: 1fr;
     gap: 60px;
+  }
+  
+  /* Stories responsive */
+  .story-section {
+    padding: 60px 40px;
+  }
+  
+  .story-with-image {
+    padding: 80px 40px;
+  }
+  
+  .story-grid {
+    grid-template-columns: 1fr;
+    gap: 60px;
+  }
+  
+  .story-reverse .story-grid {
+    direction: ltr;
+  }
+  
+  .inspiration-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .values-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 40px;
+  }
+  
+  .story-closing {
+    padding: 80px 40px;
   }
 }
 
@@ -642,5 +877,73 @@ img {
   .product-detail-info h1 {
     font-size: 28px;
     letter-spacing: 2px;
+  }
+  
+  /* Stories mobile */
+  .stories-hero {
+    padding: 50px 24px 30px;
+  }
+  
+  .stories-hero h1 {
+    font-size: 28px;
+    letter-spacing: 4px;
+  }
+  
+  .story-section {
+    padding: 60px 24px;
+  }
+  
+  .story-text-center h2 {
+    font-size: 26px;
+    letter-spacing: 2px;
+  }
+  
+  .story-text-center p {
+    font-size: 15px;
+  }
+  
+  .story-section-title {
+    font-size: 26px;
+    letter-spacing: 2px;
+    margin-bottom: 40px;
+  }
+  
+  .story-with-image {
+    padding: 60px 24px;
+  }
+  
+  .story-grid {
+    gap: 40px;
+  }
+  
+  .story-text h3 {
+    font-size: 22px;
+    letter-spacing: 2px;
+  }
+  
+  .story-text p {
+    font-size: 14px;
+  }
+  
+  .inspiration-grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+  
+  .values-grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+  
+  .story-closing {
+    padding: 80px 24px;
+  }
+  
+  .story-quote {
+    font-size: 22px;
+  }
+  
+  .story-signature {
+    font-size: 14px;
   }
 }
