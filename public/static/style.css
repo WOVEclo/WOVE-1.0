@@ -115,13 +115,19 @@ img {
 }
 
 .nav-minimal-simple .nav-content {
+  display: flex;
   justify-content: space-between;
+  align-items: center;
 }
 
 .nav-minimal-simple .nav-menu-center {
   position: static;
   transform: none;
-  margin-right: 0;
+  margin: 0;
+}
+
+.nav-minimal-simple .nav-right {
+  margin-left: auto;
 }
 
 .nav-content {
@@ -131,7 +137,11 @@ img {
   height: 100%;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  position: relative;
+}
+
+.logo {
+  z-index: 10;
 }
 
 .logo img {
@@ -146,6 +156,8 @@ img {
   display: flex;
   gap: 48px;
   list-style: none;
+  margin: 0;
+  padding: 0;
 }
 
 .nav-menu-center a {
@@ -156,6 +168,7 @@ img {
   color: var(--color-black);
   transition: opacity 0.3s;
   text-transform: uppercase;
+  text-decoration: none;
 }
 
 .nav-menu-center a:hover,
@@ -166,6 +179,8 @@ img {
 .nav-right {
   display: flex;
   gap: 32px;
+  margin-left: auto;
+  z-index: 10;
 }
 
 .nav-right a {
