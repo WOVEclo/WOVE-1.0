@@ -1,9 +1,9 @@
 /* ===================================
    WOVE - Loewe-Inspired Luxury Design
-   Cormorant Garamond Serif + Montserrat Sans-Serif
+   Montserrat Throughout
    =================================== */
 
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700&display=swap');
 
 * {
   margin: 0;
@@ -17,9 +17,8 @@
   --color-gray: #666666;
   --color-light-gray: #EFEFEF;
   
-  /* Typography - Loewe Style */
-  --font-serif: 'Cormorant Garamond', serif;
-  --font-sans: 'Montserrat', sans-serif;
+  /* Typography - Montserrat */
+  --font-main: 'Montserrat', sans-serif;
 }
 
 html {
@@ -28,7 +27,7 @@ html {
 }
 
 body {
-  font-family: var(--font-sans);
+  font-family: var(--font-main);
   color: var(--color-black);
   background: var(--color-white);
   line-height: 1.7;
@@ -164,7 +163,7 @@ img {
 }
 
 .nav-menu-center a {
-  font-family: var(--font-sans);
+  font-family: var(--font-main);
   font-size: 11px;
   font-weight: 400;
   letter-spacing: 2px;
@@ -187,7 +186,7 @@ img {
 }
 
 .nav-right a {
-  font-family: var(--font-sans);
+  font-family: var(--font-main);
   font-size: 11px;
   font-weight: 400;
   letter-spacing: 2px;
@@ -228,7 +227,7 @@ img {
 }
 
 .hero-logo-text h1 {
-  font-family: var(--font-serif);
+  font-family: var(--font-main);
   font-size: 140px;
   font-weight: 300;
   letter-spacing: 12px;
@@ -264,7 +263,7 @@ img {
 
 .hero-text-overlay h1,
 .hero-text-overlay p {
-  font-family: var(--font-serif);
+  font-family: var(--font-main);
   font-size: 72px;
   font-weight: 300;
   letter-spacing: 12px;
@@ -286,7 +285,7 @@ img {
 }
 
 .editorial-content p {
-  font-family: var(--font-serif);
+  font-family: var(--font-main);
   font-size: 22px;
   line-height: 1.6;
   font-weight: 300;
@@ -363,7 +362,7 @@ img {
 }
 
 .collection-hero h1 {
-  font-family: var(--font-serif);
+  font-family: var(--font-main);
   font-size: 56px;
   font-weight: 300;
   letter-spacing: 4px;
@@ -387,7 +386,7 @@ img {
 }
 
 .category-header h2 {
-  font-family: var(--font-serif);
+  font-family: var(--font-main);
   font-size: 32px;
   font-weight: 400;
   letter-spacing: 2px;
@@ -554,7 +553,7 @@ img {
 }
 
 .product-card-title {
-  font-family: var(--font-sans);
+  font-family: var(--font-main);
   font-size: 15px;
   font-weight: 400;
   color: #000;
@@ -577,7 +576,7 @@ img {
 }
 
 .product-card-price {
-  font-family: var(--font-sans);
+  font-family: var(--font-main);
   font-size: 14px;
   font-weight: 300;
   color: var(--color-gray);
