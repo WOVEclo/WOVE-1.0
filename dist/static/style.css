@@ -357,41 +357,82 @@ img {
 
 .collection-hero {
   margin-top: 180px;
-  padding: 80px 60px 60px;
+  padding: 100px 60px 80px;
   text-align: center;
 }
 
 .collection-hero h1 {
   font-family: var(--font-main);
-  font-size: 56px;
+  font-size: 48px;
   font-weight: 300;
-  letter-spacing: 4px;
+  letter-spacing: 6px;
   text-transform: uppercase;
   color: var(--color-black);
 }
 
-/* Category Sections */
-.category-section {
-  padding: 80px 60px;
-  border-top: none;
+/* Seamless Editorial Collection Grid */
+.collection-editorial {
+  padding: 0 60px 120px;
 }
 
-.category-section:first-of-type {
-  border-top: none;
+.product-grid-editorial-seamless {
+  max-width: 1800px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 60px 40px;
 }
 
-.category-header {
+.product-card-minimal {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+  transition: opacity 0.4s ease;
+}
+
+.product-card-minimal:hover {
+  opacity: 0.7;
+}
+
+.product-image-minimal {
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  overflow: hidden;
+  background: #FAFAFA;
+  margin-bottom: 16px;
+}
+
+.product-image-minimal img {
+  width: 100%;
+  height: 110%;
+  object-fit: cover;
+  object-position: center 45%;
+  transition: transform 0.6s ease;
+}
+
+.product-card-minimal:hover .product-image-minimal img {
+  transform: scale(1.02);
+}
+
+.product-info-minimal {
   text-align: center;
-  margin-bottom: 60px;
 }
 
-.category-header h2 {
+.product-info-minimal h3 {
   font-family: var(--font-main);
-  font-size: 32px;
+  font-size: 13px;
   font-weight: 400;
-  letter-spacing: 2px;
+  letter-spacing: 1.5px;
   text-transform: uppercase;
+  margin-bottom: 6px;
   color: var(--color-black);
+}
+
+.product-info-minimal span {
+  font-family: var(--font-main);
+  font-size: 13px;
+  font-weight: 300;
+  color: var(--color-gray);
 }
   margin-bottom: 40px;
   text-align: center;
@@ -854,13 +895,18 @@ img {
   
   .product-grid-editorial,
   .product-grid-luxury,
-  .product-grid-modern {
+  .product-grid-modern,
+  .product-grid-editorial-seamless {
     grid-template-columns: repeat(2, 1fr);
   }
   
   .product-grid-modern {
     gap: 24px;
     padding: 0 40px 60px;
+  }
+  
+  .product-grid-editorial-seamless {
+    gap: 40px 30px;
   }
     gap: 40px;
   }
@@ -1003,13 +1049,18 @@ img {
   
   .product-grid-editorial,
   .product-grid-luxury,
-  .product-grid-modern {
+  .product-grid-modern,
+  .product-grid-editorial-seamless {
     grid-template-columns: 1fr;
     gap: 40px;
   }
   
   .product-grid-modern {
     padding: 0 24px 60px;
+  }
+  
+  .product-grid-editorial-seamless {
+    gap: 50px;
   }
   
   .product-card-title {

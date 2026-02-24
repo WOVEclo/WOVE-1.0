@@ -276,8 +276,17 @@ app.get('/stories', (c) => {
   )
 })
 
-// Collection Page - Categorized
+// Collection Page - Editorial Showcase (No Categories)
 app.get('/collection', (c) => {
+  // Combine all products into one seamless collection
+  const allProducts = [
+    ...products.performance,
+    ...products.outerwear,
+    ...products.essentials,
+    ...products.bottoms,
+    ...products.accessories
+  ];
+
   return c.render(
     <>
       <nav class="nav-minimal">
@@ -303,162 +312,18 @@ app.get('/collection', (c) => {
         <h1>Spring / Summer 2026</h1>
       </section>
 
-      {/* Performance Category - MOVED TO TOP */}
-      <section class="category-section">
-        <div class="category-header">
-          <h2>Performance</h2>
-        </div>
-        <div class="product-grid-modern">
-          {products.performance.map(product => (
-            <div class="product-card">
-              <div class="product-card-image">
-                <span class="product-badge">{product.category}</span>
+      <section class="collection-editorial">
+        <div class="product-grid-editorial-seamless">
+          {allProducts.map(product => (
+            <a href={`/product/${product.id}`} class="product-card-minimal">
+              <div class="product-image-minimal">
                 <img src={product.image} alt={product.name} />
               </div>
-              <div class="product-card-content">
-                <h3 class="product-card-title">{product.name}</h3>
-                <p class="product-card-category">{product.category}</p>
-                <div class="product-card-footer">
-                  <span class="product-card-price">£{product.price}</span>
-                </div>
-                <div class="product-card-actions">
-                  <button class="icon-btn-solo" title="Add to Wishlist">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                      <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
-                    </svg>
-                  </button>
-                  <button class="btn-add-card">+ Add to Card</button>
-                </div>
+              <div class="product-info-minimal">
+                <h3>{product.name}</h3>
+                <span>£{product.price}</span>
               </div>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* Outerwear Category */}
-      <section class="category-section">
-        <div class="category-header">
-          <h2>Outerwear</h2>
-        </div>
-        <div class="product-grid-modern">
-          {products.outerwear.map(product => (
-            <div class="product-card">
-              <div class="product-card-image">
-                <span class="product-badge">{product.category}</span>
-                <img src={product.image} alt={product.name} />
-              </div>
-              <div class="product-card-content">
-                <h3 class="product-card-title">{product.name}</h3>
-                <p class="product-card-category">{product.category}</p>
-                <div class="product-card-footer">
-                  <span class="product-card-price">£{product.price}</span>
-                </div>
-                <div class="product-card-actions">
-                  <button class="icon-btn-solo" title="Add to Wishlist">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                      <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
-                    </svg>
-                  </button>
-                  <button class="btn-add-card">+ Add to Card</button>
-                </div>
-              </div>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* Essentials Category */}
-      <section class="category-section">
-        <div class="category-header">
-          <h2>Essentials</h2>
-        </div>
-        <div class="product-grid-modern">
-          {products.essentials.map(product => (
-            <div class="product-card">
-              <div class="product-card-image">
-                <span class="product-badge">{product.category}</span>
-                <img src={product.image} alt={product.name} />
-              </div>
-              <div class="product-card-content">
-                <h3 class="product-card-title">{product.name}</h3>
-                <p class="product-card-category">{product.category}</p>
-                <div class="product-card-footer">
-                  <span class="product-card-price">£{product.price}</span>
-                </div>
-                <div class="product-card-actions">
-                  <button class="icon-btn-solo" title="Add to Wishlist">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                      <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
-                    </svg>
-                  </button>
-                  <button class="btn-add-card">+ Add to Card</button>
-                </div>
-              </div>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* Bottoms Category */}
-      <section class="category-section">
-        <div class="category-header">
-          <h2>Bottoms</h2>
-        </div>
-        <div class="product-grid-modern">
-          {products.bottoms.map(product => (
-            <div class="product-card">
-              <div class="product-card-image">
-                <span class="product-badge">{product.category}</span>
-                <img src={product.image} alt={product.name} />
-              </div>
-              <div class="product-card-content">
-                <h3 class="product-card-title">{product.name}</h3>
-                <p class="product-card-category">{product.category}</p>
-                <div class="product-card-footer">
-                  <span class="product-card-price">£{product.price}</span>
-                </div>
-                <div class="product-card-actions">
-                  <button class="icon-btn-solo" title="Add to Wishlist">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                      <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
-                    </svg>
-                  </button>
-                  <button class="btn-add-card">+ Add to Card</button>
-                </div>
-              </div>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* Accessories Category */}
-      <section class="category-section">
-        <div class="category-header">
-          <h2>Accessories</h2>
-        </div>
-        <div class="product-grid-modern">
-          {products.accessories.map(product => (
-            <div class="product-card">
-              <div class="product-card-image">
-                <span class="product-badge">{product.category}</span>
-                <img src={product.image} alt={product.name} />
-              </div>
-              <div class="product-card-content">
-                <h3 class="product-card-title">{product.name}</h3>
-                <p class="product-card-category">{product.category}</p>
-                <div class="product-card-footer">
-                  <span class="product-card-price">£{product.price}</span>
-                </div>
-                <div class="product-card-actions">
-                  <button class="icon-btn-solo" title="Add to Wishlist">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                      <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
-                    </svg>
-                  </button>
-                  <button class="btn-add-card">+ Add to Card</button>
-                </div>
-              </div>
-            </div>
+            </a>
           ))}
         </div>
       </section>
