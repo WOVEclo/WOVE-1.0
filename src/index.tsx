@@ -405,4 +405,42 @@ app.get('/product/:id', (c) => {
 app.get('/search', (c) => c.redirect('/home'))
 app.get('/cart', (c) => c.redirect('/home'))
 
+// Order confirmation page (Stripe success redirect)
+app.get('/order-confirmation', (c) => {
+  return c.render(
+    <>
+      <nav class="nav-minimal">
+        <div class="nav-content">
+          <a href="/home" class="logo">
+            <img src="/static/2.png" alt="WOVE" />
+          </a>
+          
+          <ul class="nav-menu-center">
+            <li><a href="/home">Home</a></li>
+            <li><a href="/collection">Collection</a></li>
+            <li><a href="/stories">Stories</a></li>
+          </ul>
+          
+          <div class="nav-right">
+            <a href="/search">Search</a>
+            <a href="/cart">Cart</a>
+          </div>
+        </div>
+      </nav>
+
+      <section class="confirmation-page">
+        <div class="confirmation-content">
+          <h1>Order Confirmed</h1>
+          <p class="confirmation-message">Thank you for your order. You will receive a confirmation email shortly.</p>
+          <a href="/collection" class="btn-continue-shopping">Continue Shopping</a>
+        </div>
+      </section>
+
+      <footer class="footer-minimal">
+        <p>© 2026 WOVE. All rights reserved.</p>
+      </footer>
+    </>
+  )
+})
+
 export default app
