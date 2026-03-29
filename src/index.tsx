@@ -14,7 +14,8 @@ const products = {
       price: 125,
       image: '/static/products/air-shell-jacket.jpg',
       category: 'Outerwear',
-      description: 'Lightweight shell jacket with weather-resistant finish and minimalist design.'
+      description: 'Lightweight shell jacket with weather-resistant finish and minimalist design.',
+      stripeLink: 'https://buy.stripe.com/test_aFa8wObhHgC1blEeh1cZa00'
     },
     {
       id: 'cropped-anorak',
@@ -22,7 +23,8 @@ const products = {
       price: 165,
       image: '/static/products/cropped-anorak.jpg',
       category: 'Outerwear',
-      description: 'Contemporary cropped silhouette with functional details and technical fabric.'
+      description: 'Contemporary cropped silhouette with functional details and technical fabric.',
+      stripeLink: null  // Add Stripe link when ready
     },
     {
       id: 'city-parka',
@@ -30,7 +32,8 @@ const products = {
       price: 285,
       image: '/static/products/city-parka.jpg',
       category: 'Outerwear',
-      description: 'Premium urban parka combining warmth, style and weather protection.'
+      description: 'Premium urban parka combining warmth, style and weather protection.',
+      stripeLink: null  // Add Stripe link when ready
     }
   ],
   essentials: [
@@ -315,15 +318,20 @@ app.get('/collection', (c) => {
       <section class="collection-editorial">
         <div class="product-grid-editorial-seamless">
           {allProducts.map(product => (
-            <a href={`/product/${product.id}`} class="product-card-minimal">
-              <div class="product-image-minimal">
+            <div class="product-card-minimal">
+              <a href={`/product/${product.id}`} class="product-image-minimal">
                 <img src={product.image} alt={product.name} />
-              </div>
+              </a>
               <div class="product-info-minimal">
                 <h3>{product.name}</h3>
                 <span>£{product.price}</span>
+                {product.stripeLink ? (
+                  <a href={product.stripeLink} class="btn-add-to-cart">Add to Cart</a>
+                ) : (
+                  <button class="btn-add-to-cart" disabled>Coming Soon</button>
+                )}
               </div>
-            </a>
+            </div>
           ))}
         </div>
       </section>
@@ -374,7 +382,11 @@ app.get('/product/:id', (c) => {
           <div class="product-detail-info">
             <h1>{product.name}</h1>
             <p class="product-price-detail">£{product.price}</p>
-            <button class="btn-add-to-cart-detail">Add to Cart</button>
+            {product.stripeLink ? (
+              <a href={product.stripeLink} class="btn-add-to-cart-detail">Add to Cart</a>
+            ) : (
+              <button class="btn-add-to-cart-detail" disabled>Coming Soon</button>
+            )}
             <div class="product-description">
               <p>Premium menswear crafted with precision. This piece combines technical innovation with timeless design.</p>
             </div>
