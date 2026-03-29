@@ -153,7 +153,10 @@ app.get('/home', (c) => {
           
           <div class="nav-right">
             <a href="/search">Search</a>
-            <a href="/cart">Cart</a>
+            <a href="/cart" class="cart-link">
+              Cart
+              <span class="cart-count">0</span>
+            </a>
           </div>
         </div>
       </nav>
@@ -199,7 +202,10 @@ app.get('/stories', (c) => {
           
           <div class="nav-right">
             <a href="/search">Search</a>
-            <a href="/cart">Cart</a>
+            <a href="/cart" class="cart-link">
+              Cart
+              <span class="cart-count">0</span>
+            </a>
           </div>
         </div>
       </nav>
@@ -306,7 +312,10 @@ app.get('/collection', (c) => {
           
           <div class="nav-right">
             <a href="/search">Search</a>
-            <a href="/cart">Cart</a>
+            <a href="/cart" class="cart-link">
+              Cart
+              <span class="cart-count">0</span>
+            </a>
           </div>
         </div>
       </nav>
@@ -369,7 +378,10 @@ app.get('/product/:id', (c) => {
           
           <div class="nav-right">
             <a href="/search">Search</a>
-            <a href="/cart">Cart</a>
+            <a href="/cart" class="cart-link">
+              Cart
+              <span class="cart-count">0</span>
+            </a>
           </div>
         </div>
       </nav>
@@ -381,14 +393,62 @@ app.get('/product/:id', (c) => {
           </div>
           <div class="product-detail-info">
             <h1>{product.name}</h1>
+            <p class="product-category">{product.category}</p>
             <p class="product-price-detail">£{product.price}</p>
-            {product.stripeLink ? (
-              <a href={product.stripeLink} class="btn-add-to-cart-detail">Add to Cart</a>
-            ) : (
-              <button class="btn-add-to-cart-detail" disabled>Coming Soon</button>
-            )}
+            
             <div class="product-description">
-              <p>Premium menswear crafted with precision. This piece combines technical innovation with timeless design.</p>
+              <p>{product.description}</p>
+            </div>
+            
+            <div class="product-options">
+              <div class="size-selector">
+                <label>Size</label>
+                <div class="size-buttons" data-product-id={product.id}>
+                  <button class="size-btn" data-size="S">S</button>
+                  <button class="size-btn" data-size="M">M</button>
+                  <button class="size-btn" data-size="L">L</button>
+                  <button class="size-btn" data-size="XL">XL</button>
+                </div>
+              </div>
+              
+              <div class="quantity-selector">
+                <label>Quantity</label>
+                <div class="quantity-controls">
+                  <button class="qty-btn qty-minus" data-product-id={product.id}>−</button>
+                  <input type="number" class="qty-input" value="1" min="1" max="10" data-product-id={product.id} />
+                  <button class="qty-btn qty-plus" data-product-id={product.id}>+</button>
+                </div>
+              </div>
+            </div>
+            
+            <button 
+              class="btn-add-to-cart-detail" 
+              data-product-id={product.id}
+              data-product-name={product.name}
+              data-product-price={product.price}
+              data-product-image={product.image}
+            >
+              Add to Cart
+            </button>
+            
+            <div class="product-details">
+              <h3>Details</h3>
+              <ul>
+                <li>Premium technical fabric</li>
+                <li>Contemporary minimal design</li>
+                <li>Made in Portugal</li>
+                <li>Model is 6'1" and wears size M</li>
+              </ul>
+            </div>
+            
+            <div class="product-care">
+              <h3>Care Instructions</h3>
+              <ul>
+                <li>Machine wash cold</li>
+                <li>Tumble dry low</li>
+                <li>Do not bleach</li>
+                <li>Iron low heat if needed</li>
+              </ul>
             </div>
           </div>
         </div>
@@ -401,9 +461,69 @@ app.get('/product/:id', (c) => {
   )
 })
 
-// Placeholder pages
+// Search placeholder
 app.get('/search', (c) => c.redirect('/home'))
-app.get('/cart', (c) => c.redirect('/home'))
+
+// Cart page
+app.get('/cart', (c) => {
+  return c.render(
+    <>
+      <nav class="nav-minimal">
+        <div class="nav-content">
+          <a href="/home" class="logo">
+            <img src="/static/2.png" alt="WOVE" />
+          </a>
+          
+          <ul class="nav-menu-center">
+            <li><a href="/home">Home</a></li>
+            <li><a href="/collection">Collection</a></li>
+            <li><a href="/stories">Stories</a></li>
+          </ul>
+          
+          <div class="nav-right">
+            <a href="/search">Search</a>
+            <a href="/cart" class="active">Cart</a>
+          </div>
+        </div>
+      </nav>
+
+      <section class="cart-page">
+        <div class="cart-container">
+          <h1>Shopping Cart</h1>
+          
+          <div id="cart-items" class="cart-items">
+            {/* Cart items will be populated by JavaScript */}
+          </div>
+          
+          <div id="cart-empty" class="cart-empty" style="display: none;">
+            <p>Your cart is empty</p>
+            <a href="/collection" class="btn-continue-shopping">Continue Shopping</a>
+          </div>
+          
+          <div id="cart-summary" class="cart-summary" style="display: none;">
+            <div class="summary-row">
+              <span>Subtotal</span>
+              <span id="cart-subtotal">£0.00</span>
+            </div>
+            <div class="summary-row">
+              <span>Shipping</span>
+              <span>Calculated at checkout</span>
+            </div>
+            <div class="summary-row summary-total">
+              <span>Total</span>
+              <span id="cart-total">£0.00</span>
+            </div>
+            <button id="checkout-btn" class="btn-checkout">Proceed to Checkout</button>
+          </div>
+        </div>
+      </section>
+
+      <footer class="footer-minimal">
+        <p>© 2026 WOVE. All rights reserved.</p>
+      </footer>
+    </>
+  )
+})
 
 // Order confirmation page (Stripe success redirect)
 app.get('/order-confirmation', (c) => {
@@ -423,7 +543,10 @@ app.get('/order-confirmation', (c) => {
           
           <div class="nav-right">
             <a href="/search">Search</a>
-            <a href="/cart">Cart</a>
+            <a href="/cart" class="cart-link">
+              Cart
+              <span class="cart-count">0</span>
+            </a>
           </div>
         </div>
       </nav>
