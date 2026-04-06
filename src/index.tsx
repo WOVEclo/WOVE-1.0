@@ -174,6 +174,28 @@ app.get('/home', (c) => {
         <div class="editorial-content">
           <p>Where craft meets contemporary design.</p>
           <p>Each piece in our collection represents the intersection of performance and timeless elegance.</p>
+          <a href="/collection" class="btn-shop-collection">Shop Collection</a>
+        </div>
+      </section>
+      
+      <section class="value-props">
+        <div class="value-prop-grid">
+          <div class="value-prop-item">
+            <h3>Free UK Shipping</h3>
+            <p>On orders over £150</p>
+          </div>
+          <div class="value-prop-item">
+            <h3>30 Day Returns</h3>
+            <p>Easy, hassle-free returns</p>
+          </div>
+          <div class="value-prop-item">
+            <h3>Premium Quality</h3>
+            <p>Made in Portugal</p>
+          </div>
+          <div class="value-prop-item">
+            <h3>Secure Checkout</h3>
+            <p>Powered by Stripe</p>
+          </div>
         </div>
       </section>
 
@@ -463,6 +485,33 @@ app.get('/product/:id', (c) => {
 
 // Search placeholder
 app.get('/search', (c) => c.redirect('/home'))
+
+// Product Feed API for Ad Campaigns (Facebook/Google)
+app.get('/api/product-feed.json', (c) => {
+  const allProducts = [
+    ...products.outerwear,
+    ...products.performance,
+    ...products.essentials,
+    ...products.bottoms,
+    ...products.accessories
+  ];
+  
+  const feed = allProducts.map(product => ({
+    id: product.id,
+    title: product.name,
+    description: product.description,
+    link: `https://webapp.pages.dev/product/${product.id}`,
+    image_link: `https://webapp.pages.dev${product.image}`,
+    price: `${product.price} GBP`,
+    availability: 'in stock',
+    condition: 'new',
+    brand: 'WOVE',
+    product_type: product.category,
+    google_product_category: 'Apparel & Accessories > Clothing > Men\'s Clothing'
+  }));
+  
+  return c.json(feed);
+})
 
 // Cart page
 app.get('/cart', (c) => {

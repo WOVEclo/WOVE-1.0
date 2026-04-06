@@ -313,6 +313,60 @@ img {
   font-weight: 300;
   color: var(--color-black);
   letter-spacing: 0.3px;
+  margin-bottom: 16px;
+}
+
+.btn-shop-collection {
+  display: inline-block;
+  margin-top: 32px;
+  padding: 16px 48px;
+  font-family: var(--font-main);
+  font-size: 11px;
+  font-weight: 400;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--color-white);
+  background: var(--color-black);
+  border: none;
+  transition: background 0.3s ease;
+}
+
+.btn-shop-collection:hover {
+  background: #333;
+}
+
+/* Value Propositions */
+.value-props {
+  padding: 80px 60px;
+  background: #FAFAFA;
+}
+
+.value-prop-grid {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 40px;
+  text-align: center;
+}
+
+.value-prop-item h3 {
+  font-family: var(--font-main);
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--color-black);
+  margin-bottom: 8px;
+}
+
+.value-prop-item p {
+  font-family: var(--font-main);
+  font-size: 13px;
+  font-weight: 300;
+  color: var(--color-gray);
+  letter-spacing: 0.3px;
 }
 
 /* ===================================
@@ -1293,6 +1347,28 @@ img {
   
   .editorial-content p {
     font-size: 15px;
+  }
+  
+  .btn-shop-collection {
+    padding: 14px 32px;
+    font-size: 10px;
+  }
+  
+  .value-props {
+    padding: 60px 24px;
+  }
+  
+  .value-prop-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+  }
+  
+  .value-prop-item h3 {
+    font-size: 11px;
+  }
+  
+  .value-prop-item p {
+    font-size: 11px;
   }
   
   .featured-products {

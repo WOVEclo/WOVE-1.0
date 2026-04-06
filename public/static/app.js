@@ -29,6 +29,37 @@ class ShoppingCart {
     }
 
     this.saveCart();
+    
+    // Track Add to Cart event
+    this.trackAddToCart(product);
+  }
+  
+  trackAddToCart(product) {
+    // Google Analytics / GA4
+    if (typeof gtag !== 'undefined') {
+      gtag('event', 'add_to_cart', {
+        currency: 'GBP',
+        value: product.price * product.quantity,
+        items: [{
+          item_id: product.id,
+          item_name: product.name,
+          price: product.price,
+          quantity: product.quantity,
+          item_variant: product.size
+        }]
+      });
+    }
+    
+    // Facebook Pixel
+    if (typeof fbq !== 'undefined') {
+      fbq('track', 'AddToCart', {
+        content_name: product.name,
+        content_ids: [product.id],
+        content_type: 'product',
+        value: product.price * product.quantity,
+        currency: 'GBP'
+      });
+    }
   }
 
   removeItem(id, size) {
@@ -77,6 +108,30 @@ class ShoppingCart {
 const cart = new ShoppingCart();
 
 document.addEventListener('DOMContentLoaded', function() {
+  
+  // UTM Parameter Tracking for Ad Campaigns
+  const urlParams = new URLSearchParams(window.location.search);
+  const utmParams = {
+    source: urlParams.get('utm_source'),
+    medium: urlParams.get('utm_medium'),
+    campaign: urlParams.get('utm_campaign'),
+    term: urlParams.get('utm_term'),
+    content: urlParams.get('utm_content')
+  };
+  
+  // Store UTM params in sessionStorage for attribution
+  if (utmParams.source || utmParams.medium || utmParams.campaign) {
+    sessionStorage.setItem('wove_utm', JSON.stringify(utmParams));
+    
+    // Track campaign view
+    if (typeof gtag !== 'undefined') {
+      gtag('event', 'campaign_view', {
+        campaign_source: utmParams.source,
+        campaign_medium: utmParams.medium,
+        campaign_name: utmParams.campaign
+      });
+    }
+  }
   
   // Splash Page Auto-redirect
   const splash = document.getElementById('splash');
@@ -184,11 +239,81 @@ document.addEventListener('DOMContentLoaded', function() {
   const checkoutBtn = document.getElementById('checkout-btn');
   if (checkoutBtn) {
     checkoutBtn.addEventListener('click', function() {
-      // For now, redirect to order confirmation
+      // Track Initiate Checkout
+      const cartValue = cart.getTotal();
+      const cartItems = cart.items.map(item => ({
+        item_id: item.id,
+        item_name: item.name,
+        price: item.price,
+        quantity: item.quantity,
+        item_variant: item.size
+      }));
+      
+      // Google Analytics
+      if (typeof gtag !== 'undefined') {
+        gtag('event', 'begin_checkout', {
+          currency: 'GBP',
+          value: cartValue,
+          items: cartItems
+        });
+      }
+      
+      // Facebook Pixel
+      if (typeof fbq !== 'undefined') {
+        fbq('track', 'InitiateCheckout', {
+          content_ids: cart.items.map(item => item.id),
+          contents: cart.items.map(item => ({
+            id: item.id,
+            quantity: item.quantity
+          })),
+          value: cartValue,
+          currency: 'GBP',
+          num_items: cart.getItemCount()
+        });
+      }
+      
+      // For now, show alert
       // In production, this would create a Stripe Checkout Session
       alert('Checkout functionality will be connected to Stripe Checkout API');
       // window.location.href = '/order-confirmation';
     });
+  }
+  
+  // Track Product Views on detail pages
+  const productDetailPage = document.querySelector('.product-detail-page');
+  if (productDetailPage) {
+    const addButton = document.querySelector('.btn-add-to-cart-detail');
+    if (addButton) {
+      const productData = {
+        id: addButton.dataset.productId,
+        name: addButton.dataset.productName,
+        price: parseFloat(addButton.dataset.productPrice)
+      };
+      
+      // Google Analytics
+      if (typeof gtag !== 'undefined') {
+        gtag('event', 'view_item', {
+          currency: 'GBP',
+          value: productData.price,
+          items: [{
+            item_id: productData.id,
+            item_name: productData.name,
+            price: productData.price
+          }]
+        });
+      }
+      
+      // Facebook Pixel
+      if (typeof fbq !== 'undefined') {
+        fbq('track', 'ViewContent', {
+          content_name: productData.name,
+          content_ids: [productData.id],
+          content_type: 'product',
+          value: productData.price,
+          currency: 'GBP'
+        });
+      }
+    }
   }
 });
 
