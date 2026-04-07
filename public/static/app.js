@@ -315,6 +315,67 @@ document.addEventListener('DOMContentLoaded', function() {
       }
     }
   }
+  
+  // Collection Page - Filter Functionality
+  const filterButtons = document.querySelectorAll('.filter-btn');
+  if (filterButtons.length > 0) {
+    filterButtons.forEach(btn => {
+      btn.addEventListener('click', function() {
+        // Remove active from all
+        filterButtons.forEach(b => b.classList.remove('active'));
+        // Add active to clicked
+        this.classList.add('active');
+        
+        const filter = this.dataset.filter;
+        const products = document.querySelectorAll('.product-card-luxury');
+        
+        products.forEach(product => {
+          if (filter === 'all') {
+            product.style.display = 'block';
+            // Re-trigger fade-in animation
+            setTimeout(() => {
+              product.classList.add('fade-in');
+            }, 10);
+          } else {
+            const category = product.dataset.category;
+            if (category === filter) {
+              product.style.display = 'block';
+              setTimeout(() => {
+                product.classList.add('fade-in');
+              }, 10);
+            } else {
+              product.style.display = 'none';
+              product.classList.remove('fade-in');
+            }
+          }
+        });
+      });
+    });
+  }
+  
+  // Collection Page - Scroll Reveal Animation
+  const productCards = document.querySelectorAll('.product-card-luxury');
+  if (productCards.length > 0) {
+    const observerOptions = {
+      threshold: 0.15,
+      rootMargin: '0px 0px -50px 0px'
+    };
+    
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry, index) => {
+        if (entry.isIntersecting) {
+          setTimeout(() => {
+            entry.target.classList.add('fade-in');
+          }, index * 50); // Stagger animation
+          observer.unobserve(entry.target);
+        }
+      });
+    }, observerOptions);
+    
+    productCards.forEach(card => {
+      observer.observe(card);
+    });
+  }
 });
 
 function renderCart() {

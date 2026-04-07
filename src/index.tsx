@@ -342,28 +342,40 @@ app.get('/collection', (c) => {
         </div>
       </nav>
 
-      <section class="collection-hero">
-        <h1>Spring / Summer 2026</h1>
+      <section class="collection-hero-luxury">
+        <div class="collection-hero-content">
+          <p class="collection-season">Spring / Summer 2026</p>
+          <h1>The Collection</h1>
+          <p class="collection-subtitle">Thirteen pieces that define modern menswear</p>
+        </div>
+      </section>
+      
+      <section class="collection-filter-bar">
+        <div class="filter-container">
+          <button class="filter-btn active" data-filter="all">All</button>
+          <button class="filter-btn" data-filter="outerwear">Outerwear</button>
+          <button class="filter-btn" data-filter="essentials">Essentials</button>
+          <button class="filter-btn" data-filter="performance">Performance</button>
+        </div>
       </section>
 
-      <section class="collection-editorial">
-        <div class="product-grid-editorial-seamless">
-          {allProducts.map(product => (
-            <div class="product-card-minimal">
-              <a href={`/product/${product.id}`} class="product-image-minimal">
-                <img src={product.image} alt={product.name} />
+      <section class="collection-editorial-luxury">
+        <div class="product-grid-luxury-asymmetric">
+          {allProducts.map((product, index) => {
+            const isLarge = index % 7 === 0 || index % 7 === 3;
+            return (
+              <a href={`/product/${product.id}`} class={`product-card-luxury ${isLarge ? 'product-large' : ''}`} data-category={product.category.toLowerCase()}>
+                <div class="product-image-luxury">
+                  <img src={product.image} alt={product.name} loading="lazy" />
+                </div>
+                <div class="product-info-luxury">
+                  <h3>{product.name}</h3>
+                  <p class="product-category-label">{product.category}</p>
+                  <span class="product-price-luxury">£{product.price}</span>
+                </div>
               </a>
-              <div class="product-info-minimal">
-                <h3>{product.name}</h3>
-                <span>£{product.price}</span>
-                {product.stripeLink ? (
-                  <a href={product.stripeLink} class="btn-add-to-cart">Add to Cart</a>
-                ) : (
-                  <button class="btn-add-to-cart" disabled>Coming Soon</button>
-                )}
-              </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
       </section>
 
