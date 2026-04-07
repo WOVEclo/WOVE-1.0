@@ -565,8 +565,9 @@ img {
   margin-bottom: 20px;
 }
 
+/* Remove different aspect ratio for large cards - keep all images same size */
 .product-card-luxury.product-large .product-image-luxury {
-  aspect-ratio: 4 / 5;
+  aspect-ratio: 3 / 4;
 }
 
 .product-image-luxury img {
