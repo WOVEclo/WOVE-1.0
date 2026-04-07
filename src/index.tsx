@@ -13,7 +13,11 @@ const products = {
       name: 'Air Shell Jacket',
       price: 125,
       image: '/static/products/air-shell-jacket.jpg',
+      hoverImage: '/static/products/air-shell-jacket.jpg',
       category: 'Outerwear',
+      material: 'Technical Shell',
+      colors: ['Black', 'Navy'],
+      badge: 'New',
       description: 'Lightweight shell jacket with weather-resistant finish and minimalist design.',
       stripeLink: 'https://buy.stripe.com/test_aFa8wObhHgC1blEeh1cZa00'
     },
@@ -22,18 +26,25 @@ const products = {
       name: 'Cropped Anorak',
       price: 165,
       image: '/static/products/cropped-anorak.jpg',
+      hoverImage: '/static/products/cropped-anorak.jpg',
       category: 'Outerwear',
+      material: 'Water-Resistant Canvas',
+      colors: ['Olive', 'Black'],
       description: 'Contemporary cropped silhouette with functional details and technical fabric.',
-      stripeLink: null  // Add Stripe link when ready
+      stripeLink: null
     },
     {
       id: 'city-parka',
       name: 'City Parka',
       price: 285,
       image: '/static/products/city-parka.jpg',
+      hoverImage: '/static/products/city-parka.jpg',
       category: 'Outerwear',
+      material: 'Insulated Wool Blend',
+      colors: ['Charcoal', 'Navy'],
+      badge: 'Limited',
       description: 'Premium urban parka combining warmth, style and weather protection.',
-      stripeLink: null  // Add Stripe link when ready
+      stripeLink: null
     }
   ],
   essentials: [
@@ -42,7 +53,10 @@ const products = {
       name: 'Essentials Hoodie',
       price: 95,
       image: '/static/products/essentials-set.jpg',
+      hoverImage: '/static/products/essentials-set.jpg',
       category: 'Essentials',
+      material: 'Premium Cotton',
+      colors: ['Black', 'Grey', 'Navy'],
       description: 'Classic heavyweight hoodie in premium cotton with refined fit.'
     },
     {
@@ -50,7 +64,10 @@ const products = {
       name: 'Cloud Quarter Zip',
       price: 125,
       image: '/static/products/cloud-quarter-zip.jpg',
+      hoverImage: '/static/products/cloud-quarter-zip.jpg',
       category: 'Essentials',
+      material: 'Brushed Fleece',
+      colors: ['Stone', 'Black'],
       description: 'Soft brushed fleece quarter-zip with relaxed fit and comfort stretch.'
     },
     {
@@ -58,7 +75,11 @@ const products = {
       name: 'Cloud Hoodie',
       price: 135,
       image: '/static/products/cloud-hoodie.jpg',
+      hoverImage: '/static/products/cloud-hoodie.jpg',
       category: 'Essentials',
+      material: 'Cloud Fleece',
+      colors: ['Cream', 'Black', 'Grey'],
+      badge: 'New',
       description: 'Ultra-soft cloud fleece hoodie with oversized hood and kangaroo pocket.'
     },
     {
@@ -66,7 +87,10 @@ const products = {
       name: 'Track Zip',
       price: 145,
       image: '/static/products/track-zip.jpg',
+      hoverImage: '/static/products/track-zip.jpg',
       category: 'Essentials',
+      material: 'Technical Knit',
+      colors: ['Navy', 'Black'],
       description: 'Athletic-inspired track jacket with modern slim fit and zip pockets.'
     }
   ],
@@ -76,7 +100,10 @@ const products = {
       name: 'Second Skin Top',
       price: 75,
       image: '/static/products/second-skin-top.jpg',
+      hoverImage: '/static/products/second-skin-top.jpg',
       category: 'Performance',
+      material: 'Seamless Tech',
+      colors: ['Black', 'White'],
       description: 'Seamless performance top with four-way stretch and moisture-wicking technology.'
     },
     {
@@ -84,7 +111,10 @@ const products = {
       name: 'Second Skin Tee',
       price: 65,
       image: '/static/products/second-skin-tee.jpg',
+      hoverImage: '/static/products/second-skin-tee.jpg',
       category: 'Performance',
+      material: 'Performance Jersey',
+      colors: ['White', 'Black', 'Grey'],
       description: 'Fitted performance tee with technical fabric and athletic cut.'
     },
     {
@@ -92,7 +122,10 @@ const products = {
       name: 'Worn Run Tee',
       price: 55,
       image: '/static/products/worn-run-tee.jpg',
+      hoverImage: '/static/products/worn-run-tee.jpg',
       category: 'Performance',
+      material: 'Breathable Mesh',
+      colors: ['Black', 'Navy'],
       description: 'Lightweight running tee with breathable mesh panels and reflective details.'
     }
   ],
@@ -102,7 +135,10 @@ const products = {
       name: 'Motion Pants',
       price: 85,
       image: '/static/products/motion-pants.jpg',
+      hoverImage: '/static/products/motion-pants.jpg',
       category: 'Bottoms',
+      material: 'Stretch Canvas',
+      colors: ['Black', 'Navy', 'Khaki'],
       description: 'Versatile pants with four-way stretch and tapered athletic fit.'
     },
     {
@@ -110,7 +146,10 @@ const products = {
       name: 'Motion Shorts',
       price: 65,
       image: '/static/products/motion-shorts.jpg',
+      hoverImage: '/static/products/motion-shorts.jpg',
       category: 'Bottoms',
+      material: 'Quick-Dry Poly',
+      colors: ['Black', 'Navy'],
       description: 'Performance shorts with moisture-wicking fabric and zip pockets.'
     }
   ],
@@ -120,7 +159,10 @@ const products = {
       name: 'Off Duty Cap',
       price: 45,
       image: '/static/products/off-duty-cap.jpg',
+      hoverImage: '/static/products/off-duty-cap.jpg',
       category: 'Accessories',
+      material: 'Cotton Twill',
+      colors: ['Black', 'Navy', 'Stone'],
       description: 'Classic six-panel cap with adjustable back and curved brim.'
     }
   ]
@@ -364,16 +406,39 @@ app.get('/collection', (c) => {
           {allProducts.map((product, index) => {
             const isLarge = index % 7 === 0 || index % 7 === 3;
             return (
-              <a href={`/product/${product.id}`} class={`product-card-luxury ${isLarge ? 'product-large' : ''}`} data-category={product.category.toLowerCase()}>
-                <div class="product-image-luxury">
-                  <img src={product.image} alt={product.name} loading="lazy" />
+              <div class={`product-card-luxury ${isLarge ? 'product-large' : ''}`} data-category={product.category.toLowerCase()}>
+                <a href={`/product/${product.id}`} class="product-link-luxury">
+                  {product.badge && (
+                    <span class="product-badge">{product.badge}</span>
+                  )}
+                  <button class="wishlist-btn" aria-label="Add to wishlist">
+                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M10 17.5L8.825 16.45C4.4 12.475 1.5 9.875 1.5 6.75C1.5 4.15 3.525 2.125 6.125 2.125C7.575 2.125 9.025 2.875 10 4.025C10.975 2.875 12.425 2.125 13.875 2.125C16.475 2.125 18.5 4.15 18.5 6.75C18.5 9.875 15.6 12.475 11.175 16.45L10 17.5Z" stroke="currentColor" stroke-width="1.5"/>
+                    </svg>
+                  </button>
+                  <div class="product-image-luxury">
+                    <img src={product.image} alt={product.name} class="product-img-main" loading="lazy" />
+                    <img src={product.hoverImage} alt={product.name} class="product-img-hover" loading="lazy" />
+                  </div>
+                  <div class="product-info-luxury">
+                    <h3>{product.name}</h3>
+                    {product.material && (
+                      <p class="product-material">{product.material}</p>
+                    )}
+                    <span class="product-price-luxury">£{product.price}</span>
+                    {product.colors && product.colors.length > 0 && (
+                      <div class="product-colors">
+                        {product.colors.map(color => (
+                          <span class="color-dot" title={color} data-color={color.toLowerCase()}></span>
+                        ))}
+                      </div>
+                    )}
+                  </div>
+                </a>
+                <div class="quick-shop-overlay">
+                  <button class="quick-shop-btn">Quick Shop</button>
                 </div>
-                <div class="product-info-luxury">
-                  <h3>{product.name}</h3>
-                  <p class="product-category-label">{product.category}</p>
-                  <span class="product-price-luxury">£{product.price}</span>
-                </div>
-              </a>
+              </div>
             );
           })}
         </div>
