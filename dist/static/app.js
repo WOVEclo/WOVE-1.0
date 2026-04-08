@@ -549,7 +549,7 @@ document.addEventListener('DOMContentLoaded', function() {
             <div class="success-icon">✓</div>
             <h2>You're on the list!</h2>
             <p>${data.message}</p>
-            ${newsletter ? '<p class="newsletter-confirm">You've been subscribed to our newsletter.</p>' : ''}
+            ${newsletter ? '<p class="newsletter-confirm">You have been subscribed to our newsletter.</p>' : ''}
             <button class="restock-close-btn" onclick="document.getElementById('restock-modal').style.display='none'; document.body.style.overflow='auto';">Close</button>
           </div>
         `;
@@ -579,4 +579,60 @@ document.addEventListener('DOMContentLoaded', function() {
       submitBtn.textContent = 'Notify Me';
     });
   });
+});
+
+// Collection Drops Waitlist Form Handler
+document.addEventListener('DOMContentLoaded', function() {
+  const dropsForm = document.getElementById('drops-signup-form');
+  
+  if (dropsForm) {
+    dropsForm.addEventListener('submit', function(e) {
+      e.preventDefault();
+      
+      const name = document.getElementById('drops-name').value.trim();
+      const email = document.getElementById('drops-email').value.trim();
+      const phone = document.getElementById('drops-phone').value.trim();
+      const submitBtn = dropsForm.querySelector('.drops-submit-btn');
+      
+      // Disable button
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Joining...';
+      
+      // Send to API
+      fetch('/api/collection-drops', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          name: name,
+          email: email,
+          phone: phone
+        })
+      })
+      .then(response => response.json())
+      .then(data => {
+        if (data.success) {
+          // Show success message
+          dropsForm.innerHTML = `
+            <div style="text-align: center; padding: 40px 20px;">
+              <div style="width: 80px; height: 80px; border-radius: 50%; background: #10B981; color: white; font-size: 48px; display: flex; align-items: center; justify-content: center; margin: 0 auto 24px;">✓</div>
+              <h3 style="font-family: var(--font-main); font-size: 24px; font-weight: 300; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 16px; color: white;">${data.message}</h3>
+              <p style="font-family: var(--font-main); font-size: 14px; font-weight: 300; color: #CCCCCC;">Check your email for confirmation.</p>
+            </div>
+          `;
+        } else {
+          alert(data.message || 'Something went wrong. Please try again.');
+          submitBtn.disabled = false;
+          submitBtn.textContent = 'Join Waitlist';
+        }
+      })
+      .catch(error => {
+        console.error('Error:', error);
+        alert('Something went wrong. Please try again.');
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Join Waitlist';
+      });
+    });
+  }
 });

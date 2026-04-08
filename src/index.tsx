@@ -239,6 +239,22 @@ app.get('/home', (c) => {
           </div>
         </div>
       </section>
+      
+      <section class="collection-drops-signup">
+        <div class="drops-signup-content">
+          <h2>Join the Waitlist</h2>
+          <p class="drops-subtitle">Be the first to know about new collection drops, exclusive releases, and special offers.</p>
+          <form id="drops-signup-form" class="drops-form">
+            <div class="drops-form-row">
+              <input type="text" id="drops-name" name="name" placeholder="Full Name" required />
+              <input type="email" id="drops-email" name="email" placeholder="Email Address" required />
+              <input type="tel" id="drops-phone" name="phone" placeholder="Mobile Number" required />
+            </div>
+            <button type="submit" class="drops-submit-btn">Join Waitlist</button>
+          </form>
+          <p class="drops-privacy">We respect your privacy. Unsubscribe anytime.</p>
+        </div>
+      </section>
 
       <footer class="footer-minimal">
         <p>© 2026 WOVE. All rights reserved.</p>
@@ -637,6 +653,53 @@ app.post('/api/restock-notification', async (c) => {
     });
   } catch (error) {
     console.error('Restock notification error:', error);
+    return c.json({ success: false, message: 'Something went wrong. Please try again.' }, 500);
+  }
+})
+
+// Collection Drops Waitlist API
+app.post('/api/collection-drops', async (c) => {
+  try {
+    const { name, email, phone } = await c.req.json();
+    
+    // Validate name
+    if (!name || name.trim().length < 2) {
+      return c.json({ success: false, message: 'Please enter your full name' }, 400);
+    }
+    
+    // Validate email
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!email || !emailRegex.test(email)) {
+      return c.json({ success: false, message: 'Please enter a valid email address' }, 400);
+    }
+    
+    // Validate phone
+    const phoneRegex = /^[\d\s\+\-\(\)]+$/;
+    if (!phone || phone.trim().length < 10 || !phoneRegex.test(phone)) {
+      return c.json({ success: false, message: 'Please enter a valid phone number' }, 400);
+    }
+    
+    // In a real app, you would:
+    // 1. Store in database (Cloudflare D1)
+    // 2. Send welcome email
+    // 3. Add to email marketing list
+    // 4. Send SMS confirmation
+    
+    // For now, just log and return success
+    console.log(`
+      Collection Drops Waitlist:
+      Name: ${name}
+      Email: ${email}
+      Phone: ${phone}
+      Timestamp: ${new Date().toISOString()}
+    `);
+    
+    return c.json({ 
+      success: true, 
+      message: `Welcome to the waitlist, ${name.split(' ')[0]}! You'll be the first to know about new drops.` 
+    });
+  } catch (error) {
+    console.error('Collection drops signup error:', error);
     return c.json({ success: false, message: 'Something went wrong. Please try again.' }, 500);
   }
 })

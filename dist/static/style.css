@@ -369,6 +369,105 @@ img {
   letter-spacing: 0.3px;
 }
 
+/* Collection Drops Signup */
+.collection-drops-signup {
+  padding: 100px 60px;
+  background: var(--color-black);
+  color: var(--color-white);
+}
+
+.drops-signup-content {
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.drops-signup-content h2 {
+  font-family: var(--font-main);
+  font-size: 32px;
+  font-weight: 300;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  margin-bottom: 16px;
+}
+
+.drops-subtitle {
+  font-family: var(--font-main);
+  font-size: 15px;
+  font-weight: 300;
+  line-height: 1.6;
+  color: #CCCCCC;
+  margin-bottom: 40px;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.drops-form {
+  margin-bottom: 16px;
+}
+
+.drops-form-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.drops-form-row input {
+  font-family: var(--font-main);
+  font-size: 14px;
+  padding: 16px 20px;
+  border: 1px solid #444;
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--color-white);
+  transition: all 0.3s ease;
+}
+
+.drops-form-row input::placeholder {
+  color: #888;
+}
+
+.drops-form-row input:focus {
+  outline: none;
+  border-color: var(--color-white);
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.drops-submit-btn {
+  width: 100%;
+  max-width: 300px;
+  padding: 16px 40px;
+  font-family: var(--font-main);
+  font-size: 11px;
+  font-weight: 400;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--color-black);
+  background: var(--color-white);
+  border: 1px solid var(--color-white);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.drops-submit-btn:hover {
+  background: transparent;
+  color: var(--color-white);
+}
+
+.drops-submit-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.drops-privacy {
+  font-family: var(--font-main);
+  font-size: 11px;
+  font-weight: 300;
+  color: #888;
+  margin-top: 12px;
+}
+
 /* ===================================
    FEATURED PRODUCTS (Homepage)
    =================================== */
@@ -2076,6 +2175,37 @@ img {
   
   .value-prop-item p {
     font-size: 11px;
+  }
+  
+  .collection-drops-signup {
+    padding: 60px 24px;
+  }
+  
+  .drops-signup-content h2 {
+    font-size: 24px;
+    letter-spacing: 2px;
+  }
+  
+  .drops-subtitle {
+    font-size: 14px;
+    margin-bottom: 32px;
+  }
+  
+  .drops-form-row {
+    grid-template-columns: 1fr;
+    gap: 12px;
+    margin-bottom: 20px;
+  }
+  
+  .drops-form-row input {
+    font-size: 16px; /* Prevents zoom on iOS */
+    padding: 14px 16px;
+  }
+  
+  .drops-submit-btn {
+    max-width: 100%;
+    padding: 14px 32px;
+    font-size: 10px;
   }
   
   .featured-products {
