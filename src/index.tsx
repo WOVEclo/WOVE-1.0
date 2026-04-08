@@ -596,7 +596,12 @@ app.get('/api/product-feed.json', (c) => {
 // Restock Notification API
 app.post('/api/restock-notification', async (c) => {
   try {
-    const { email, productId, productName } = await c.req.json();
+    const { name, email, phone, newsletter, productId, productName } = await c.req.json();
+    
+    // Validate name
+    if (!name || name.trim().length < 2) {
+      return c.json({ success: false, message: 'Please enter your full name' }, 400);
+    }
     
     // Validate email
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -604,17 +609,31 @@ app.post('/api/restock-notification', async (c) => {
       return c.json({ success: false, message: 'Please enter a valid email address' }, 400);
     }
     
+    // Validate phone
+    const phoneRegex = /^[\d\s\+\-\(\)]+$/;
+    if (!phone || phone.trim().length < 10 || !phoneRegex.test(phone)) {
+      return c.json({ success: false, message: 'Please enter a valid phone number' }, 400);
+    }
+    
     // In a real app, you would:
     // 1. Store in database (Cloudflare D1)
     // 2. Send confirmation email
-    // 3. Add to email marketing list
+    // 3. Add to email marketing list (if newsletter === true)
+    // 4. Send SMS notification when back in stock
     
     // For now, just log and return success
-    console.log(`Restock notification: ${email} for ${productName} (${productId})`);
+    console.log(`
+      Restock notification:
+      Name: ${name}
+      Email: ${email}
+      Phone: ${phone}
+      Newsletter: ${newsletter}
+      Product: ${productName} (${productId})
+    `);
     
     return c.json({ 
       success: true, 
-      message: `Thank you! We'll notify you when ${productName} is back in stock.` 
+      message: `Thank you, ${name.split(' ')[0]}! We'll notify you when ${productName} is back in stock.` 
     });
   } catch (error) {
     console.error('Restock notification error:', error);

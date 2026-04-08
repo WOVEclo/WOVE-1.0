@@ -426,50 +426,157 @@ function removeFromCart(id, size) {
   renderCart();
 }
 
-// Restock Notification System
+// Restock Notification System with Modal
 document.addEventListener('DOMContentLoaded', function() {
+  // Create modal HTML
+  const modalHTML = `
+    <div id="restock-modal" class="restock-modal">
+      <div class="restock-modal-content">
+        <button class="restock-modal-close">&times;</button>
+        <div class="restock-modal-header">
+          <h2>Join Our Waitlist</h2>
+          <p class="restock-welcome">Be the first to know when <span id="modal-product-name"></span> is back in stock. Plus, get exclusive updates on new arrivals and special offers.</p>
+        </div>
+        <form id="restock-form" class="restock-form">
+          <div class="form-group">
+            <label for="restock-name">Full Name *</label>
+            <input type="text" id="restock-name" name="name" placeholder="John Smith" required>
+          </div>
+          <div class="form-group">
+            <label for="restock-email">Email Address *</label>
+            <input type="email" id="restock-email" name="email" placeholder="john@example.com" required>
+          </div>
+          <div class="form-group">
+            <label for="restock-phone">Mobile Telephone *</label>
+            <input type="tel" id="restock-phone" name="phone" placeholder="+44 7XXX XXXXXX" required>
+          </div>
+          <div class="form-checkbox">
+            <input type="checkbox" id="newsletter-subscribe" name="newsletter" checked>
+            <label for="newsletter-subscribe">Subscribe to our newsletter for exclusive offers and updates</label>
+          </div>
+          <button type="submit" class="restock-submit-btn">Notify Me</button>
+          <p class="restock-privacy">We respect your privacy. Unsubscribe anytime.</p>
+        </form>
+      </div>
+    </div>
+  `;
+  
+  // Append modal to body
+  document.body.insertAdjacentHTML('beforeend', modalHTML);
+  
+  const modal = document.getElementById('restock-modal');
+  const closeBtn = document.querySelector('.restock-modal-close');
+  const form = document.getElementById('restock-form');
+  let currentProductId = '';
+  let currentProductName = '';
+  let currentButton = null;
+  
   // Handle notify me buttons
   document.querySelectorAll('.notify-me-btn').forEach(btn => {
     btn.addEventListener('click', function(e) {
       e.preventDefault();
       e.stopPropagation();
       
-      const productId = this.dataset.productId;
-      const productName = this.dataset.productName;
+      currentProductId = this.dataset.productId;
+      currentProductName = this.dataset.productName;
+      currentButton = this;
       
-      // Prompt for email
-      const email = prompt(`Enter your email to be notified when ${productName} is back in stock:`);
+      // Update modal product name
+      document.getElementById('modal-product-name').textContent = currentProductName;
       
-      if (email && email.trim()) {
-        // Send to API
-        fetch('/api/restock-notification', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify({
-            email: email.trim(),
-            productId: productId,
-            productName: productName
-          })
-        })
-        .then(response => response.json())
-        .then(data => {
-          if (data.success) {
-            alert(data.message);
-            // Change button text
-            this.textContent = 'NOTIFIED';
-            this.disabled = true;
-            this.style.opacity = '0.5';
-          } else {
-            alert(data.message || 'Something went wrong. Please try again.');
-          }
-        })
-        .catch(error => {
-          console.error('Error:', error);
-          alert('Something went wrong. Please try again.');
-        });
+      // Show modal
+      modal.style.display = 'flex';
+      document.body.style.overflow = 'hidden';
+      
+      // Focus first input
+      setTimeout(() => {
+        document.getElementById('restock-name').focus();
+      }, 100);
+    });
+  });
+  
+  // Close modal
+  closeBtn.addEventListener('click', function() {
+    modal.style.display = 'none';
+    document.body.style.overflow = 'auto';
+    form.reset();
+  });
+  
+  // Close on outside click
+  modal.addEventListener('click', function(e) {
+    if (e.target === modal) {
+      modal.style.display = 'none';
+      document.body.style.overflow = 'auto';
+      form.reset();
+    }
+  });
+  
+  // Handle form submission
+  form.addEventListener('submit', function(e) {
+    e.preventDefault();
+    
+    const name = document.getElementById('restock-name').value.trim();
+    const email = document.getElementById('restock-email').value.trim();
+    const phone = document.getElementById('restock-phone').value.trim();
+    const newsletter = document.getElementById('newsletter-subscribe').checked;
+    
+    // Disable submit button
+    const submitBtn = form.querySelector('.restock-submit-btn');
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Processing...';
+    
+    // Send to API
+    fetch('/api/restock-notification', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        name: name,
+        email: email,
+        phone: phone,
+        newsletter: newsletter,
+        productId: currentProductId,
+        productName: currentProductName
+      })
+    })
+    .then(response => response.json())
+    .then(data => {
+      if (data.success) {
+        // Show success message
+        modal.querySelector('.restock-modal-content').innerHTML = `
+          <div class="restock-success">
+            <div class="success-icon">✓</div>
+            <h2>You're on the list!</h2>
+            <p>${data.message}</p>
+            ${newsletter ? '<p class="newsletter-confirm">You've been subscribed to our newsletter.</p>' : ''}
+            <button class="restock-close-btn" onclick="document.getElementById('restock-modal').style.display='none'; document.body.style.overflow='auto';">Close</button>
+          </div>
+        `;
+        
+        // Update the notify button
+        if (currentButton) {
+          currentButton.textContent = 'NOTIFIED';
+          currentButton.disabled = true;
+          currentButton.style.opacity = '0.5';
+        }
+        
+        // Auto close after 3 seconds
+        setTimeout(() => {
+          modal.style.display = 'none';
+          document.body.style.overflow = 'auto';
+        }, 3000);
+      } else {
+        alert(data.message || 'Something went wrong. Please try again.');
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Notify Me';
       }
+    })
+    .catch(error => {
+      console.error('Error:', error);
+      alert('Something went wrong. Please try again.');
+      submitBtn.disabled = false;
+      submitBtn.textContent = 'Notify Me';
     });
   });
 });
