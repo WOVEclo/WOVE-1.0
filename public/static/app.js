@@ -549,7 +549,7 @@ document.addEventListener('DOMContentLoaded', function() {
             <div class="success-icon">✓</div>
             <h2>You're on the list!</h2>
             <p>${data.message}</p>
-            ${newsletter ? '<p class="newsletter-confirm">You've been subscribed to our newsletter.</p>' : ''}
+            ${newsletter ? '<p class="newsletter-confirm">You have been subscribed to our newsletter.</p>' : ''}
             <button class="restock-close-btn" onclick="document.getElementById('restock-modal').style.display='none'; document.body.style.overflow='auto';">Close</button>
           </div>
         `;
