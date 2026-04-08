@@ -425,3 +425,51 @@ function removeFromCart(id, size) {
   cart.removeItem(id, size);
   renderCart();
 }
+
+// Restock Notification System
+document.addEventListener('DOMContentLoaded', function() {
+  // Handle notify me buttons
+  document.querySelectorAll('.notify-me-btn').forEach(btn => {
+    btn.addEventListener('click', function(e) {
+      e.preventDefault();
+      e.stopPropagation();
+      
+      const productId = this.dataset.productId;
+      const productName = this.dataset.productName;
+      
+      // Prompt for email
+      const email = prompt(`Enter your email to be notified when ${productName} is back in stock:`);
+      
+      if (email && email.trim()) {
+        // Send to API
+        fetch('/api/restock-notification', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            email: email.trim(),
+            productId: productId,
+            productName: productName
+          })
+        })
+        .then(response => response.json())
+        .then(data => {
+          if (data.success) {
+            alert(data.message);
+            // Change button text
+            this.textContent = 'NOTIFIED';
+            this.disabled = true;
+            this.style.opacity = '0.5';
+          } else {
+            alert(data.message || 'Something went wrong. Please try again.');
+          }
+        })
+        .catch(error => {
+          console.error('Error:', error);
+          alert('Something went wrong. Please try again.');
+        });
+      }
+    });
+  });
+});

@@ -18,7 +18,8 @@ const products = {
       material: 'Water-Resistant Canvas',
       colors: ['Olive', 'Black'],
       description: 'Contemporary cropped silhouette with functional details and technical fabric.',
-      stripeLink: null
+      stripeLink: null,
+      inStock: false
     },
     {
       id: 'city-parka',
@@ -31,7 +32,8 @@ const products = {
       colors: ['Charcoal', 'Navy'],
       badge: 'Limited',
       description: 'Premium urban parka combining warmth, style and weather protection.',
-      stripeLink: null
+      stripeLink: null,
+      inStock: false
     }
   ],
   essentials: [
@@ -44,7 +46,8 @@ const products = {
       category: 'Essentials',
       material: 'Premium Cotton',
       colors: ['Black', 'Grey', 'Navy'],
-      description: 'Classic heavyweight hoodie in premium cotton with refined fit.'
+      description: 'Classic heavyweight hoodie in premium cotton with refined fit.',
+      inStock: false
     },
     {
       id: 'cloud-quarter-zip',
@@ -55,7 +58,8 @@ const products = {
       category: 'Essentials',
       material: 'Brushed Fleece',
       colors: ['Stone', 'Black'],
-      description: 'Soft brushed fleece quarter-zip with relaxed fit and comfort stretch.'
+      description: 'Soft brushed fleece quarter-zip with relaxed fit and comfort stretch.',
+      inStock: false
     },
     {
       id: 'cloud-hoodie',
@@ -67,7 +71,8 @@ const products = {
       material: 'Cloud Fleece',
       colors: ['Cream', 'Black', 'Grey'],
       badge: 'New',
-      description: 'Ultra-soft cloud fleece hoodie with oversized hood and kangaroo pocket.'
+      description: 'Ultra-soft cloud fleece hoodie with oversized hood and kangaroo pocket.',
+      inStock: false
     },
     {
       id: 'track-zip',
@@ -78,7 +83,8 @@ const products = {
       category: 'Essentials',
       material: 'Technical Knit',
       colors: ['Navy', 'Black'],
-      description: 'Athletic-inspired track jacket with modern slim fit and zip pockets.'
+      description: 'Athletic-inspired track jacket with modern slim fit and zip pockets.',
+      inStock: false
     }
   ],
   performance: [
@@ -91,7 +97,8 @@ const products = {
       category: 'Performance',
       material: 'Seamless Tech',
       colors: ['Black', 'White'],
-      description: 'Seamless performance top with four-way stretch and moisture-wicking technology.'
+      description: 'Seamless performance top with four-way stretch and moisture-wicking technology.',
+      inStock: false
     },
     {
       id: 'second-skin-tee',
@@ -102,7 +109,8 @@ const products = {
       category: 'Performance',
       material: 'Performance Jersey',
       colors: ['White', 'Black', 'Grey'],
-      description: 'Fitted performance tee with technical fabric and athletic cut.'
+      description: 'Fitted performance tee with technical fabric and athletic cut.',
+      inStock: false
     },
     {
       id: 'worn-run-tee',
@@ -113,7 +121,8 @@ const products = {
       category: 'Performance',
       material: 'Breathable Mesh',
       colors: ['Black', 'Navy'],
-      description: 'Lightweight running tee with breathable mesh panels and reflective details.'
+      description: 'Lightweight running tee with breathable mesh panels and reflective details.',
+      inStock: false
     }
   ],
   bottoms: [
@@ -126,7 +135,8 @@ const products = {
       category: 'Bottoms',
       material: 'Stretch Canvas',
       colors: ['Black', 'Navy', 'Khaki'],
-      description: 'Versatile pants with four-way stretch and tapered athletic fit.'
+      description: 'Versatile pants with four-way stretch and tapered athletic fit.',
+      inStock: false
     },
     {
       id: 'motion-shorts',
@@ -137,7 +147,8 @@ const products = {
       category: 'Bottoms',
       material: 'Quick-Dry Poly',
       colors: ['Black', 'Navy'],
-      description: 'Performance shorts with moisture-wicking fabric and zip pockets.'
+      description: 'Performance shorts with moisture-wicking fabric and zip pockets.',
+      inStock: false
     }
   ],
   accessories: [
@@ -150,7 +161,8 @@ const products = {
       category: 'Accessories',
       material: 'Cotton Twill',
       colors: ['Black', 'Navy', 'Stone'],
-      description: 'Classic six-panel cap with adjustable back and curved brim.'
+      description: 'Classic six-panel cap with adjustable back and curved brim.',
+      inStock: false
     }
   ]
 }
@@ -421,9 +433,14 @@ app.get('/collection', (c) => {
                     )}
                   </div>
                 </a>
-                <div class="quick-shop-overlay">
-                  <button class="quick-shop-btn">Quick Shop</button>
-                </div>
+                {product.inStock === false && (
+                  <div class="sold-out-overlay">
+                    <span class="sold-out-badge">SOLD OUT</span>
+                    <button class="notify-me-btn" data-product-id={product.id} data-product-name={product.name}>
+                      Notify Me
+                    </button>
+                  </div>
+                )}
               </div>
             );
           })}
@@ -574,6 +591,35 @@ app.get('/api/product-feed.json', (c) => {
   }));
   
   return c.json(feed);
+})
+
+// Restock Notification API
+app.post('/api/restock-notification', async (c) => {
+  try {
+    const { email, productId, productName } = await c.req.json();
+    
+    // Validate email
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!email || !emailRegex.test(email)) {
+      return c.json({ success: false, message: 'Please enter a valid email address' }, 400);
+    }
+    
+    // In a real app, you would:
+    // 1. Store in database (Cloudflare D1)
+    // 2. Send confirmation email
+    // 3. Add to email marketing list
+    
+    // For now, just log and return success
+    console.log(`Restock notification: ${email} for ${productName} (${productId})`);
+    
+    return c.json({ 
+      success: true, 
+      message: `Thank you! We'll notify you when ${productName} is back in stock.` 
+    });
+  } catch (error) {
+    console.error('Restock notification error:', error);
+    return c.json({ success: false, message: 'Something went wrong. Please try again.' }, 500);
+  }
 })
 
 // Cart page

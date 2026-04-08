@@ -814,6 +814,53 @@ img {
   transform: scale(1.05);
 }
 
+/* Sold Out Overlay */
+.sold-out-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(255, 255, 255, 0.95);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  padding: 20px;
+  opacity: 1;
+  z-index: 10;
+}
+
+.sold-out-badge {
+  font-family: var(--font-main);
+  font-size: 13px;
+  font-weight: 400;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--color-black);
+  margin-bottom: 4px;
+}
+
+.notify-me-btn {
+  padding: 12px 28px;
+  font-family: var(--font-main);
+  font-size: 10px;
+  font-weight: 400;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--color-white);
+  background: var(--color-black);
+  border: 1px solid var(--color-black);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.notify-me-btn:hover {
+  background: var(--color-white);
+  color: var(--color-black);
+}
+
 /* Legacy styles for backward compatibility */
 .collection-hero {
   margin-top: 180px;
@@ -1895,6 +1942,16 @@ img {
   .quick-shop-btn {
     padding: 10px 24px;
     font-size: 10px;
+  }
+  
+  .sold-out-badge {
+    font-size: 11px;
+    letter-spacing: 2px;
+  }
+  
+  .notify-me-btn {
+    padding: 10px 24px;
+    font-size: 9px;
   }
   
   .btn-add-to-cart {
