@@ -9,19 +9,6 @@ app.use(renderer)
 const products = {
   outerwear: [
     {
-      id: 'air-shell-jacket',
-      name: 'Air Shell Jacket',
-      price: 125,
-      image: '/static/products/air-shell-jacket.jpg',
-      hoverImage: '/static/products/air-shell-jacket.jpg',
-      category: 'Outerwear',
-      material: 'Technical Shell',
-      colors: ['Black', 'Navy'],
-      badge: 'New',
-      description: 'Lightweight shell jacket with weather-resistant finish and minimalist design.',
-      stripeLink: 'https://buy.stripe.com/test_aFa8wObhHgC1blEeh1cZa00'
-    },
-    {
       id: 'cropped-anorak',
       name: 'Cropped Anorak',
       price: 165,
@@ -387,8 +374,7 @@ app.get('/collection', (c) => {
       <section class="collection-hero-luxury">
         <div class="collection-hero-content">
           <p class="collection-season">Spring / Summer 2026</p>
-          <h1>The Collection</h1>
-          <p class="collection-subtitle">Thirteen pieces that define modern menswear</p>
+          <h1>Collection</h1>
         </div>
       </section>
       

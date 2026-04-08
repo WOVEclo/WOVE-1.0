@@ -437,7 +437,7 @@ img {
 
 .collection-hero-luxury {
   margin-top: 180px;
-  padding: 140px 60px 100px;
+  padding: 160px 60px 120px;
   text-align: center;
   background: var(--color-white);
 }
@@ -454,18 +454,18 @@ img {
   letter-spacing: 3px;
   text-transform: uppercase;
   color: var(--color-gray);
-  margin-bottom: 24px;
+  margin-bottom: 32px;
 }
 
 .collection-hero-luxury h1 {
   font-family: var(--font-main);
-  font-size: 72px;
-  font-weight: 300;
-  letter-spacing: 4px;
+  font-size: 96px;
+  font-weight: 200;
+  letter-spacing: 8px;
   text-transform: uppercase;
   color: var(--color-black);
-  margin-bottom: 24px;
-  line-height: 1.1;
+  margin-bottom: 0;
+  line-height: 1;
 }
 
 .collection-subtitle {
@@ -479,7 +479,7 @@ img {
 
 /* Filter Bar */
 .collection-filter-bar {
-  padding: 0 60px 60px;
+  padding: 0 60px 80px;
   text-align: center;
 }
 
@@ -1597,16 +1597,16 @@ img {
   }
   
   .collection-hero-luxury {
-    padding: 120px 40px 80px;
+    padding: 140px 40px 100px;
   }
   
   .collection-hero-luxury h1 {
-    font-size: 56px;
-    letter-spacing: 3px;
+    font-size: 72px;
+    letter-spacing: 6px;
   }
   
   .collection-filter-bar {
-    padding: 0 40px 40px;
+    padding: 0 40px 60px;
   }
   
   .collection-editorial-luxury {
@@ -1804,17 +1804,19 @@ img {
   }
   
   .collection-hero-luxury {
-    padding: 100px 24px 60px;
+    padding: 120px 24px 80px;
   }
   
   .collection-hero-luxury h1 {
-    font-size: 42px;
-    letter-spacing: 2px;
+    font-size: 48px;
+    letter-spacing: 4px;
+    font-weight: 200;
   }
   
   .collection-season {
     font-size: 10px;
     letter-spacing: 2px;
+    margin-bottom: 24px;
   }
   
   .collection-subtitle {
@@ -1822,7 +1824,7 @@ img {
   }
   
   .collection-filter-bar {
-    padding: 0 24px 40px;
+    padding: 0 24px 60px;
   }
   
   .filter-container {
