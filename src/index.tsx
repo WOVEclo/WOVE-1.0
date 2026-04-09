@@ -695,6 +695,220 @@ app.post('/api/collection-drops', async (c) => {
   }
 })
 
+// Admin endpoint to view database entries (password protected)
+app.get('/admin/signups', async (c) => {
+  // Simple password protection - replace with proper auth in production
+  const authHeader = c.req.header('Authorization');
+  const expectedAuth = 'Basic ' + btoa('admin:wove2026'); // username: admin, password: wove2026
+  
+  if (authHeader !== expectedAuth) {
+    return c.text('Unauthorized', 401, {
+      'WWW-Authenticate': 'Basic realm="WOVE Admin"'
+    });
+  }
+  
+  try {
+    const db = c.env.DB;
+    
+    // Get restock notifications
+    const restockQuery = await db.prepare(`
+      SELECT * FROM restock_notifications 
+      ORDER BY created_at DESC 
+      LIMIT 100
+    `).all();
+    
+    // Get collection drops signups
+    const dropsQuery = await db.prepare(`
+      SELECT * FROM collection_drops_waitlist 
+      ORDER BY created_at DESC 
+      LIMIT 100
+    `).all();
+    
+    // Count totals
+    const restockCount = await db.prepare(`SELECT COUNT(*) as count FROM restock_notifications`).first();
+    const dropsCount = await db.prepare(`SELECT COUNT(*) as count FROM collection_drops_waitlist`).first();
+    
+    return c.html(`
+      <!DOCTYPE html>
+      <html>
+      <head>
+        <title>WOVE Admin - Customer Signups</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <style>
+          * { margin: 0; padding: 0; box-sizing: border-box; }
+          body { 
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: #f5f5f5;
+            padding: 20px;
+          }
+          .container { max-width: 1400px; margin: 0 auto; }
+          h1 { 
+            font-size: 32px; 
+            font-weight: 300;
+            margin-bottom: 10px;
+            letter-spacing: 2px;
+          }
+          .stats {
+            display: flex;
+            gap: 20px;
+            margin: 20px 0;
+          }
+          .stat-card {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            flex: 1;
+          }
+          .stat-number {
+            font-size: 36px;
+            font-weight: bold;
+            color: #000;
+          }
+          .stat-label {
+            font-size: 14px;
+            color: #666;
+            margin-top: 5px;
+          }
+          h2 { 
+            font-size: 20px;
+            font-weight: 500;
+            margin: 40px 0 20px 0;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+          }
+          .table-container {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            margin-bottom: 40px;
+          }
+          table { 
+            width: 100%; 
+            border-collapse: collapse;
+          }
+          th, td { 
+            padding: 16px; 
+            text-align: left;
+            border-bottom: 1px solid #eee;
+          }
+          th { 
+            background: #000;
+            color: white;
+            font-weight: 500;
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+          }
+          tr:hover { background: #f9f9f9; }
+          .badge {
+            display: inline-block;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 11px;
+            font-weight: 600;
+            text-transform: uppercase;
+          }
+          .badge-yes { background: #d4edda; color: #155724; }
+          .badge-no { background: #f8d7da; color: #721c24; }
+          .empty {
+            padding: 40px;
+            text-align: center;
+            color: #999;
+          }
+          @media (max-width: 768px) {
+            .stats { flex-direction: column; }
+            table { font-size: 14px; }
+            th, td { padding: 12px 8px; }
+          }
+        </style>
+      </head>
+      <body>
+        <div class="container">
+          <h1>WOVE ADMIN</h1>
+          <p style="color: #666; margin-bottom: 20px;">Customer Signups Dashboard</p>
+          
+          <div class="stats">
+            <div class="stat-card">
+              <div class="stat-number">${restockCount.count}</div>
+              <div class="stat-label">Restock Notifications</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-number">${dropsCount.count}</div>
+              <div class="stat-label">Collection Drops Waitlist</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-number">${restockCount.count + dropsCount.count}</div>
+              <div class="stat-label">Total Signups</div>
+            </div>
+          </div>
+          
+          <h2>📧 Restock Notifications (Last 100)</h2>
+          <div class="table-container">
+            ${restockQuery.results.length > 0 ? `
+              <table>
+                <thead>
+                  <tr>
+                    <th>Date</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Phone</th>
+                    <th>Product</th>
+                    <th>Newsletter</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  ${restockQuery.results.map(row => `
+                    <tr>
+                      <td>${new Date(row.created_at).toLocaleDateString('en-GB')} ${new Date(row.created_at).toLocaleTimeString('en-GB', {hour: '2-digit', minute: '2-digit'})}</td>
+                      <td>${row.name}</td>
+                      <td>${row.email}</td>
+                      <td>${row.phone}</td>
+                      <td>${row.product_name}</td>
+                      <td><span class="badge ${row.newsletter_subscribed ? 'badge-yes' : 'badge-no'}">${row.newsletter_subscribed ? 'Yes' : 'No'}</span></td>
+                    </tr>
+                  `).join('')}
+                </tbody>
+              </table>
+            ` : '<div class="empty">No restock notifications yet</div>'}
+          </div>
+          
+          <h2>🎁 Collection Drops Waitlist (Last 100)</h2>
+          <div class="table-container">
+            ${dropsQuery.results.length > 0 ? `
+              <table>
+                <thead>
+                  <tr>
+                    <th>Date</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Phone</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  ${dropsQuery.results.map(row => `
+                    <tr>
+                      <td>${new Date(row.created_at).toLocaleDateString('en-GB')} ${new Date(row.created_at).toLocaleTimeString('en-GB', {hour: '2-digit', minute: '2-digit'})}</td>
+                      <td>${row.name}</td>
+                      <td>${row.email}</td>
+                      <td>${row.phone}</td>
+                    </tr>
+                  `).join('')}
+                </tbody>
+              </table>
+            ` : '<div class="empty">No collection drops signups yet</div>'}
+          </div>
+        </div>
+      </body>
+      </html>
+    `);
+  } catch (error) {
+    console.error('Admin endpoint error:', error);
+    return c.text('Database error: ' + error.message, 500);
+  }
+})
+
 // Cart page
 app.get('/cart', (c) => {
   return c.render(
