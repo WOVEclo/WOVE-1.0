@@ -10,7 +10,7 @@
     {
       "binding": "DB",
       "database_name": "wove-customer-data",
-      "database_id": "PLACEHOLDER_WILL_BE_CREATED_ON_DEPLOY"
+      "database_id": "7cc78960-1459-4a83-87fe-0958d2f58d69"
     }
   ]
 }

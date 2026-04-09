@@ -636,18 +636,13 @@ app.post('/api/restock-notification', async (c) => {
     }
     
     // Save to database
-    try {
-      const db = c.env.DB;
-      await db.prepare(`
-        INSERT INTO restock_notifications (name, email, phone, product_id, product_name, newsletter_subscribed)
-        VALUES (?, ?, ?, ?, ?, ?)
-      `).bind(name, email, phone, productId, productName, newsletter ? 1 : 0).run();
-      
-      console.log(`✅ Saved restock notification: ${email} for ${productName}`);
-    } catch (dbError) {
-      console.error('Database error:', dbError);
-      // Continue even if DB fails - don't block user
-    }
+    const db = c.env.DB;
+    await db.prepare(`
+      INSERT INTO restock_notifications (name, email, phone, product_id, product_name, newsletter_subscribed)
+      VALUES (?, ?, ?, ?, ?, ?)
+    `).bind(name, email, phone, productId, productName, newsletter ? 1 : 0).run();
+    
+    console.log(`✅ Saved restock notification: ${email} for ${productName}`);
     
     return c.json({ 
       success: true, 
@@ -682,18 +677,13 @@ app.post('/api/collection-drops', async (c) => {
     }
     
     // Save to database
-    try {
-      const db = c.env.DB;
-      await db.prepare(`
-        INSERT INTO collection_drops_waitlist (name, email, phone)
-        VALUES (?, ?, ?)
-      `).bind(name, email, phone).run();
-      
-      console.log(`✅ Saved collection drops signup: ${email}`);
-    } catch (dbError) {
-      console.error('Database error:', dbError);
-      // Continue even if DB fails - don't block user
-    }
+    const db = c.env.DB;
+    await db.prepare(`
+      INSERT INTO collection_drops_waitlist (name, email, phone)
+      VALUES (?, ?, ?)
+    `).bind(name, email, phone).run();
+    
+    console.log(`✅ Saved collection drops signup: ${email}`);
     
     return c.json({ 
       success: true, 
