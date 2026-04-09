@@ -1,7 +1,11 @@
 import { Hono } from 'hono'
 import { renderer } from './renderer'
 
-const app = new Hono()
+type Bindings = {
+  DB: D1Database
+}
+
+const app = new Hono<{ Bindings: Bindings }>()
 
 app.use(renderer)
 
@@ -631,21 +635,19 @@ app.post('/api/restock-notification', async (c) => {
       return c.json({ success: false, message: 'Please enter a valid phone number' }, 400);
     }
     
-    // In a real app, you would:
-    // 1. Store in database (Cloudflare D1)
-    // 2. Send confirmation email
-    // 3. Add to email marketing list (if newsletter === true)
-    // 4. Send SMS notification when back in stock
-    
-    // For now, just log and return success
-    console.log(`
-      Restock notification:
-      Name: ${name}
-      Email: ${email}
-      Phone: ${phone}
-      Newsletter: ${newsletter}
-      Product: ${productName} (${productId})
-    `);
+    // Save to database
+    try {
+      const db = c.env.DB;
+      await db.prepare(`
+        INSERT INTO restock_notifications (name, email, phone, product_id, product_name, newsletter_subscribed)
+        VALUES (?, ?, ?, ?, ?, ?)
+      `).bind(name, email, phone, productId, productName, newsletter ? 1 : 0).run();
+      
+      console.log(`✅ Saved restock notification: ${email} for ${productName}`);
+    } catch (dbError) {
+      console.error('Database error:', dbError);
+      // Continue even if DB fails - don't block user
+    }
     
     return c.json({ 
       success: true, 
@@ -679,20 +681,19 @@ app.post('/api/collection-drops', async (c) => {
       return c.json({ success: false, message: 'Please enter a valid phone number' }, 400);
     }
     
-    // In a real app, you would:
-    // 1. Store in database (Cloudflare D1)
-    // 2. Send welcome email
-    // 3. Add to email marketing list
-    // 4. Send SMS confirmation
-    
-    // For now, just log and return success
-    console.log(`
-      Collection Drops Waitlist:
-      Name: ${name}
-      Email: ${email}
-      Phone: ${phone}
-      Timestamp: ${new Date().toISOString()}
-    `);
+    // Save to database
+    try {
+      const db = c.env.DB;
+      await db.prepare(`
+        INSERT INTO collection_drops_waitlist (name, email, phone)
+        VALUES (?, ?, ?)
+      `).bind(name, email, phone).run();
+      
+      console.log(`✅ Saved collection drops signup: ${email}`);
+    } catch (dbError) {
+      console.error('Database error:', dbError);
+      // Continue even if DB fails - don't block user
+    }
     
     return c.json({ 
       success: true, 
